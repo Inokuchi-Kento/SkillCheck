@@ -1,7 +1,5 @@
-insert into public.employees (name, number, dummy_number)
+insert into public.employees (id, name, role)
 values 
- ('Ishikawa Yuto', 1001, 186368),
- ('Inokuchi Kento', 1002, 754390),
- ('Takayama Hiroyuki', 1003, 174789);
-
- 
+(10214653, 'Inokuchi Kento', 'Development'),
+(10210001, 'Ishikawa Yuto', 'Development'),
+(10210002, 'Takayama Hiroyuki', 'Development');
