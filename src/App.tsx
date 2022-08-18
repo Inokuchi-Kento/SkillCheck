@@ -1,17 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
-import * as supabase from './supabaseClient'
-import Auth from './Auth'
+import {supabase} from './supabaseClient'
+import Select from './database/Select'
 
-export default function App() {
-  const [session, setSession] = useState(null)
-
+function App() {
   
-
-  return (
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
-      
-    </div>
-  )
 }
+
+export default App;
