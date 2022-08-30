@@ -1,22 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState ,FC } from 'react';
 import { supabase } from '../supabaseClient';
 
 type List = {
-    id: number;
-    item:string;
+    id: number,
+    employee_id: number,
+    name: string,
+    item: string,
+    score: number;
 };
   
-function Select() {
+export function DisplayTable() {
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);
   
     const fetchData = async() =>{
-  
         try {
         setLoading(true);
     
         let { data, error } = await supabase
-        .from<List>('skills')
+        .from<List>('scores')
         .select('*')
         .order('id')
     
@@ -31,6 +33,15 @@ function Select() {
             setLoading(false);
         }
     };
+
+    const DeleteData = async(props:any) => {
+      const text = props;
+
+      const { data, error } = await supabase
+      .from('scores')
+      .delete()
+      .eq('item', "")
+    }
   
     useEffect(() => {
       // supabaseからデータを取得
@@ -41,19 +52,23 @@ function Select() {
     if (!list.length) return <div>missing data...</div>;
   
     return (
-      <div className="Employee_List">
+      <div className="name_skills">
+        <button onClick={DeleteData}>削除</button>
         <table>
           <thead>
             <tr>
               <td>ID</td>
-              <td>ITEM</td>
+              <td>スキル一覧</td>
             </tr>
           </thead>
           <tbody>
             {list.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
+                <td>{item.employee_id}</td>
+                <td>{item.name}</td>
                 <td>{item.item}</td>
+                <td>{item.score}</td>
               </tr>
             ))}
           </tbody>
@@ -62,5 +77,5 @@ function Select() {
     );
   }
   
-  export default Select;
+ 
   
