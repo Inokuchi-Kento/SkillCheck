@@ -2,73 +2,75 @@ import { useEffect, useState ,FC } from 'react';
 import { supabase } from '../supabaseClient';
 
 type List = {
-    id: number,
-    employee_id: number,
-    name: string,
-    item: string,
-    score: number;
-};
+  id: number,
+  name: string,
+  department: string,
+  grade: string;
+}
+
+type Props  = {
+  text: string;
+  tag: string;
+}
   
-export function DisplayTable() {
+export function DisplayTable(props:any) {
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);
+    const {text, tag} = props;
   
-    const fetchData = async() =>{
-        try {
+    //全データを表示する
+    const fetchAllData = async() =>{  
+      try {
         setLoading(true);
     
         let { data, error } = await supabase
-        .from<List>('scores')
+        .from<List>('employees')
         .select('*')
         .order('id')
-    
+        .like(tag,'%' + text + '%')
+
+        //alert(tag)
+
         if (error) {
             throw error;
         }if (data) {
             setList(data);
         }
-        }catch (error: any) {
+      }catch (error: any) {
             alert(error.message);
-        } finally {
+      } finally {
             setLoading(false);
-        }
+      }
     };
 
-    const DeleteData = async(props:any) => {
-      const text = props;
-
-      const { data, error } = await supabase
-      .from('scores')
-      .delete()
-      .eq('item', "")
-    }
-  
     useEffect(() => {
       // supabaseからデータを取得
-      fetchData();
-    }, []);
+      fetchAllData();
+    }, [text, tag]);
     
     if (loading) return <div>loading...</div>;
     if (!list.length) return <div>missing data...</div>;
   
     return (
       <div className="name_skills">
-        <button onClick={DeleteData}>削除</button>
+        <h5>検索テスト</h5>
+        <h3>{text}の検索結果</h3>
         <table>
           <thead>
             <tr>
               <td>ID</td>
-              <td>スキル一覧</td>
+              <td>名前</td>
+              <td>役職</td>
+              <td>グレード</td>
             </tr>
           </thead>
           <tbody>
             {list.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
-                <td>{item.employee_id}</td>
                 <td>{item.name}</td>
-                <td>{item.item}</td>
-                <td>{item.score}</td>
+                <td>{item.department}</td>
+                <td>{item.grade}</td>
               </tr>
             ))}
           </tbody>
