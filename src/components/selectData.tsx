@@ -3,12 +3,13 @@ import { supabase } from '../supabaseClient';
 
 type List = {
   id: number,
+  number: string,
   name: string,
   department: string,
   grade: string;
 }
 
-type Props  = {
+type Props = {
   text: string;
   tag: string;
 }
@@ -17,20 +18,18 @@ export function DisplayTable(props:any) {
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);
     const {text, tag} = props;
-  
-    //全データを表示する
+    console.log(props)
+    
+    //データを抽出する
     const fetchAllData = async() =>{  
       try {
         setLoading(true);
-    
+
         let { data, error } = await supabase
-        .from<List>('employees')
+        .from('employees')
         .select('*')
-        .order('id')
-        .like(tag,'%' + text + '%')
-
-        //alert(tag)
-
+        .ilike(tag,'%'+text+'%')
+        
         if (error) {
             throw error;
         }if (data) {
@@ -59,6 +58,7 @@ export function DisplayTable(props:any) {
           <thead>
             <tr>
               <td>ID</td>
+              <td>社員番号</td>
               <td>名前</td>
               <td>役職</td>
               <td>グレード</td>
@@ -68,6 +68,7 @@ export function DisplayTable(props:any) {
             {list.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
+                <td>{item.number}</td>
                 <td>{item.name}</td>
                 <td>{item.department}</td>
                 <td>{item.grade}</td>
@@ -77,7 +78,7 @@ export function DisplayTable(props:any) {
         </table>
       </div>
     );
-  }
+}
   
  
   

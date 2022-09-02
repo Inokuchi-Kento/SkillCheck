@@ -5,18 +5,6 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,6 +18,26 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
+}
+
+.search_box {
+  display: inline-block; /* なくても大丈夫だけど、念の為 */
+  position: relative;    /* 基準値とする */
+}
+
+.search_box::before {
+  content: "";           /* 疑似要素に必須 */
+  width: 16px;           /* アイコンの横幅 */
+  height: 16px;          /* アイコンの高さ */
+  background: url(./assets/search.png) no-repeat center center / auto 100%; /* 背景にアイコン画像を配置 */
+  display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
+  position: absolute;    /* 相対位置に指定 */
+  top: 16px;              /* アイコンの位置。微調整してね */
+  left: 8px;             /* アイコンの位置。微調整してね */
+}
+
+.search_box input {
+  padding: 3px 0 3px 2em; /* アイコンを設置するため左の余白を多めに指定*/
 }
 
 .card {
