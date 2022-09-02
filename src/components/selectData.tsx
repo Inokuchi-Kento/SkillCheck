@@ -1,4 +1,4 @@
-import { useEffect, useState ,FC } from 'react';
+import { useEffect, useState ,FC, ChangeEvent } from 'react';
 import { supabase } from '../supabaseClient';
 
 type List = {
@@ -12,14 +12,16 @@ type List = {
 type Props = {
   text: string;
   tag: string;
+  sort: string;
 }
   
-export function DisplayTable(props:any) {
+export function DisplayTable(props:Props) {
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);
-    const {text, tag} = props;
+    const {text, tag, sort} = props;
+
     console.log(props)
-    
+
     //データを抽出する
     const fetchAllData = async() =>{  
       try {
@@ -28,6 +30,7 @@ export function DisplayTable(props:any) {
         let { data, error } = await supabase
         .from('employees')
         .select('*')
+        .order(sort)
         .ilike(tag,'%'+text+'%')
         
         if (error) {
@@ -45,15 +48,13 @@ export function DisplayTable(props:any) {
     useEffect(() => {
       // supabaseからデータを取得
       fetchAllData();
-    }, [text, tag]);
+    }, [text, tag, sort]);
     
     if (loading) return <div>loading...</div>;
     if (!list.length) return <div>missing data...</div>;
   
     return (
       <div className="name_skills">
-        <h5>検索テスト</h5>
-        <h3>{text}の検索結果</h3>
         <table>
           <thead>
             <tr>

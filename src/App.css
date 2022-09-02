@@ -32,8 +32,8 @@
   background: url(./assets/search.png) no-repeat center center / auto 100%; /* 背景にアイコン画像を配置 */
   display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
   position: absolute;    /* 相対位置に指定 */
-  top: 16px;              /* アイコンの位置。微調整してね */
-  left: 8px;             /* アイコンの位置。微調整してね */
+  top: 15px;              /* アイコンの位置。微調整してね */
+  left: 82px;             /* アイコンの位置。微調整してね */
 }
 
 .search_box input {
