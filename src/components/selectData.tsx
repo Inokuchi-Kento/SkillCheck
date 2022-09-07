@@ -2,11 +2,9 @@ import { useEffect, useState ,FC, ChangeEvent } from 'react';
 import { supabase } from '../supabaseClient';
 
 type List = {
-  id: number,
   number: string,
   name: string,
-  department: string,
-  grade: string;
+  gender:string
 }
 
 type Props = {
@@ -28,10 +26,11 @@ export function DisplayTable(props:Props) {
         setLoading(true);
 
         let { data, error } = await supabase
-        .from('employees')
-        .select('*')
+        .from('test')
+        .select('number, name, gender')
         .order(sort)
         .ilike(tag,'%'+text+'%')
+        //.eq(tag,text)
         
         if (error) {
             throw error;
@@ -58,21 +57,18 @@ export function DisplayTable(props:Props) {
         <table>
           <thead>
             <tr>
-              <td>ID</td>
               <td>社員番号</td>
               <td>名前</td>
-              <td>役職</td>
-              <td>グレード</td>
+              <td>性別</td>
             </tr>
           </thead>
           <tbody>
             {list.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
+              <tr key={item.number}>
+                {/* <td>{item.id}</td> */}
                 <td>{item.number}</td>
                 <td>{item.name}</td>
-                <td>{item.department}</td>
-                <td>{item.grade}</td>
+                <td>{item.gender}</td>
               </tr>
             ))}
           </tbody>
