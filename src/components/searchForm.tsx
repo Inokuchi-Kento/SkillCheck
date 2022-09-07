@@ -6,7 +6,7 @@ import { supabase } from '../supabaseClient';
 
 export const SearchForm = ()=> {   
   //テキストボックスState
-  const [text, setText] = useState('')
+  
   const [word, setWord] = useState('')
   //セレクトボックスState
   const [tag, setTag] = useState('');
