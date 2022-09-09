@@ -2,27 +2,33 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Menu from "./ Menu";
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>TRIAL</h1>
       <h2>生鮮スキルチェックシステム</h2>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          ログイン {}
-        </button>
+
+      <BrowserRouter>
+      <Routes>
+        <Route path="/menu" element={<Menu />} />
+      </Routes>
+    </BrowserRouter>
+
+      <input type="text" placeholder="ID" name="mailAddress" /><br></br>
+      <input type="text" placeholder="パスワード" name="password" /><br></br>
+
+      
+      <a href="http://localhost:5173/menu">
+      <button type="button" >ログイン</button>
+      </a>
         <p>
-          ishikawa <code>src/App.tsx</code> and save to test HMR
+          TeamA <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
       <p className="read-the-docs">
