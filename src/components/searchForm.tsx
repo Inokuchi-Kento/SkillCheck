@@ -1,7 +1,7 @@
 import { useEffect, useState ,FC } from 'react';
 import { useContext } from 'react';
 import { ChangeEvent, KeyboardEvent, ReactElement } from 'react'
-import {DisplayTable} from './selectData'
+import {DisplayTable} from './Employees'
 import { supabase } from '../supabaseClient';
 
 export const SearchForm = ()=> {   
@@ -53,8 +53,8 @@ export const SearchForm = ()=> {
         <select name="column" id='tag' onChange={onChangeTag}>
           <option value="number" >社員番号</option>
           <option value="name">名前</option>        
-          <option value="department">役職</option>
-          <option value="grade">グレード</option>
+          <option value="gender">性別</option>
+          
         </select>
         <input type="text" id="fetch" value={text} placeholder="検索ワードを入力" onChange={onChangeText} onKeyPress={doType}/>
         <button id='serachButton' onClick={onClickFetch}>検索</button>
@@ -64,7 +64,7 @@ export const SearchForm = ()=> {
         並び替え
         <select name="item" id="sort" onChange={onChangeSort}>
           <option value="number" >社員番号</option>
-          <option value="name">名前</option>        
+          <option value="kana">名前</option>        
         </select>
       </div>
       <h5></h5>
