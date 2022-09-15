@@ -13,6 +13,7 @@ type Props = {
   sort: string;
 }
   
+//データの表示に関する関数
 export function DisplayTable(props:Props) {
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);

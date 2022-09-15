@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { ChangeEvent, KeyboardEvent, ReactElement } from 'react'
 import {DisplayTable} from './Employees'
 import { supabase } from '../supabaseClient';
+import { Link } from "react-router-dom";
 
 export const SearchForm = ()=> {   
   //テキストボックスState
@@ -20,9 +21,13 @@ export const SearchForm = ()=> {
   const onChangeTag = (e:ChangeEvent<HTMLSelectElement>) => setTag(e.target.value);
 
   //ソート項目
-  const [sort, setSort] = useState('');
-  if (sort=='') setSort('number')
+  const [sort, setSort] = useState('number');
+//   if (sort=='') setSort('number')
   const onChangeSort = (e:ChangeEvent<HTMLSelectElement>) => setSort(e.target.value)
+
+  //スコア入力項目
+  const [skill, setSkill] = useState('fujitaEle')
+  const onChangeSkill = (e:ChangeEvent<HTMLSelectElement>) => setSkill(e.target.value)
 
   //[検索]ボタン押下時の動作
   const onClickFetch = () => {
@@ -54,7 +59,6 @@ export const SearchForm = ()=> {
           <option value="number" >社員番号</option>
           <option value="name">名前</option>        
           <option value="gender">性別</option>
-          
         </select>
         <input type="text" id="fetch" value={text} placeholder="検索ワードを入力" onChange={onChangeText} onKeyPress={doType}/>
         <button id='serachButton' onClick={onClickFetch}>検索</button>
@@ -67,6 +71,17 @@ export const SearchForm = ()=> {
           <option value="kana">名前</option>        
         </select>
       </div>
+      <div className='scoreUpdete'>
+
+        <select name="score" id="update" onChange={onChangeSkill}>
+            <option value="fujitaEle">藤田式: 初級</option>
+        </select>
+      </div>
+      <Link to={'/'}>ログアウト</Link>
+      <div>
+      <Link to={'/confirm'}>送信</Link>
+      </div>
+      
       <h5></h5>
       <DisplayTable sort={sort} tag={cond} text={word} />
     </div>

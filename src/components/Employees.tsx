@@ -5,7 +5,8 @@ type List = {
   number: string,
   name: string,
   gender:string
-  mail: string
+  mail: string,
+  fujitaEle: number
 }
 
 type Props = {
@@ -55,11 +56,16 @@ export function DisplayTable(props:Props) {
       }
     };
 
+    const updateScore = async()=> {
+        const query = await supabase.from('test').update({'fujitaEle':3}).eq('number',22)
+    }
+
     useEffect(() => {
       // supabaseからデータを取得
       getServeSideData();
+      updateScore();
     }, [text, tag, sort]);
-    
+
     if (loading) return <div>loading...</div>;
     if (!list.length) return <div>missing data...</div>;
   
@@ -72,6 +78,7 @@ export function DisplayTable(props:Props) {
               <td>名前</td>
               <td>性別</td>
               <td>メール</td>
+              <td>藤田式_初級</td>
             </tr>
           </thead>
           <tbody>
@@ -82,6 +89,7 @@ export function DisplayTable(props:Props) {
                 <td>{item.name}</td>
                 <td>{item.gender}</td>
                 <td>{item.mail}</td>
+                <td>{item.fujitaEle}</td>
               </tr>
             ))}
           </tbody>
