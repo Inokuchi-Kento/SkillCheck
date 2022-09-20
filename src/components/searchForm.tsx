@@ -5,6 +5,7 @@ import {DisplayTable} from './Employees'
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
 
+//検索画面のコンポーネント
 export const SearchForm = ()=> {   
   //テキストボックスState
   const [text, setText] = useState('')
@@ -15,14 +16,12 @@ export const SearchForm = ()=> {
 
   if(tag == '') setTag('number')
 
-  //テキストボックス入力時に入力内容をStateに設定
+  //テキスト入力
   const onChangeText = (e:ChangeEvent<HTMLInputElement>) => setText(e.target.value);
-  //検索項目の選択時に入力内容をStateに設定
   const onChangeTag = (e:ChangeEvent<HTMLSelectElement>) => setTag(e.target.value);
 
   //ソート項目
   const [sort, setSort] = useState('number');
-//   if (sort=='') setSort('number')
   const onChangeSort = (e:ChangeEvent<HTMLSelectElement>) => setSort(e.target.value)
 
   //スコア入力項目
@@ -32,7 +31,7 @@ export const SearchForm = ()=> {
   //[検索]ボタン押下時の動作
   const onClickFetch = () => {
     if(text == ''){
-        confirm("フィールドに値を入力してください")
+        alert("フィールドに値を入力してください")
     }
     else{
         const newText = text;
@@ -46,8 +45,7 @@ export const SearchForm = ()=> {
   //Enterキー押下時の動作
   const doType = (event:KeyboardEvent) => {
     if(event.code == 'Enter'){
-      //ボタンの関数を埋め込む
-      onClickFetch();
+      onClickFetch(); //ボタンの関数を埋め込む
     }
   }
 
@@ -59,6 +57,7 @@ export const SearchForm = ()=> {
           <option value="number" >社員番号</option>
           <option value="name">名前</option>        
           <option value="gender">性別</option>
+          <option value="store">店</option>
         </select>
         <input type="text" id="fetch" value={text} placeholder="検索ワードを入力" onChange={onChangeText} onKeyPress={doType}/>
         <button id='serachButton' onClick={onClickFetch}>検索</button>
@@ -77,10 +76,14 @@ export const SearchForm = ()=> {
             <option value="fujitaEle">藤田式: 初級</option>
         </select>
       </div>
-      <Link to={'/'}>ログアウト</Link>
+        
       <div>
-      <Link to={'/confirm'}>送信</Link>
+        <Link to={'/SkillCheck/confirm'}>送信</Link>
       </div>
+      <div>
+        <Link to={'/SkillCheck/update'}>スキル入力へ</Link> 
+      </div>
+      <Link to={'/SkillCheck'}>ログアウト</Link>
       
       <h5></h5>
       <DisplayTable sort={sort} tag={cond} text={word} />

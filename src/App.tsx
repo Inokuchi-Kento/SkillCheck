@@ -9,6 +9,7 @@ import {LoginForm} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
 import {Auth} from './components/Auth'
 import {Account} from './components/Account'
+import {UpdateScore} from './components/updateScore'
 
 function App(){
   const [session, setSession] = useState<Session | null>(null);
@@ -31,9 +32,10 @@ function App(){
       <BrowserRouter>
         <Routes>
           <Route path="/SkillCheck/" element={<LoginForm/>}/>
-          <Route path="/menu/" element={<Menu/>}/>
-          <Route path='/confirm' element={<Confirm/>}/>
-          <Route path='/search' element={<SearchForm/>}/>
+          <Route path="/SkillCheck/menu" element={<Menu/>}/>
+          <Route path='/SkillCheck/confirm' element={<Confirm/>}/>
+          <Route path='/SkillCheck/search' element={<SearchForm/>}/>
+          <Route path='/SkillCheck/update' element={<UpdateScore/>}/> 
         </Routes>
       </BrowserRouter>
       {/* <SearchForm/> */}

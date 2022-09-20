@@ -5,7 +5,7 @@ type List = {
   number: string,
   name: string,
   gender:string
-  mail: string,
+  store: string,
   fujitaEle: number
 }
 
@@ -63,7 +63,7 @@ export function DisplayTable(props:Props) {
     useEffect(() => {
       // supabaseからデータを取得
       getServeSideData();
-      updateScore();
+      //updateScore();
     }, [text, tag, sort]);
 
     if (loading) return <div>loading...</div>;
@@ -77,7 +77,7 @@ export function DisplayTable(props:Props) {
               <td>社員番号</td>
               <td>名前</td>
               <td>性別</td>
-              <td>メール</td>
+              <td>店</td>
               <td>藤田式_初級</td>
             </tr>
           </thead>
@@ -88,7 +88,7 @@ export function DisplayTable(props:Props) {
                 <td>{item.number}</td>
                 <td>{item.name}</td>
                 <td>{item.gender}</td>
-                <td>{item.mail}</td>
+                <td>{item.store}</td>
                 <td>{item.fujitaEle}</td>
               </tr>
             ))}
