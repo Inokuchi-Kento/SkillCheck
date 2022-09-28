@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import {ChangeEvent, useState, MouseEvent} from 'react'
 
+//仮ログインページ
 export function LoginForm(){
     const [pass, setPass] = useState('')
     const onChangeText = (e:ChangeEvent<HTMLInputElement>) => setPass(e.target.value);
     const navigate = useNavigate()
+    
     const key = import.meta.env.VITE_REACT_APP_LOGIN_PASS
 
     const handleLogin = (e:MouseEvent<HTMLButtonElement>) => {

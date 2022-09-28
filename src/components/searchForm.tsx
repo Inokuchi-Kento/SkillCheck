@@ -56,8 +56,7 @@ export const SearchForm = ()=> {
         <select name="column" id='tag' onChange={onChangeTag}>
           <option value="number" >社員番号</option>
           <option value="name">名前</option>        
-          <option value="gender">性別</option>
-          <option value="store">店</option>
+          <option value="store">店名</option>
         </select>
         <input type="text" id="fetch" value={text} placeholder="検索ワードを入力" onChange={onChangeText} onKeyPress={doType}/>
         <button id='serachButton' onClick={onClickFetch}>検索</button>
@@ -67,16 +66,10 @@ export const SearchForm = ()=> {
         並び替え
         <select name="item" id="sort" onChange={onChangeSort}>
           <option value="number" >社員番号</option>
-          <option value="kana">名前</option>        
+          <option value="kana">名前</option>      
         </select>
       </div>
-      <div className='scoreUpdete'>
 
-        <select name="score" id="update" onChange={onChangeSkill}>
-            <option value="fujitaEle">藤田式: 初級</option>
-        </select>
-      </div>
-        
       <div>
         <Link to={'/SkillCheck/confirm'}>送信</Link>
       </div>
