@@ -10,17 +10,12 @@ import { Session } from '@supabase/gotrue-js';
 import {Auth} from './components/Auth'
 import {Account} from './components/Account'
 import {UpdateScore} from './components/updateScore'
+import { EditScore } from './components/addScore';
+// import {EditScore} from './components/addScore'
 
 function App(){
+  console.log('Appレンダリング')
   const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    setSession(supabase.auth.session())
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
 
   return(
     <div>
@@ -31,7 +26,7 @@ function App(){
     </div> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck/" element={<LoginForm/>}/>
+          <Route path="/SkillCheck/" element={<EditScore/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/confirm' element={<Confirm/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
