@@ -5,7 +5,7 @@ type List = {
   number: string,
   name: string,
   store: string,
-  fujitaEle: number
+  basic: number
 }
 
 type Props = {
@@ -26,7 +26,7 @@ export function DisplayTable(props:Props) {
       try {
         setLoading(true);
 
-        let query = supabase.from('test').select('*');
+        let query = supabase.from('tr').select('*');
 
         if(tag === 'number'){
             query = query.eq('number', text);
@@ -69,7 +69,7 @@ export function DisplayTable(props:Props) {
               <td>社員番号</td>
               <td>名前</td>
               <td>店名</td>
-              <td>藤田式_初級</td>
+              <td>基礎知識</td>
             </tr>
           </thead>
           <tbody>
@@ -78,7 +78,7 @@ export function DisplayTable(props:Props) {
                 <td>{item.number}</td>
                 <td>{item.name}</td>
                 <td>{item.store}</td>
-                <td>{item.fujitaEle}</td>
+                <td>{item.basic}</td>
               </tr>
             ))}
           </tbody>
