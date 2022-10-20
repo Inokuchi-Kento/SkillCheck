@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {SearchForm} from './searchForm'
-import veg from './vegetable.png'
+import veg from '../assets/vegetable.png'
 
 export function Menu() {
     return (
