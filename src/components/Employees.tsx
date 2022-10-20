@@ -73,7 +73,7 @@ export function DisplayTable(props:Props) {
             </tr>
           </thead>
           <tbody>
-            {list.map((item) => (
+            {list.map!((item) => (
               <tr key={item.number}>
                 <td>{item.number}</td>
                 <td>{item.name}</td>

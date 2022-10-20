@@ -74,7 +74,7 @@ export const SearchForm = ()=> {
         <Link to={'/SkillCheck/confirm'}>送信</Link>
       </div>
       <div>
-        <Link to={'/SkillCheck/update'}>スキル入力へ</Link> 
+        <Link to={'/SkillCheck/edit'}>スキル編集画面へ</Link>
       </div>
       <Link to={'/SkillCheck'}>ログアウト</Link>
       
