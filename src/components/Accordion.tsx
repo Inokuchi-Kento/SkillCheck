@@ -1,15 +1,21 @@
 import {useState, useEffect} from 'react'
-import {css} from '@emotion/react'
+import { css } from '@emotion/react'
 import {supabase} from '../supabaseClient'
 
 type List = {
   name: string
 }
 
-export function Accordion(props:any){
+type Props = {
+  id: number
+}
+
+export function Accordion(props: any){
     const [active, setActive] = useState(false);
     const [loading, setLoading] = useState(true);
     const [name, setName] = useState<List[]>();
+
+    const id = props;
 
     const fetchName = async() => {
       try{
@@ -17,7 +23,7 @@ export function Accordion(props:any){
         const {data, error} = await supabase
         .from('skills')
         .select('name')
-        .eq('id',1)
+        .eq('id', props)
 
         if(error){
           throw error
