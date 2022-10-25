@@ -1,56 +1,62 @@
-import {useState, useEffect} from 'react'
-import { supabase } from '../supabaseClient';
-import {DisplayScore} from './displayScore'
-import {Link} from 'react-router-dom'
+import {useState, Dispatch, SetStateAction, useEffect} from 'react'
+import { isHtmlElement } from 'react-router-dom/dist/dom'
+import { supabase } from '../supabaseClient'
+import {Send} from './Send'
 
-type List = {
-    score: number;
+type Props = {
+   id: number
 }
 
-export const EditScore = () => {
-    console.log('addレンダリング')
+type List = {
+    name: string
+}
+
+//スコアのアップダウンを操作
+export const EditScore = (props:Props) => {
+    console.log('EditScoreレンダリング')
     const [score, setScore] = useState(0);
+    const [name, setName] = useState<List[]>([]);
+    const {id} = props;
+
+    const fetchName = async() => {
+        console.log("name取得")
+        const {data, error} = await supabase
+        .from("skills")
+        .select("*")
+        .eq('id', 1)
+
+        if(error) throw error;
+        setName(data!);
+    }
     
-    const update = async()=>{
-        const {data, error} = await supabase
-        .from('skills')
-        .update({'score': score})
-        .eq('id',1)
-    }
-
-    const fetch = async() => {
-        const {data, error} = await supabase
-        .from('skills')
-        .select('score')
-    }
-
     const AddScore = () => {
-        if(score>=3) return
-        setScore(score + 1)
         console.log('add:' + score)
+        if(score >= 3) return
+        setScore((score) => score + 1)
     }
 
     const DecScore = ()=> {
-        if(score<=0) return
-        setScore(score - 1)
         console.log('dec:' + score)
+        if(score <= 0) return
+        setScore((score) => score - 1)
     }
 
     useEffect(()=>{
-        fetch()
+        fetchName();
+        console.log(name)
     },[])
+
+    if (!name.length) return <div>missing data...</div>;
 
     return(
         <div>
+            <h5>EditScoreTest</h5>
+            
             <button onClick={AddScore}>+</button>
             {score}
             <button onClick={DecScore}>-</button>
 
-            {/* <div>
-                <button onClick={update}>
-                    <Link to={'/SkillCheck/confirm'}>送信</Link>
-                </button>
-            </div> */}
+            <Send score={score}/>
         </div>
     )
 

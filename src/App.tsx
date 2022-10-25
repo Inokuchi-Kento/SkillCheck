@@ -8,7 +8,7 @@ import {Confirm} from './components/Confirm'
 import {LoginForm} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
 import { EditScore } from './components/EditScore';
-import {Test} from './components/test'
+import {Edit} from './components/Edit'
 
 function App(){
   console.log('Appレンダリング')
@@ -20,11 +20,11 @@ function App(){
       <h3>生鮮スキルチェック</h3>
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck/" element={<Test/>}/>
+          <Route path="/SkillCheck/" element={<Edit/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/confirm' element={<Confirm/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
-          <Route path='/SkillCheck/edit' element={<EditScore/>}/>
+        {/* <Route path='/SkillCheck/edit' element={<EditScore/>}/> */}
         </Routes>
       </BrowserRouter>
     </div>
