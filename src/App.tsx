@@ -1,13 +1,11 @@
 import './App.css'
-import {useEffect, useState} from 'react'
-import { supabase } from './supabaseClient'
+import {useState} from 'react'
 import { SearchForm } from './components/searchForm'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Menu} from './components/Menu'
 import {Confirm} from './components/Confirm'
 import {LoginForm} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
-import { EditScore } from './components/EditScore';
 import {Edit} from './components/Edit'
 
 function App(){
@@ -16,8 +14,6 @@ function App(){
 
   return(
     <div>
-      <h1>TRIAL</h1>
-      <h3>生鮮スキルチェック</h3>
       <BrowserRouter>
         <Routes>
           <Route path="/SkillCheck/" element={<Edit/>}/>

@@ -3,24 +3,26 @@ import { supabase } from '../supabaseClient'
 
 type Props = {
     score: number,
+    id: number
 }
 
 //idとスコアとSupabaseに送信する
 export function Send(props:Props){
-    const {score} = props;
+    const {score, id} = props;
 
     const update = async()=>{
         const {data, error} = await supabase
-        .from('skills')
+        .from('test')
         .update({'score': score})
+        .eq('id', id)
 
         if(error) throw error;
-        else console.log('送信完了')
+        else alert("送信完了")
     }
 
     return(
         <div>
-            <button onClick={update}>送信</button>
+            <button>送信</button>
         </div>
     )
 }

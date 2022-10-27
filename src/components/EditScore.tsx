@@ -1,63 +1,82 @@
 import {useState, Dispatch, SetStateAction, useEffect} from 'react'
-import { isHtmlElement } from 'react-router-dom/dist/dom'
 import { supabase } from '../supabaseClient'
-import {Send} from './Send'
 
 type Props = {
-   id: number
+   id: number,
+   setScoreList: Dispatch<SetStateAction<number>>
 }
 
 type List = {
+    savedScore: number
     name: string
 }
 
 //スコアのアップダウンを操作
 export const EditScore = (props:Props) => {
-    console.log('EditScoreレンダリング')
+    const [list, setList] = useState<List[]>([]);
     const [score, setScore] = useState(0);
-    const [name, setName] = useState<List[]>([]);
-    const {id} = props;
+    const {setScoreList, id} = props;
 
+    const dummy = id as unknown
+    const label = dummy as string
+
+    //DBからnameを取得する
     const fetchName = async() => {
-        console.log("name取得")
         const {data, error} = await supabase
-        .from("skills")
+        .from("test")
         .select("*")
-        .eq('id', 1)
+        .eq('id', id)
 
         if(error) throw error;
-        setName(data!);
-    }
-    
-    const AddScore = () => {
-        console.log('add:' + score)
-        if(score >= 3) return
-        setScore((score) => score + 1)
+        setList(data!);
     }
 
+    //Supabaseのスコアを更新
+    const sendScore = async() => {
+        const {data, error} = await supabase
+        .from('test')
+        .update({"score": score})
+        .eq('id',id)
+    }
+    
+    //スコア+
+    const AddScore = () => {
+        setScoreList(score)
+        console.log('add:' + score)
+        if(score >= 3) return
+        setScore((score)=>score + 1)
+    }
+
+    //スコア-
     const DecScore = ()=> {
+        setScoreList(score)
         console.log('dec:' + score)
         if(score <= 0) return
-        setScore((score) => score - 1)
+        setScore((score)=>score - 1)
     }
 
     useEffect(()=>{
         fetchName();
-        console.log(name)
     },[])
 
-    if (!name.length) return <div>missing data...</div>;
+    useEffect(()=>{
+        sendScore();
+    },[score])
+
+    if (!list.length) return <div>missing data...</div>;
 
     return(
         <div>
-            <h5>EditScoreTest</h5>
-            
-            <button onClick={AddScore}>+</button>
-            {score}
-            <button onClick={DecScore}>-</button>
-
-            <Send score={score}/>
+            <input id={label} type="checkbox" className='acd-check'/>
+            <label className='acd-label' htmlFor={label}>
+                {list.map((item)=>item.name)}
+            </label>
+            <div className='acd-content'>
+                基礎知識
+                <button onClick={AddScore}>+</button>
+                {score}
+                <button onClick={DecScore}>-</button>
+            </div>
         </div>
     )
-
 }
