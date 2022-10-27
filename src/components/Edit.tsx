@@ -5,12 +5,17 @@ import {Send} from './Send'
 import { supabase } from "../supabaseClient";
 
 export function Edit() {
-  const [score, setScore] = useState(0);
+  const [scoreList, setScoreList] = useState(0);
+
+  const list: number[] = new Array();
 
   return (
     <div className="App">
-      <h5>EditTest</h5>
-      <EditScore id={1}/>
+      <h5>ScoreControl</h5>
+      <EditScore setScoreList={setScoreList} id={1}/>
+      <EditScore setScoreList={setScoreList} id={2}/>
+      <EditScore setScoreList={setScoreList} id={3}/>
+      {/* <Send score={scoreList} id={1}/> */}
     </div>
   );
 }
