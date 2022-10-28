@@ -20,7 +20,7 @@ function App(){
       <h3>生鮮スキルチェック</h3>
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck/" element={<Test/>}/>
+          <Route path="/SkillCheck/" element={<LoginForm/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/confirm' element={<Confirm/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
