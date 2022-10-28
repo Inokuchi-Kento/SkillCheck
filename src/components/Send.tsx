@@ -6,20 +6,23 @@ type Props = {
     id: number
 }
 
+//idとスコアとSupabaseに送信する
 export function Send(props:Props){
-    const {score,id} = props;
+    const {score, id} = props;
+
     const update = async()=>{
-        const {data,error} = await supabase
-        .from('skills')
+        const {data, error} = await supabase
+        .from('test')
         .update({'score': score})
         .eq('id', id)
 
         if(error) throw error;
+        else alert("送信完了")
     }
 
     return(
         <div>
-            <button onClick={update}>送信</button>
+            <button>送信</button>
         </div>
     )
 }

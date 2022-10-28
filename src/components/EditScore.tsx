@@ -1,57 +1,82 @@
-import {useState, useEffect} from 'react'
-import { supabase } from '../supabaseClient';
-import {DisplayScore} from './displayScore'
-import {Link} from 'react-router-dom'
+import {useState, Dispatch, SetStateAction, useEffect} from 'react'
+import { supabase } from '../supabaseClient'
 
-type List = {
-    score: number;
+type Props = {
+   id: number,
+   setScoreList: Dispatch<SetStateAction<number>>
 }
 
-export const EditScore = () => {
-    console.log('addレンダリング')
+type List = {
+    savedScore: number
+    name: string
+}
+
+//スコアのアップダウンを操作
+export const EditScore = (props:Props) => {
+    const [list, setList] = useState<List[]>([]);
     const [score, setScore] = useState(0);
+    const {setScoreList, id} = props;
+
+    const dummy = id as unknown
+    const label = dummy as string
+
+    //DBからnameを取得する
+    const fetchName = async() => {
+        const {data, error} = await supabase
+        .from("test")
+        .select("*")
+        .eq('id', id)
+
+        if(error) throw error;
+        setList(data!);
+    }
+
+    //Supabaseのスコアを更新
+    const sendScore = async() => {
+        const {data, error} = await supabase
+        .from('test')
+        .update({"score": score})
+        .eq('id',id)
+    }
     
-    const update = async()=>{
-        const {data, error} = await supabase
-        .from('skills')
-        .update({'score': score})
-        .eq('id',1)
-    }
-
-    const fetch = async() => {
-        const {data, error} = await supabase
-        .from('skills')
-        .select('score')
-    }
-
+    //スコア+
     const AddScore = () => {
-        if(score>=3) return
-        setScore(score + 1)
+        setScoreList(score)
         console.log('add:' + score)
+        if(score >= 3) return
+        setScore((score)=>score + 1)
     }
 
+    //スコア-
     const DecScore = ()=> {
-        if(score<=0) return
-        setScore(score - 1)
+        setScoreList(score)
         console.log('dec:' + score)
+        if(score <= 0) return
+        setScore((score)=>score - 1)
     }
 
     useEffect(()=>{
-        fetch()
+        fetchName();
     },[])
+
+    useEffect(()=>{
+        sendScore();
+    },[score])
+
+    if (!list.length) return <div>missing data...</div>;
 
     return(
         <div>
-            <button onClick={AddScore}>+</button>
-            {score}
-            <button onClick={DecScore}>-</button>
-
-            {/* <div>
-                <button onClick={update}>
-                    <Link to={'/SkillCheck/confirm'}>送信</Link>
-                </button>
-            </div> */}
+            <input id={label} type="checkbox" className='acd-check'/>
+            <label className='acd-label' htmlFor={label}>
+                {list.map((item)=>item.name)}
+            </label>
+            <div className='acd-content'>
+                基礎知識
+                <button onClick={AddScore}>+</button>
+                {score}
+                <button onClick={DecScore}>-</button>
+            </div>
         </div>
     )
-
 }

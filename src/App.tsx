@@ -1,14 +1,12 @@
 import './App.css'
-import {useEffect, useState} from 'react'
-import { supabase } from './supabaseClient'
+import {useState} from 'react'
 import { SearchForm } from './components/searchForm'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Menu} from './components/Menu'
 import {Confirm} from './components/Confirm'
 import {LoginForm} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
-import { EditScore } from './components/EditScore';
-import {Test} from './components/test'
+import {Edit} from './components/Edit'
 
 function App(){
   console.log('Appレンダリング')
@@ -16,15 +14,13 @@ function App(){
 
   return(
     <div>
-      <h1>TRIAL</h1>
-      <h3>生鮮スキルチェック</h3>
       <BrowserRouter>
         <Routes>
           <Route path="/SkillCheck/" element={<LoginForm/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/confirm' element={<Confirm/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
-          <Route path='/SkillCheck/edit' element={<EditScore/>}/>
+        {/* <Route path='/SkillCheck/edit' element={<EditScore/>}/> */}
         </Routes>
       </BrowserRouter>
     </div>
