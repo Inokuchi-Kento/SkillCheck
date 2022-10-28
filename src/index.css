@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #2b2b4b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,11 +17,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #ffdcdc;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #bc8d95;
 }
 
 body {
@@ -33,14 +33,8 @@ body {
 }
 
 h1 {
-  font-size: 150px;
-  color: white;
+  font-size: 3.2em;
   line-height: 1.1;
-}
-
-h2 {
-  font-size: 20px;
-  color: white;
 }
 
 button {
