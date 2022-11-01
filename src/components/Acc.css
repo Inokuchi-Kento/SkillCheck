@@ -2,11 +2,12 @@
     display: none;
 }
 .acd-label{
-    background: #333;
+    background: rgb(188, 152, 113);
     color: #fff;
     display: block;
     margin-bottom: 1px;
     padding: 10px;
+    width: 450px;
 }
 .acd-content{
     border: 1px solid #333;
@@ -16,8 +17,9 @@
     transition: .3s;
     visibility: hidden;
 }
+
 .acd-check:checked + .acd-label + .acd-content{
-    height: 40px;
+    height: 90px;
     opacity: 1;
     padding: 10px;
     visibility: visible;
