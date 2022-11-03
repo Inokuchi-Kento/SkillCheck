@@ -18,6 +18,7 @@ export function Send(props:Props){
 
         if(error) throw error;
         else alert("送信完了")
+        console.log()
     }
 
     return(
