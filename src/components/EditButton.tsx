@@ -4,6 +4,7 @@ import './Acc.css'
 
 type Props = {
     id: number;
+    skill_id: number;
 }
 
 type List = {
@@ -12,14 +13,14 @@ type List = {
 export const EditButton = (props: Props) => {
     const [score, setScore] = useState(0);
     const [list, setList] = useState<List[]>([])
-    const {id} = props
+    const {id, skill_id} = props;
 
     //スキル名を取得
     const fetchItem = async() => {
         const {data, error} = await supabase
         .from('skills')
         .select('skill_name')
-        .eq('skill_id', 1)
+        .eq('skill_id', skill_id)
 
         if(error) throw error;
         setList(data!)
