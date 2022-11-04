@@ -1,22 +1,22 @@
-import fish from "../../icons/fish.png"
-import flesh from "../../icons/flesh.png"
+import download from "../../icons/download.png"
+import upload from "../../icons/upload.png"
 import "./button.css"
 
 export function ExcelForm(){
     const getExcel = () => {
-        alert("鮮魚");
+        alert("ファイルをダウンロードしました。");
     }
 
     const sendExcel = () => {
-        alert("精肉");
+        alert("ファイルをアップロードしました。");
     }
 
     return(
         <div className="excelForm">
             <form>
                 <p>
-                <input type="image" src={fish} className="department" onClick={getExcel}></input>
-                <input type="image" src={flesh} className="department" onClick={sendExcel}></input>
+                <input type="image" src={download} className="excelForm" onClick={getExcel}></input>
+                <input type="image" src={upload} className="excelForm" onClick={sendExcel}></input>
                 </p>
             </form>
         </div>
