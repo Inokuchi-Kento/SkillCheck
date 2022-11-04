@@ -1,0 +1,9 @@
+.logo{
+    height: 120px;
+    width: 300px;
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    /* border: 4px solid rgba(255, 255, 255, 0.419);; */
+}
+
