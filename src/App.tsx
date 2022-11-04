@@ -6,8 +6,8 @@ import {Menu} from './components/Menu'
 import {LoginForm} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
 import {Edit} from './components/Edit'
+import { ExcelForm } from './components/ExcelForm';
 import {Header} from './components/Header'
-
 
 function App(){
   console.log('Appレンダリング')
@@ -18,9 +18,10 @@ function App(){
       {/* <Header/> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck/" element={<Edit/>}/>
+          <Route path="/SkillCheck/" element={<LoginForm/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
+          <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
         {/* <Route path='/SkillCheck/edit' element={<EditScore/>}/> */}
         </Routes>
       </BrowserRouter>
