@@ -16,7 +16,7 @@ function App(){
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck/" element={<Edit/>}/>
+          <Route path="/SkillCheck/" element={<LoginForm/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/confirm' element={<Confirm/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
