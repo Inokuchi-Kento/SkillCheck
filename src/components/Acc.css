@@ -34,7 +34,7 @@
 }
 
 .acd-check:checked + .acd-label + .acd-content{
-    height: 90px;
+    height: 220px;
     opacity: 1;
     padding: 10px;
     visibility: visible;
