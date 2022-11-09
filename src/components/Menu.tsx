@@ -10,7 +10,7 @@ export function Menu() {
         <div>
             <Header />
         <h3>メニュー画面</h3>
-        <Link to={"/SkillCheck/search"}>
+        <Link to={"/SkillCheck/search"} id='veg' className='link'>
             <img src={veg}/>
         </Link>
         </div>

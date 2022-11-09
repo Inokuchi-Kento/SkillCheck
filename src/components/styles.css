@@ -6,6 +6,7 @@
 
 body {
   background-color: #003366;
+
   height: 100vh;
 }
 
@@ -36,6 +37,7 @@ button {
   border-radius: 0;
   letter-spacing: inherit;
   -webkit-tap-highlight-color: #003366;
+
   cursor: pointer;
 }
 
@@ -46,6 +48,7 @@ button {
   padding: 2rem;
   z-index: 999;
   background-color: #003366;
+
 }
 
 .toggleButon {
