@@ -22,9 +22,9 @@ export function Edit() {
         <input type="button" id='pc' onClick={test} className='acd-check'/>
         <label htmlFor='pc' className="topc">pc版入力画面へ</label>
       </div>
-      <EditScore setScoreList={setScoreList} id={1}/>
-      <EditScore setScoreList={setScoreList} id={2}/>
-      <EditScore setScoreList={setScoreList} id={3}/>
+      <EditScore setScoreList={setScoreList} id={22}/>
+      <EditScore setScoreList={setScoreList} id={632}/>
+      <EditScore setScoreList={setScoreList} id={690}/>
       {/* <Send score={scoreList} id={1}/> */}
     </div>
   );

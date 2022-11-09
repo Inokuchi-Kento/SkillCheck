@@ -3,24 +3,26 @@ import {supabase} from '../supabaseClient'
 import './Acc.css'
 
 type Props = {
-    id: number;
+    emp_id: number;
     skill_id: number;
+    //skill_name: string
 }
 
 type List = {
-    skill_name: string;
+    skill_name: string
 }
+
 export const EditButton = (props: Props) => {
     const [score, setScore] = useState(0);
     const [list, setList] = useState<List[]>([])
-    const {id, skill_id} = props;
+    const {emp_id, skill_id} = props;
 
     //スキル名を取得
     const fetchItem = async() => {
         const {data, error} = await supabase
         .from('skills')
-        .select('skill_name')
-        .eq('skill_id', skill_id)
+        .select('*')
+        .eq('skill_id',skill_id)
 
         if(error) throw error;
         setList(data!)
@@ -29,9 +31,10 @@ export const EditButton = (props: Props) => {
     //Supabaseのスコアを更新
     const sendScore = async() => {
         const {data, error} = await supabase
-        .from('test')
+        .from('emp_skill')
         .update({"score": score})
-        .eq('id',id)
+        .eq('emp_id', emp_id)
+        .eq('skill_id', skill_id)
     }
 
     //スコア+
@@ -58,7 +61,7 @@ export const EditButton = (props: Props) => {
 
     return(
         <div>
-            {list.map((item) => item.skill_name)}
+            {list.map((item)=>item.skill_name)}
             <button onClick={AddScore}>+</button>
             {score}
             <button onClick={DecScore}>-</button>

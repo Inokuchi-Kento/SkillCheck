@@ -9,8 +9,8 @@ type Props = {
 }
 
 type List = {
-    savedScore: number
     name: string
+    skill_name: string
 }
 
 //スコアのアップダウンを操作
@@ -24,9 +24,9 @@ export const EditScore = (props:Props) => {
 
     //DBからnameを取得する
     const fetchName = async() => {
-        const {data, error} = await supabase
-        .from("test")
-        .select("*")
+        const { data, error } = await supabase
+        .from('employees')
+        .select('name')
         .eq('id', id)
 
         if(error) throw error;
@@ -46,8 +46,11 @@ export const EditScore = (props:Props) => {
                 {list.map((item)=>item.name)}
             </label>
             <div className='acd-content'>
-                <EditButton id = {id} skill_id={1}/>
-                <EditButton id = {id} skill_id={2}/>
+                <EditButton emp_id = {id} skill_id={1}/>
+                <EditButton emp_id = {id} skill_id={2}/>
+                <EditButton emp_id = {id} skill_id={3}/>
+                <EditButton emp_id = {id} skill_id={4}/>
+                <EditButton emp_id = {id} skill_id={5}/>
             </div>
         </div>
     )
