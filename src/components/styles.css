@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgb(0, 70, 175);
+  background-color: #003366;
   height: 100vh;
 }
 
@@ -35,7 +35,7 @@ button {
   outline: none;
   border-radius: 0;
   letter-spacing: inherit;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: #003366;
   cursor: pointer;
 }
 
@@ -45,7 +45,7 @@ button {
   justify-content: flex-end;
   padding: 2rem;
   z-index: 999;
-  background-color: rgb(0, 70, 175);
+  background-color: #003366;
 }
 
 .toggleButon {

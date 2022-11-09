@@ -13,9 +13,6 @@ export function Menu() {
         <Link to={"/SkillCheck/search"}>
             <img src={veg}/>
         </Link>
-        <div>
-            <Link to={'/SkillCheck'}>ログアウト</Link>
-        </div>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom"
 import "./styles.css";
 
 type Props = {
@@ -12,7 +13,7 @@ export const Navigation: FC<Props> = ({ open, id }) => {
       <ul>
         <li>メニュー</li>
         <li>管理者</li>
-        <li>ログアウト</li>
+        <li><Link to={'/SkillCheck'}>ログアウト</Link></li>
       </ul>
     </nav>
   );
