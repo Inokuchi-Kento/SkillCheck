@@ -13,7 +13,7 @@ export const Navigation: FC<Props> = ({ open, id }) => {
       <ul>
         <li>メニュー</li>
         <li>管理者</li>
-        <li><Link to={'/SkillCheck'}>ログアウト</Link></li>
+        <Link to={'/SkillCheck'}>ログアウト</Link>
       </ul>
     </nav>
   );

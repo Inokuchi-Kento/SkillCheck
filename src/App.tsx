@@ -7,7 +7,7 @@ import {LoginForm} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
 import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
-import {Header} from './components/Header'
+//import {Header} from './components/Header'
 
 function App(){
   console.log('Appレンダリング')
