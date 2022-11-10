@@ -4,6 +4,7 @@ import {Send} from './Send'
 import { supabase } from "../supabaseClient";
 import logo from '../icons/largelogo.png'
 import './img.css'
+import Header from "./Header";
 
 export function Edit() {
   const [scoreList, setScoreList] = useState(0);
@@ -17,6 +18,7 @@ export function Edit() {
   return (
     <div className="App">
       <img src={logo} className='logo'/>
+      <Header />
       <h2>スキル入力画面</h2>
       <div>
         <input type="button" id='pc' onClick={test} className='acd-check'/>

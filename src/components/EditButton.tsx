@@ -62,9 +62,9 @@ export const EditButton = (props: Props) => {
     return(
         <div>
             {list.map((item)=>item.skill_name)}
-            <button onClick={AddScore}>+</button>
-            {score}
             <button onClick={DecScore}>-</button>
+            {score}
+            <button onClick={AddScore}>+</button>
         </div>
     )
 }
