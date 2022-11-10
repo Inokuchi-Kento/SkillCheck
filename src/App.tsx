@@ -22,7 +22,7 @@ function App(){
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
-        {/* <Route path='/SkillCheck/edit' element={<EditScore/>}/> */}
+          <Route path='/SkillCheck/edit' element={<Edit/>}/>
         </Routes>
       </BrowserRouter>
     </div>
