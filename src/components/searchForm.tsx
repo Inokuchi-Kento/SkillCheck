@@ -16,14 +16,14 @@ export const SearchForm = ()=> {
   const [tag, setTag] = useState('');
   const [cond, setCond] = useState('');
 
-  if(tag == '') setTag('number')
+  if(tag == '') setTag('id')
 
   //テキスト入力
   const onChangeText = (e:ChangeEvent<HTMLInputElement>) => setText(e.target.value);
   const onChangeTag = (e:ChangeEvent<HTMLSelectElement>) => setTag(e.target.value);
 
   //ソート項目
-  const [sort, setSort] = useState('number');
+  const [sort, setSort] = useState('id');
   const onChangeSort = (e:ChangeEvent<HTMLSelectElement>) => setSort(e.target.value)
 
   //[検索]ボタン押下時の動作
