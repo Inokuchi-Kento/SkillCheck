@@ -2,10 +2,8 @@ import { useEffect, useState ,FC, ChangeEvent } from 'react';
 import { supabase } from '../supabaseClient';
 
 type List = {
-  number: string,
-  name: string,
-  store: string,
-  basic: number
+  id: number
+  name: string
 }
 
 type Props = {
@@ -26,15 +24,15 @@ export function DisplayTable(props:Props) {
       try {
         setLoading(true);
 
-        let query = supabase.from('tr').select('*');
+        let query = supabase.from('employees').select('*');
 
-        if(tag === 'number'){
-            query = query.eq('number', text);
-        }else if(tag === 'gender'){
-            query = query.eq('gender',text)
-        }else {
-            query = query.ilike(tag, '%'+text+'%')
-        }
+        // if(tag === 'number'){
+        //     query = query.eq('number', text);
+        // }else if(tag === 'gender'){
+        //     query = query.eq('gender',text)
+        // }else {
+        //     query = query.ilike(tag, '%'+text+'%')
+        // }
     
         if(sort){
             query = query.order(sort)
@@ -68,17 +66,13 @@ export function DisplayTable(props:Props) {
             <tr>
               <td>社員番号</td>
               <td>名前</td>
-              <td>店名</td>
-              <td>基礎知識</td>
             </tr>
           </thead>
           <tbody>
-            {list.map!((item) => (
-              <tr key={item.number}>
-                <td>{item.number}</td>
-                <td>{item.name}</td>
-                <td>{item.store}</td>
-                <td>{item.basic}</td>
+            {list.map((item) => (
+              <tr key={item.id}>
+                <td>item.id</td>
+                <td>item.name</td>
               </tr>
             ))}
           </tbody>

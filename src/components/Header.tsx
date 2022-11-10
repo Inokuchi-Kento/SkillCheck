@@ -3,7 +3,7 @@ import { ToggleButton } from "./ToggleButton";
 import { Navigation } from "./Navigation";
 import "./styles.css";
 
-const Header: FC = () => {
+export function Header(){
   const [open, setOpen] = useState(false);
   const toggleFunction = () => {
     setOpen((prevState) => !prevState);
@@ -21,6 +21,5 @@ const Header: FC = () => {
     </header>
   );
 };
-export default Header;
 
 
