@@ -4,7 +4,7 @@ import { ChangeEvent, KeyboardEvent, ReactElement } from 'react'
 import {DisplayTable} from './Employees'
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import { Header } from "./Header";
 import logo from '../icons/largeLogo.png'
 
 //検索画面のコンポーネント
@@ -69,9 +69,9 @@ export const SearchForm = ()=> {
           {/* <option value="kana">名前</option>       */}
         </select>
       </div>
-
       
-      <Link to={'/SkillCheck'}>ログアウト</Link>
+      
+      <Link to={'/SkillCheck/edit'}>スキル入力画面</Link>
       
 
       <h5></h5>

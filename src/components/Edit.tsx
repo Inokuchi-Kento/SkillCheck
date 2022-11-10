@@ -6,7 +6,7 @@ import logo from '../icons/largelogo.png'
 import { Link } from "react-router-dom";
 
 import './img.css'
-import Header from "./Header";
+import { Header } from "./Header";
 
 export function Edit() {
   const [scoreList, setScoreList] = useState(0);
