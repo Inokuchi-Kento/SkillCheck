@@ -4,6 +4,8 @@ import { ChangeEvent, KeyboardEvent, ReactElement } from 'react'
 import {DisplayTable} from './Employees'
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
+import {Header} from "./Header";
+import logo from '../icons/largeLogo.png'
 
 //検索画面のコンポーネント
 export const SearchForm = ()=> {   
@@ -23,10 +25,6 @@ export const SearchForm = ()=> {
   //ソート項目
   const [sort, setSort] = useState('number');
   const onChangeSort = (e:ChangeEvent<HTMLSelectElement>) => setSort(e.target.value)
-
-  //スコア入力項目
-  const [skill, setSkill] = useState('fujitaEle')
-  const onChangeSkill = (e:ChangeEvent<HTMLSelectElement>) => setSkill(e.target.value)
 
   //[検索]ボタン押下時の動作
   const onClickFetch = () => {
@@ -51,12 +49,14 @@ export const SearchForm = ()=> {
 
   return(
     <div>
+      <img src={logo} className='logo'/>
+      <Header />
       <h2>スキルチェック</h2>
       <div className='search_box'>
         <select name="column" id='tag' onChange={onChangeTag}>
-          <option value="number" >社員番号</option>
+          <option value="id" >社員番号</option>
           <option value="name">名前</option>        
-          <option value="store">店名</option>
+          {/* <option value="store">店名</option> */}
         </select>
         <input type="text" id="fetch" value={text} placeholder="検索ワードを入力" onChange={onChangeText} onKeyPress={doType}/>
         <button id='serachButton' onClick={onClickFetch}>検索</button>
@@ -65,19 +65,15 @@ export const SearchForm = ()=> {
       <div className='sortbox'>
         並び替え
         <select name="item" id="sort" onChange={onChangeSort}>
-          <option value="number" >社員番号</option>
-          <option value="kana">名前</option>      
+          <option value="id" >社員番号</option>
+          {/* <option value="kana">名前</option>       */}
         </select>
       </div>
 
-      <div>
-        <Link to={'/SkillCheck/confirm'}>送信</Link>
-      </div>
-      <div>
-        <Link to={'/SkillCheck/edit'}>スキル編集画面へ</Link>
-      </div>
+      
       <Link to={'/SkillCheck'}>ログアウト</Link>
       
+
       <h5></h5>
       <DisplayTable sort={sort} tag={cond} text={word} />
     </div>

@@ -1,6 +1,6 @@
-import download from "../../icons/download.png"
-import message from "../../icons/message.png"
-import upload from "../../icons/upload.png"
+import download from "../icons/download.png"
+import message from "../icons/message.png"
+import upload from "../icons/upload.png"
 import "./button.css"
 
 export function ExcelForm(){
