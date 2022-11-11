@@ -4,7 +4,7 @@ import { ChangeEvent, KeyboardEvent, ReactElement } from 'react'
 import {DisplayTable} from './Employees'
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import {Header} from "./Header";
 import logo from '../icons/largeLogo.png'
 
 //検索画面のコンポーネント
