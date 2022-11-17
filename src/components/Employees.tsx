@@ -17,8 +17,6 @@ export function DisplayTable(props:Props) {
     const [loading, setLoading] = useState(true);
     const {text, tag, sort} = props;
 
-    console.log(props)
-
     //データを抽出する
     const getServeSideData = async() =>{  
       try {
@@ -61,7 +59,7 @@ export function DisplayTable(props:Props) {
   
     return (
       <div className="name_skills">
-        <table>
+        {/* <table>
           <thead>
             <tr>
               <td>社員番号</td>
@@ -71,12 +69,12 @@ export function DisplayTable(props:Props) {
           <tbody>
             {list.map((item) => (
               <tr key={item.id}>
-                <td>item.id</td>
-                <td>item.name</td>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
       </div>
     );
 }

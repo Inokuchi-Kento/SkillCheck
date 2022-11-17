@@ -1,6 +1,7 @@
 import {useState, Dispatch, SetStateAction, useEffect} from 'react'
 import {supabase} from '../supabaseClient'
 import './Acc.css'
+import './button.css'
 
 type Props = {
     emp_id: number;
@@ -19,10 +20,7 @@ export const EditButton = (props: Props) => {
 
     //スキル名を取得
     const fetchItem = async() => {
-        const {data, error} = await supabase
-        .from('skills')
-        .select('*')
-        .eq('skill_id',skill_id)
+        const {data, error} = await supabase.from('skills').select('*').eq('skill_id',skill_id)
 
         if(error) throw error;
         setList(data!)
@@ -30,9 +28,7 @@ export const EditButton = (props: Props) => {
     
     //Supabaseのスコアを更新
     const sendScore = async() => {
-        const {data, error} = await supabase
-        .from('emp_skill')
-        .update({"score": score})
+        const {data, error} = await supabase.from('emp_skill').update({"score": score})
         .eq('emp_id', emp_id)
         .eq('skill_id', skill_id)
     }
@@ -62,9 +58,9 @@ export const EditButton = (props: Props) => {
     return(
         <div>
             {list.map((item)=>item.skill_name)}
-            <button onClick={AddScore}>+</button>
+            <button onClick={DecScore} className='scoreButton'>-</button>
             {score}
-            <button onClick={DecScore}>-</button>
+            <button onClick={AddScore} className='scoreButton'>+</button>
         </div>
     )
 }

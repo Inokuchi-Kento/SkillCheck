@@ -7,3 +7,9 @@
     width : 950ox;
     height : 211px;
 }
+
+.scoreButton{
+    border: 2px solid rgb(216, 255, 224);
+    background-color: rgb(255, 255, 255);
+    color: black
+}

@@ -1,31 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {EditScore} from './EditScore'
 import {Send} from './Send'
 import { supabase } from "../supabaseClient";
-import logo from '../icons/largelogo.png'
-import './img.css'
+import { SaveScore } from "./SaveScore";
 
 export function Edit() {
-  const [scoreList, setScoreList] = useState(0);
-
-  const list: number[] = new Array();
-
-  const test = () => {
-    alert("test")
-  }
-
   return (
     <div className="App">
-      <img src={logo} className='logo'/>
-      <h2>スキル入力画面</h2>
+      <h5>ScoreControl</h5>
+      <EditScore id={22}/>
+      <EditScore id={350}/>
+      <EditScore id={370}/>
+
       <div>
-        <input type="button" id='pc' onClick={test} className='acd-check'/>
-        <label htmlFor='pc' className="topc">pc版入力画面へ</label>
+        <SaveScore/>
       </div>
-      <EditScore setScoreList={setScoreList} id={22}/>
-      <EditScore setScoreList={setScoreList} id={632}/>
-      <EditScore setScoreList={setScoreList} id={690}/>
-      {/* <Send score={scoreList} id={1}/> */}
     </div>
   );
 }
