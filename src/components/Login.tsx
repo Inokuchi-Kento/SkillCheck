@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import {ChangeEvent, useState, MouseEvent} from 'react'
-import logo from '../icons/smallLogo.png'
+import logo from '../icons/largeLogo.png'
+import "./button.css"
 
 //仮ログインページ
 export function LoginForm(){
@@ -24,7 +25,7 @@ export function LoginForm(){
         <div className="loginform">
             <form action="login">
                 {/* <input type="text" placeholder="ID" name="mailAddress" /><br></br> */}
-                <img src={logo}/><br></br>
+                <img src={logo} className="largeLogo"/><br></br>
                 <label>パスワード：</label>
                 <input type="text" placeholder="パスワード" name="password" onChange={onChangeText}/><br></br>
                 <button onClick={handleLogin}>ログイン</button>
