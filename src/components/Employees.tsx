@@ -12,7 +12,7 @@ type Props = {
   sort: string;
 }
   
-export function DisplayTable(props:Props) {
+export function ShowList(props:Props) {
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);
     const {text, tag, sort} = props;
@@ -24,7 +24,7 @@ export function DisplayTable(props:Props) {
       try {
         setLoading(true);
 
-        let query = supabase.from('employees').select('*');
+        let query = supabase.from('trial').select('*');
 
         // if(tag === 'number'){
         //     query = query.eq('number', text);
@@ -57,11 +57,11 @@ export function DisplayTable(props:Props) {
     }, [text, tag, sort]);
 
     if (loading) return <div>loading...</div>;
-    if (!list.length) return <div>missing data...</div>;
+    // if (!list.length) return <div>missing data...</div>;
   
     return (
       <div className="name_skills">
-        {/* <table>
+        <table>
           <thead>
             <tr>
               <td>社員番号</td>
@@ -76,7 +76,7 @@ export function DisplayTable(props:Props) {
               </tr>
             ))}
           </tbody>
-        </table> */}
+        </table>
       </div>
     );
 }

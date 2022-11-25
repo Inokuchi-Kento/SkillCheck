@@ -36,7 +36,7 @@ export function SignUp(){
 
     return(
         <div className="App">
-            <h3>サインアップ</h3>
+            <h3>新規登録</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email</label>

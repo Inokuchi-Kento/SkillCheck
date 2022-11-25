@@ -8,6 +8,7 @@ import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
 import { SignUp } from './components/SignUp'
 import {Login} from './components/Login'
+import {Search} from './components/Search'
 //import {Header} from './components/Header'
 
 function App(){
