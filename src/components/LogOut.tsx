@@ -8,7 +8,7 @@ export function LogOut(){
         try{
             const {error: logoutError} = await supabase.auth.signOut();
             if(logoutError) throw logoutError
-            navigate("/SkillCheck/Login")
+            navigate("/SkillCheck/")
         }catch{
             alert("Logout error")
         }
@@ -17,7 +17,9 @@ export function LogOut(){
     return(
         <div className="logout">
             <div>
-                <button type="submit" onClick={onSignOut}>ログアウト</button>
+                <button type="submit" onClick={onSignOut}>
+                    ログアウト
+                </button>
             </div>
         </div>
     )

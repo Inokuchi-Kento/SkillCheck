@@ -45,7 +45,7 @@ export const SearchForm = ()=> {
     <div>
       <img src={logo} className='logo'/>
       <Header />
-      <h2>スキルチェック</h2>
+      <h2>青果</h2>
       <div className='search_box'>
         <select name="column" id='tag' onChange={onChangeTag}>
           <option value="id" >社員番号</option>
@@ -70,5 +70,4 @@ export const SearchForm = ()=> {
       <ShowList sort={sort} tag={cond} text={word} />
     </div>
   );
-
 }

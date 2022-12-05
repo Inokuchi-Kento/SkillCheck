@@ -12,20 +12,38 @@ type List = {
     skill_name: string
 }
 
-export const EditButton = (props: Props) => {
-    const [score, setScore] = useState(0);
+type Score = {
+    score: number
+}
+
+const key = 'ccount'
+
+export const ListOfSkill = (props: Props) => {
     const [list, setList] = useState<List[]>([])
+    const [scoreList, setScoreList] = useState<Score[]>([])
     const {emp_id, skill_id} = props;
 
+    const [score, setScore] = useState(()=>{
+        const appState = localStorage.getItem(key);
+        return appState ? JSON.parse(appState) : 0;
+    });
+
+    useEffect(() => {
+        localStorage.setItem(key, JSON.stringify(score));
+      }, [key, score]);
+    
+    
     //スキル名を取得
     const fetchItem = async() => {
-        const {data, error} = await supabase
-        .from('skills')
-        .select('*')
-        .eq('skill_id',skill_id)
+        const {data, error} = await supabase.from('skills').select('*').eq('skill_id', skill_id)
 
         if(error) throw error;
         setList(data!)
+    }
+
+    const fetchScore = async()=>{
+        const {data: skillScore, error} = await supabase.from('emp_skill').select('score').eq('skill_id', skill_id)
+        setScoreList(skillScore!)
     }
     
     //Supabaseのスコアを更新
@@ -41,18 +59,19 @@ export const EditButton = (props: Props) => {
     const AddScore = () => {
         console.log('add:' + score)
         if(score >= 3) return
-        setScore((score)=>score + 1)
+        setScore(score + 1)
     }
 
     //スコア-
     const DecScore = ()=> {
         console.log('dec:' + score)
         if(score <= 0) return
-        setScore((score)=>score - 1)
+        setScore(score - 1)
     }
 
     useEffect(()=>{
         fetchItem()
+        fetchScore()
     }, [])
 
     useEffect(()=>{
