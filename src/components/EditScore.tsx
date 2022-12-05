@@ -5,7 +5,7 @@ import {EditButton} from './EditButton'
 
 type Props = {
    id: number,
-//    setScoreList: Dispatch<SetStateAction<number>>
+    setScoreList: Dispatch<SetStateAction<number>>
 }
 
 type List = {
