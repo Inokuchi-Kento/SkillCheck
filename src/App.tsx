@@ -20,10 +20,10 @@ function App(){
       <BrowserRouter>
         <Routes>
           <Route path="/SkillCheck/" element={<Login/>}/>
-          {/* <Route path="/SkillCheck/menu" element={<Menu/>}/>
+          <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
-          <Route path='/SkillCheck/edit' element={<Edit/>}/> */}
+          <Route path='/SkillCheck/edit' element={<Edit/>}/>
         </Routes>
       </BrowserRouter>
     </div>
