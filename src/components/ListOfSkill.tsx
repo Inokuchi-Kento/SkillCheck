@@ -16,23 +16,24 @@ type Score = {
     score: number
 }
 
-const key = 'ccount'
+const key = 'count'
 
 export const ListOfSkill = (props: Props) => {
     const [list, setList] = useState<List[]>([])
     const [scoreList, setScoreList] = useState<Score[]>([])
     const {emp_id, skill_id} = props;
 
-    const [score, setScore] = useState(()=>{
-        const appState = localStorage.getItem(key);
-        return appState ? JSON.parse(appState) : 0;
-    });
+    // const [score, setScore] = useState(()=>{
+    //     const appState = localStorage.getItem(key);
+    //     return appState ? JSON.parse(appState) : 0;
+    // });
 
-    useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(score));
-      }, [key, score]);
+    // useEffect(() => {
+    //     localStorage.setItem(key, JSON.stringify(score));
+    // }, [key, score]);
     
-    
+    const [score, setScore] = useState(0);
+
     //スキル名を取得
     const fetchItem = async() => {
         const {data, error} = await supabase.from('skills').select('*').eq('skill_id', skill_id)
@@ -81,9 +82,9 @@ export const ListOfSkill = (props: Props) => {
     return(
         <div>
             {list.map((item)=>item.skill_name)}
-            <button onClick={DecScore}>-</button>
+            <button onClick={DecScore} className="button-label">-</button>
             {score}
-            <button onClick={AddScore}>+</button>
+            <button onClick={AddScore} className="button-label">+</button>
         </div>
     )
 }

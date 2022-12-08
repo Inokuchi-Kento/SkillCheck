@@ -44,6 +44,10 @@ export const ListOfEmp = (props:Props) => {
             </label>
             <div className='acd-content'>
                 <ListOfSkill emp_id = {id} skill_id={1}/>
+                <ListOfSkill emp_id = {id} skill_id={2}/>
+                <ListOfSkill emp_id = {id} skill_id={3}/>
+                <ListOfSkill emp_id = {id} skill_id={4}/>
+                <ListOfSkill emp_id = {id} skill_id={5}/>
             </div>
         </div>
     )

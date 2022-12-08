@@ -6,7 +6,7 @@ import { supabase } from "../supabaseClient";
 export function Edit() {
   return (
     <div className="App">
-      <h5>ScoreControl</h5>
+      <h3 className="tag">生鮮スキルチェック</h3>
       <ListOfEmp id={22}/>
     </div>
   );
