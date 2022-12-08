@@ -2,7 +2,7 @@ import { useState } from "react";
 import {EditScore} from './EditScore'
 import {Send} from './Send'
 import { supabase } from "../supabaseClient";
-import logo from '../icons/largelogo.png'
+//import logo from '../icons/largelogo.png'
 import { Link } from "react-router-dom";
 
 import './img.css'
@@ -15,7 +15,7 @@ export function Edit() {
 
   return (
     <div className="App">
-      <img src={logo} className='logo'/>
+      {/* <img src={logo} className='logo'/> */}
       <Header />
       <h2>スキル入力画面</h2>
       <div>

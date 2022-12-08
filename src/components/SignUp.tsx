@@ -1,19 +1,20 @@
-import { useState } from "react"; 
-import { supabase } from "../supabaseClient";
+import { useState } from "react";
+import {supabase} from '../supabaseClient'
 import { Link, useNavigate } from "react-router-dom";
 
-export function Login(){
+export function SignUp(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
-    const onSignIn = async() => {
+    const onSignUp = async() => {
         try{
-            const {error: loginError} = await supabase.auth.signIn({email, password})
-            if(loginError) throw loginError;
-            navigate("/SkillCheck/menu")
-        }catch{
-            alert("Login Error");
+            const { error: signUpError } = await supabase.auth.signUp({
+                email,
+                password,
+            })
+            if(signUpError) throw signUpError
+        }catch(error){
+            alert('エラーが発生しました')
         }
     }
 
@@ -35,7 +36,7 @@ export function Login(){
 
     return(
         <div className="App">
-            <h3>ログイン</h3>
+            <h3>新規登録</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email</label>
@@ -59,12 +60,13 @@ export function Login(){
                 />
                 </div>
                 <div>
-                    <button type="submit" onClick={onSignIn}>ログイン</button>
+                    <button type="submit" onClick={onSignUp}>登録</button>
                 </div>
             </form>
             <div>
-                <Link to={'/SkillCheck/SignUp'}>新規登録</Link>
+                <Link to={"/SkillCheck/"}>ログイン画面へ </Link>
             </div>
         </div>
     )
 }
+

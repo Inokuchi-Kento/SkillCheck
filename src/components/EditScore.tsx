@@ -5,7 +5,7 @@ import {EditButton} from './EditButton'
 
 type Props = {
    id: number,
-   setScoreList: Dispatch<SetStateAction<number>>
+    setScoreList: Dispatch<SetStateAction<number>>
 }
 
 type List = {
@@ -17,7 +17,7 @@ type List = {
 export const EditScore = (props:Props) => {
     const [list, setList] = useState<List[]>([]);
     const [score, setScore] = useState(0);
-    const {setScoreList, id} = props;
+    const {id} = props;
 
     const dummy = id as unknown
     const label = dummy as string
