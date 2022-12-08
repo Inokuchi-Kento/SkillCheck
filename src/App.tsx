@@ -19,8 +19,9 @@ function App(){
       {/* <Header/> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck/" element={<Login/>}/>
+          <Route path="/SkillCheck" element={<LoginForm/>}/>
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
+
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
