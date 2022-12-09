@@ -73,7 +73,7 @@ export function Login(){
                 </div>
             </form>
             <div>
-                <Link to={'/SkillCheck/SignUp'}>新規登録</Link>
+                {/* <Link to={'/SkillCheck/SignUp'}>新規登録</Link> */}
             </div>
         </div>
     )
