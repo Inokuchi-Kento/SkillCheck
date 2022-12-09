@@ -1,11 +1,10 @@
 import {useState, Dispatch, SetStateAction, useEffect, memo} from 'react'
 import { supabase } from '../supabaseClient'
 import './Acc.css'
-import {EditButton} from './EditButton'
+import {ListOfSkill} from './ListOfSkill'
 
 type Props = {
    id: number,
-    setScoreList: Dispatch<SetStateAction<number>>
 }
 
 type List = {
@@ -14,7 +13,7 @@ type List = {
 }
 
 //スコアのアップダウンを操作
-export const EditScore = (props:Props) => {
+export const ListOfEmp = (props:Props) => {
     const [list, setList] = useState<List[]>([]);
     const [score, setScore] = useState(0);
     const {id} = props;
@@ -24,10 +23,7 @@ export const EditScore = (props:Props) => {
 
     //DBからnameを取得する
     const fetchName = async() => {
-        const { data, error } = await supabase
-        .from('employees')
-        .select('name')
-        .eq('id', id)
+        const { data, error } = await supabase.from('employees').select('name').eq('id', id)
 
         if(error) throw error;
         setList(data!);
@@ -46,11 +42,11 @@ export const EditScore = (props:Props) => {
                 {list.map((item)=>item.name)}
             </label>
             <div className='acd-content'>
-                <EditButton emp_id = {id} skill_id={1}/>
-                <EditButton emp_id = {id} skill_id={2}/>
-                <EditButton emp_id = {id} skill_id={3}/>
-                <EditButton emp_id = {id} skill_id={4}/>
-                <EditButton emp_id = {id} skill_id={5}/>
+                <ListOfSkill emp_id = {id} skill_id={1}/>
+                <ListOfSkill emp_id = {id} skill_id={2}/>
+                <ListOfSkill emp_id = {id} skill_id={3}/>
+                <ListOfSkill emp_id = {id} skill_id={4}/>
+                <ListOfSkill emp_id = {id} skill_id={5}/>
             </div>
         </div>
     )
