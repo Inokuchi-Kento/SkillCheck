@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Session } from '@supabase/gotrue-js';
 
 export function Login(){
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();

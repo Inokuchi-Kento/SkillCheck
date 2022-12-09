@@ -5,7 +5,6 @@ import {ListOfSkill} from './ListOfSkill'
 
 type Props = {
    id: number,
-//    setScoreList: Dispatch<SetStateAction<number>>
 }
 
 type List = {

@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react";
 import {ListOfEmp} from './ListOfEmp'
 import { supabase } from "../supabaseClient";
-// import { SaveScore } from "./SaveScore";
+//import logo from '../icons/largelogo.png'
+import { Link } from "react-router-dom";
+import './img.css'
+import { Header } from "./Header";
+
 
 export function Edit() {
   return (
     <div className="App">
-      <h3 className="tag">生鮮スキルチェック</h3>
+      {/* <img src={logo} className='logo'/> */}
+      <Header />
+      <h2>スキル入力画面</h2>
+      <div>
+        <Link to={'/SkillCheck/excelForm'} className="topc">pc版入力画面へ</Link>
+      </div>
       <ListOfEmp id={22}/>
     </div>
   );

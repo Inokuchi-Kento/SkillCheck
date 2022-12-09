@@ -3,13 +3,12 @@ import {useEffect, useState} from 'react'
 import { SearchForm } from './components/searchForm'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Menu} from './components/Menu'
+import {Login} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
 import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
+import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
-import {Login} from './components/Login'
-import { supabase } from './supabaseClient';
-import {TestEditList} from './components/TestEditList'
 //import {Header} from './components/Header'
 
 function App(){
@@ -25,6 +24,7 @@ function App(){
 
   return(
     <div>
+      <h4>test</h4>
       {/* <Header/> */}
       {!session ? 
         <BrowserRouter>
@@ -36,8 +36,7 @@ function App(){
       :
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck/" element={<Login/>}/>
-          <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
+          <Route path="/SkillCheck" element={<Login/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
