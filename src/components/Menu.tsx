@@ -6,7 +6,8 @@ import fish from "../icons/fish.png"
 import flesh from "../icons/flesh.png"
 import sideDish from "../icons/sideDish.png"
 import { render } from "react-dom"
-import {Header} from './Header';
+
+import { Header } from "./Header";
 import "./button.css"
 
 export function Menu() {

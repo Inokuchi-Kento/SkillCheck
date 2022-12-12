@@ -1,30 +1,50 @@
 import './App.css'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { SearchForm } from './components/searchForm'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Menu} from './components/Menu'
-import {LoginForm} from './components/Login'
+import {Login} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
 import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
+import {supabase} from './supabaseClient'
+import { SignUp } from './components/SignUp'
 //import {Header} from './components/Header'
 
 function App(){
   console.log('Appレンダリング')
   const [session, setSession] = useState<Session | null>(null);
+  useEffect(()=>{
+    setSession(supabase.auth.session())
+
+    supabase.auth.onAuthStateChange((_event, session)=>{
+      setSession(session)
+    })
+  },[])
 
   return(
     <div>
+      <h4>test</h4>
       {/* <Header/> */}
+      {!session ? 
+        <BrowserRouter>
+        <Routes>
+          <Route path="/SkillCheck" element={<Login/>}/>
+          <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
+        </Routes>
+        </BrowserRouter>
+      :
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck/" element={<LoginForm/>}/>
+          <Route path="/SkillCheck" element={<Login/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
           <Route path='/SkillCheck/edit' element={<Edit/>}/>
         </Routes>
       </BrowserRouter>
+      }
+      
     </div>
   );
 }

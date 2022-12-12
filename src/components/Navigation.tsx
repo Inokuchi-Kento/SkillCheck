@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom"
+import {LogOut} from "./LogOut"
 import "./styles.css";
 
 type Props = {
@@ -11,9 +12,10 @@ export const Navigation: FC<Props> = ({ open, id }) => {
   return (
     <nav id={id} aria-hidden={!open} className="navigation">
       <ul>
-        <li>メニュー</li>
+      <Link to={'/SkillCheck/menu'}>メニュー</Link>
         <li>管理者</li>
-        <Link to={'/SkillCheck'}>ログアウト</Link>
+      <LogOut/>
+      <Link to={'/SkillCheck'}>ログアウト</Link>
       </ul>
     </nav>
   );

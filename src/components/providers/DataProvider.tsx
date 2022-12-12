@@ -9,7 +9,7 @@ type DataType = {
 export const DataContext = createContext<DataType>({} as DataType)
 
 //名前、スコアをグローバルstateとして
-export const AdminFlagProvider: FC = (props) => {
+export const AdminFlagProvider = (props:any) => {
     const {children} = props;
 
 
