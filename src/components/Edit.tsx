@@ -4,7 +4,9 @@ import { supabase } from "../supabaseClient";
 //import logo from '../icons/largelogo.png'
 import { Link } from "react-router-dom";
 import './img.css'
+
 import { Header } from "./Header";
+
 
 
 export function Edit() {

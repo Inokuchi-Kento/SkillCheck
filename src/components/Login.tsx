@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Session } from '@supabase/gotrue-js';
 
 export function Login(){
-    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -45,6 +44,7 @@ export function Login(){
     };
 
     return(
+
         <div className="App">
             <h3>ログイン</h3>
             <form onSubmit={handleSubmit}>
