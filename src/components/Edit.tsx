@@ -17,6 +17,8 @@ export function Edit() {
         <Link to={'/SkillCheck/excelForm'} className="topc">pc版入力画面へ</Link>
       </div>
       <ListOfEmp id={22}/>
+      <ListOfEmp id={755}/>
+      <ListOfEmp id={756}/>
     </div>
   );
 }
