@@ -75,8 +75,7 @@ export const ListOfSkill = (props: Props) => {
                 ...item, score: item.score - 1
             }))
         )
-        
-
+    
         UpdateScore(intScore - 1)
     }
 
