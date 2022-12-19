@@ -9,7 +9,7 @@ import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
 import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
-import {Test} from "./components/Test"
+
 //import {Header} from './components/Header'
 
 function App(){
