@@ -15,7 +15,6 @@ type List = {
 //スコアのアップダウンを操作
 export const ListOfEmp = (props:Props) => {
     const [list, setList] = useState<List[]>([]);
-    const [score, setScore] = useState(0);
     const {id} = props;
 
     const dummy = id as unknown
