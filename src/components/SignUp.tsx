@@ -13,8 +13,8 @@ export function SignUp(){
                 password,
             })
             if(signUpError) throw signUpError
-        }catch(error){
-            alert('エラーが発生しました')
+        }catch(signUpError){
+            alert('エラーが発生しました' + signUpError)
         }
     }
 
