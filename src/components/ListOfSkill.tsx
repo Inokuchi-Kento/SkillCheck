@@ -19,6 +19,10 @@ export const ListOfSkill = (props: Props) => {
     // 社員IDとスキルIDをpropsとして受け取る
     const {emp_id, skill_id} = props;
 
+    console.log("emp_id: " + emp_id)
+    console.log("skill_id: " + skill_id)
+
+
     const [list, setList] = useState<List[]>([])
     const [score, setScore] = useState<Score[]>([])
 
@@ -30,6 +34,7 @@ export const ListOfSkill = (props: Props) => {
 
     //スキル名を取得
     const fetchItem = async() => {
+        
         const {data, error} = await supabase
         .from('skills')
         .select('*')

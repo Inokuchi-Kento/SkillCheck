@@ -9,6 +9,7 @@ import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
 import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
+import { FetchTest } from './components/fetchTest';
 
 //import {Header} from './components/Header'
 
@@ -30,7 +31,7 @@ function App(){
       {!session ? 
         <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck" element={<Login/>}/>
+          <Route path="/SkillCheck" element={<Edit/>}/>
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>
