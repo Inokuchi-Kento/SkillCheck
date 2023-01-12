@@ -13,6 +13,7 @@ type employees = {
 
 export function FetchTest(){
     const [list, setList] = useState<List[]>([])
+    
 
     const fetchData = async() => {
         const {data: empData, error} = await supabase
