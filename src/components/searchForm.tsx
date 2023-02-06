@@ -6,6 +6,7 @@ import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
 import { Header } from "./Header";
 import logo from '../icons/largeLogo.png'
+import "./styles.css"
 
 //検索画面のコンポーネント
 export const SearchForm = ()=> {   
@@ -43,30 +44,29 @@ export const SearchForm = ()=> {
 
   return(
     <div>
-      <img src={logo} className='logo'/>
       <Header />
-      <h2>青果</h2>
-      <div className='search_box'>
+      <div className = "search_box">
+      <h2>青果 従業員名簿</h2>
         <select name="column" id='tag' onChange={onChangeTag}>
           <option value="id" >社員番号</option>
-          <option value="name">名前</option>        
+          <option value="name">名前</option>      
+          <option value="管轄名">ブロック</option>      
+          <option value="部署名">ゾーン</option>    
+          <option value="課.DIV名">エリア・ライン</option>      
+          <option value="センター・エリア名">チーム</option>
+          <option value="店名">店舗</option>      
           {/* <option value="store">店名</option> */}
         </select>
         <input type="text" id="fetch" value={text} placeholder="検索ワードを入力" onChange={onChangeText} onKeyPress={doType}/>
         <button id='serachButton' onClick={onClickFetch}>検索</button>
-      </div>
-      <h6></h6>
-      <div className='sortbox'>
+        <div className='sortbox'>
         並び替え
         <select name="item" id="sort" onChange={onChangeSort}>
           <option value="id" >社員番号</option>
           <option value="kana">名前</option>      
         </select>
       </div>
-      
-      <Link to={'/SkillCheck/edit'}>スキル入力画面</Link>
-      
-      <h5></h5>
+    </div>
       <ShowList sort={sort} tag={cond} text={word} />
     </div>
   );

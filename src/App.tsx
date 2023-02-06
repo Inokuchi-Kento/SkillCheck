@@ -25,7 +25,6 @@ function App(){
 
   return(
     <div>
-      <h4>test</h4>
       {/* <Header/> */}
       {!session ? 
         <BrowserRouter>
