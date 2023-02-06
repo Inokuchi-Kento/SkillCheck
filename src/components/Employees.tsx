@@ -1,9 +1,11 @@
+import { StringifyOptions } from 'querystring';
 import { useEffect, useState ,FC, ChangeEvent } from 'react';
 import { supabase } from '../supabaseClient';
 
 type List = {
   id: number
   name: string
+  gender: string
 }
 
 type Props = {
@@ -24,7 +26,24 @@ export function ShowList(props:Props) {
       try {
         setLoading(true);
 
-        let query = supabase.from('trial').select('*');
+        if(isNaN(parseInt(text))){
+          var regex: number = parseInt(text)
+        }
+
+        let query = supabase.from('employees').select('*');
+
+        switch (tag){
+          case "id":
+            query = query.eq(tag, text)
+            break
+            
+          case "name":
+            query = query.like(tag, "%" + text + "%")
+            break
+          
+          case "gander":
+            query = query.eq(tag, text)
+        }
 
         // if(tag === 'number'){
         //     query = query.eq('number', text);
@@ -66,6 +85,7 @@ export function ShowList(props:Props) {
             <tr>
               <td>社員番号</td>
               <td>名前</td>
+              <td>性別</td>
             </tr>
           </thead>
           <tbody>
@@ -73,6 +93,7 @@ export function ShowList(props:Props) {
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
+                <td>{item.gender}</td>
               </tr>
             ))}
           </tbody>
