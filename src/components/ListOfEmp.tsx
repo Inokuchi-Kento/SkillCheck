@@ -5,6 +5,7 @@ import {ListOfSkill} from './ListOfSkill'
 
 type Props = {
    id: number,
+   store_id: number
 }
 
 type List = {
@@ -20,17 +21,18 @@ type SkillID = {
 export const ListOfEmp = (props:Props) => {
     const [list, setList] = useState<List[]>([]);
     const [skillID, setSkillID] = useState<SkillID[]>([])
-    const {id} = props;
+    const {id, store_id} = props;
 
     const dummy = id as unknown
     const label = dummy as string
 
     //DBからnameを取得する
     const fetchName = async() => {
-        const { data, error } = await supabase.from('employees').select('name').eq('id', id)
+        const { data, error } = await supabase.from('employees').select('name').eq('store_id', store_id)
 
         if(error) throw error;
         setList(data!);
+        console.log(list)
     }
 
     const fetchSkillID = async() => {
@@ -48,13 +50,14 @@ export const ListOfEmp = (props:Props) => {
     return(
         <div>
             <input id={label} type="checkbox" className='acd-check'/>
+
             <label className='acd-label' htmlFor={label}>
                 {list.map((item)=>item.name)}
             </label>
 
             <div className='acd-content'>
                 {skillID.map((value)=>
-                    <ListOfSkill emp_id = {id} skill_id={value.skill_id} key={value.skill_id}/>
+                    <ListOfSkill emp_id = {id}  skill_id={value.skill_id} key={value.skill_id}/>
                 )}
                 
             </div>

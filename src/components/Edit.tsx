@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {ListOfEmp} from './ListOfEmp'
 import { supabase } from "../supabaseClient";
+import { SelectStore } from "./SelectStore";
 //import logo from '../icons/largelogo.png'
 import { Link } from "react-router-dom";
 import './img.css'
@@ -10,6 +11,7 @@ import { Header } from "./Header";
 
 type List = {
   id: number
+  store_id: number
 }
 
 export function Edit() {
@@ -18,7 +20,7 @@ export function Edit() {
   const fetchID = async()=> {
       const {data: emp_id, error} = await supabase
       .from('employees')
-      .select('id')
+      .select('id, store_id')
       .limit(10)
 
       setList(emp_id!)
@@ -32,24 +34,19 @@ export function Edit() {
     <div className="App">
       {/* <img src={logo} className='logo'/> */}
       <Header />
+      {list.map(()=>
+         <SelectStore />
+      )}
+     
+      
       <h2>スキル入力画面</h2>
       <div>
-        <ul className="tab-group">
-          <li className="tab tab-A is-active">Tab-A</li>
-          <li className="tab tab-B">Tab-B</li>
-          <li className="tab tab-C">Tab-C</li>
-        </ul>
-
-        <div className="panel-group">
-          <div className="panel tab-A is-show">
+          <div >
             {list.map((value)=>
-              <ListOfEmp id={value.id} key={value.id}/>
+              <ListOfEmp id={value.id} store_id={111}  key={value.id}/>
             )}
           </div>
-          <div className="panel tab-B">missing data</div>
-        </div>
       </div>
-      
     </div>
   );
 }
