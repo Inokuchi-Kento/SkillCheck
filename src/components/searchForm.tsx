@@ -5,8 +5,8 @@ import {ShowList} from './Employees'
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
 import { Header } from "./Header";
-import logo from '../icons/largeLogo.png'
-import "./styles.css"
+import logo from '../icons/largeLogo.png';
+import "./styles.css";
 
 //検索画面のコンポーネント
 export const SearchForm = ()=> {   
