@@ -1,7 +1,7 @@
 import { StringifyOptions } from 'querystring';
 import { useEffect, useState ,FC, ChangeEvent } from 'react';
 import { supabase } from '../supabaseClient';
-
+import "./tableStyle.css";
 type List = {
   id: number
   name: string
@@ -81,26 +81,31 @@ export function ShowList(props:Props) {
     return (
       <div className="name_skills">
         <table>
-          <thead>
-            <tr>
-              <td>社員番号</td>
-              <td>名前</td>
-              <td>性別</td>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.gender}</td>
-              </tr>
-            ))}
-          </tbody>
+          <td>
+            <th>社員番号</th>
+              {list.map((item) => (
+                <tbody key={item.id}>
+                  <tr>{item.id}</tr>
+                </tbody>
+              ))}
+          </td>
+          <td>
+            <th>名前</th>
+              {list.map((item) => (
+                <tbody key={item.id}>
+                  <tr>{item.name}</tr>
+                </tbody>
+              ))}
+          </td>
+          <td>
+            <th>性別</th>
+              {list.map((item) => (
+                <tbody key={item.id}>
+                  <tr>{item.gender}</tr>
+                </tbody>
+              ))}
+          </td>
         </table>
       </div>
     );
 }
-  
- 
-  
