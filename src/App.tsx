@@ -30,7 +30,7 @@ function App(){
       {!session ? 
         <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck" element={<Edit/>}/>
+          <Route path="/SkillCheck" element={<Login/>}/>
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>
