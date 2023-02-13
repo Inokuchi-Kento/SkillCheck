@@ -1,6 +1,7 @@
 import {useState, Dispatch, SetStateAction, useEffect, FC} from 'react'
 import {supabase} from '../supabaseClient'
 import './Acc.css'
+import './skill.css'
 
 type Props = {
     emp_id: number;
@@ -51,8 +52,6 @@ export const ListOfSkill = (props: Props) => {
         setScore(data!)
     }
 
-    
-
     //スコア加算
     const increment = ()=> {
         const stringScore = score.map((item)=>item.score)
@@ -92,12 +91,14 @@ export const ListOfSkill = (props: Props) => {
     }
 
     return(
-        <div>
-           {list.map((item)=>item.skill_name)}
+        <div className='skill'>
+            <span className="skill_name">{list.map((item)=>item.skill_name)}</span>
            
-           <button onClick={decrement}>-</button>
-           {score.map((item)=>item.score)}
-           <button onClick={increment}>+</button>
+           <span className='score_button'>
+           <button onClick={decrement} className='add'>-</button>
+           <span className="skill_score">{" " + score.map((item)=>item.score) + " "}</span>
+           <button onClick={increment} className='add'>+</button>
+           </span>
         </div>
     )
 }

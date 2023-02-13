@@ -12,7 +12,6 @@ import { SignUp } from './components/SignUp'
 import { FetchTest } from './components/fetchTest';
 import { Test } from './components/test';
 
-//import {Header} from './components/Header'
 
 function App(){
   console.log('Appレンダリング')

@@ -1,4 +1,4 @@
-import {useState, Dispatch, SetStateAction, useEffect, memo} from 'react'
+import {useState, Dispatch, SetStateAction, useEffect, memo , ChangeEvent} from 'react'
 import { supabase } from '../supabaseClient'
 import './Acc.css'
 import {ListOfSkill} from './ListOfSkill'
@@ -21,6 +21,7 @@ type SkillID = {
 export const ListOfEmp = (props:Props) => {
     const [list, setList] = useState<List[]>([]);
     const [skillID, setSkillID] = useState<SkillID[]>([])
+    const [selected, setSelected] = useState("");
     const {id, store_id} = props;
 
     const dummy = id as unknown
@@ -28,7 +29,7 @@ export const ListOfEmp = (props:Props) => {
 
     //DBからnameを取得する
     const fetchName = async() => {
-        const { data, error } = await supabase.from('employees').select('name').eq('store_id', store_id)
+        const { data, error } = await supabase.from('employees').select('name').eq('id', id)
 
         if(error) throw error;
         setList(data!);
@@ -45,11 +46,15 @@ export const ListOfEmp = (props:Props) => {
         fetchSkillID();
     },[])
 
+    const onChange = (e:ChangeEvent<HTMLInputElement>)=> {
+        
+    }
+
     if (!list.length) return <div>missing data...</div>;
 
     return(
         <div>
-            <input id={label} type="checkbox" className='acd-check'/>
+            <input id={label} type="checkbox" className='acd-check' onChange={onChange}/>
 
             <label className='acd-label' htmlFor={label}>
                 {list.map((item)=>item.name)}
@@ -59,7 +64,6 @@ export const ListOfEmp = (props:Props) => {
                 {skillID.map((value)=>
                     <ListOfSkill emp_id = {id}  skill_id={value.skill_id} key={value.skill_id}/>
                 )}
-                
             </div>
         </div>
     )
