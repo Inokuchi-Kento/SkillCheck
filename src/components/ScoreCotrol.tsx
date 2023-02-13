@@ -10,12 +10,7 @@ type Props = {
 export const ScoreControl = (props: Props) => {
     const {emp_id, skill_id, score} = props 
 
-    useEffect(()=>{
-        const [newScore, setNewScore] = useState(score)
-        console.log("Score: " + score)
-        console.log("newScore: " )
-    },[props])
-
+    
     return(
         <div>
             test

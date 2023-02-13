@@ -1,10 +1,11 @@
-import {useState, Dispatch, SetStateAction, useEffect, memo} from 'react'
+import {useState, Dispatch, SetStateAction, useEffect, memo , ChangeEvent} from 'react'
 import { supabase } from '../supabaseClient'
 import './Acc.css'
 import {ListOfSkill} from './ListOfSkill'
 
 type Props = {
    id: number,
+   store_id: number
 }
 
 type List = {
@@ -12,10 +13,16 @@ type List = {
     skill_name: string
 }
 
+type SkillID = {
+    skill_id: number
+}
+
 //スコアのアップダウンを操作
 export const ListOfEmp = (props:Props) => {
     const [list, setList] = useState<List[]>([]);
-    const {id} = props;
+    const [skillID, setSkillID] = useState<SkillID[]>([])
+    const [selected, setSelected] = useState("");
+    const {id, store_id} = props;
 
     const dummy = id as unknown
     const label = dummy as string
@@ -26,26 +33,37 @@ export const ListOfEmp = (props:Props) => {
 
         if(error) throw error;
         setList(data!);
+        console.log(list)
+    }
+
+    const fetchSkillID = async() => {
+        const {data: idData, error} = await supabase.from('skills').select('skill_id').limit(5)
+        setSkillID(idData!)
     }
 
     useEffect(()=>{
         fetchName();
+        fetchSkillID();
     },[])
+
+    const onChange = (e:ChangeEvent<HTMLInputElement>)=> {
+        
+    }
 
     if (!list.length) return <div>missing data...</div>;
 
     return(
         <div>
-            <input id={label} type="checkbox" className='acd-check'/>
+            <input id={label} type="checkbox" className='acd-check' onChange={onChange}/>
+
             <label className='acd-label' htmlFor={label}>
                 {list.map((item)=>item.name)}
             </label>
+
             <div className='acd-content'>
-                <ListOfSkill emp_id = {id} skill_id={1}/>
-                <ListOfSkill emp_id = {id} skill_id={2}/>
-                <ListOfSkill emp_id = {id} skill_id={3}/>
-                <ListOfSkill emp_id = {id} skill_id={4}/>
-                <ListOfSkill emp_id = {id} skill_id={5}/>
+                {skillID.map((value)=>
+                    <ListOfSkill emp_id = {id}  skill_id={value.skill_id} key={value.skill_id}/>
+                )}
             </div>
         </div>
     )
