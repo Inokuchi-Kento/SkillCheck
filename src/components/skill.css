@@ -1,8 +1,68 @@
 .skill_score{
-    font-weight: bold;
+    font-weight: 900;
 }
 
 .skill_name{
     text-align: justify;
     font-weight: bold;
+}
+
+.edit{
+    position: absolute;
+    top: 100px;
+}
+
+.select {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #545454;
+    vertical-align: middle;
+    width: 236px;
+}
+
+.select::before,
+.select::after {
+    position: absolute;
+    content: '';
+    pointer-events: none;
+}
+
+.select::before {
+    right: 0;
+    display: inline-block;
+    width: 2.8em;
+    height: 2.8em;
+    border-radius: 0 3px 3px 0;
+    background-color: #545454;
+    content: '';
+}
+
+.select::after {
+    position: absolute;
+    top: 50%;
+    right: 1.4em;
+    transform: translate(50%, -50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+    content: '';
+}
+
+.select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    min-width: 230px;
+    height: 2.8em;
+    padding: .4em 3.6em .4em .8em;
+    border: 2px solid #545454;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.select select:focus {
+    outline: 1px solid #545454;
 }

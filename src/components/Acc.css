@@ -36,14 +36,15 @@
 .acd-content{
     /* border: 1px solid rgb(144, 132, 190); */
     height: 0;
-    width: 100;
+    width: 80;
     position: absolute;
-    top:400px;
+    top:200px;
     left: 200px;
     opacity: 0;
     padding: 0 20px;
     transition: .1s;
     visibility: hidden;
+    z-index: 2;
 }
 
 .acd-check:checked + .acd-label{
