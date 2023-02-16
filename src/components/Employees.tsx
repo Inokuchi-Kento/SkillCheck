@@ -5,15 +5,25 @@ import "./tableStyle.css";
 import {ShowColumn, List, ID, NAME, GENDER} from "./EmployeeColumn";
 
 type Props = {
-  text: string;
-  tag: string;
+  nameText: string;
+  nameTag: string;
+  placeText: string;
+  placeTag: string;
+  roleText: string;
+  roleTag: string;  
   sort: string;
 }
   
 export function ShowList(props:Props) {
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);
-    const {text, tag, sort} = props;
+    const {nameText, 
+           nameTag,
+           placeText, 
+           placeTag, 
+           roleText, 
+           roleTag, 
+           sort} = props;
 
     console.log(props)
 
@@ -22,36 +32,9 @@ export function ShowList(props:Props) {
       try {
         setLoading(true);
 
-        if(isNaN(parseInt(text))){
-          var regex: number = parseInt(text)
-        }
-
         let query = supabase.from('employees').select('*');
 
-        switch (tag){
-          case "id":
-            query = query.eq(tag, text)
-            break
-            
-          case "name":
-            query = query.like(tag, "%" + text + "%")
-            break
-          
-          case "gander":
-            query = query.eq(tag, text)
-        }
-
-        // if(tag === 'number'){
-        //     query = query.eq('number', text);
-        // }else if(tag === 'gender'){
-        //     query = query.eq('gender',text)
-        // }else {
-        //     query = query.ilike(tag, '%'+text+'%')
-        // }
-    
-        if(sort){
-            query = query.order(sort)
-        }
+        query = query.like(nameTag, "%" + nameText + "%").like(placeTag, "%" + placeText + "%").like(roleTag, "%" + roleText + "%").order(sort);
 
         const {data, error} = await query;
 
@@ -69,7 +52,7 @@ export function ShowList(props:Props) {
 
     useEffect(() => {
       getServeSideData();
-    }, [text, tag, sort]);
+    }, [nameText, nameTag, placeText, placeTag, roleText, roleTag, sort]);
 
     if (loading) return <div>loading...</div>;
     // if (!list.length) return <div>missing data...</div>;
