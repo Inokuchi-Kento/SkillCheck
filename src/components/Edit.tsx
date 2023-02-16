@@ -2,11 +2,9 @@ import { useState, useEffect, ChangeEvent } from "react";
 import {ListOfEmp} from './ListOfEmp'
 import { supabase } from "../supabaseClient";
 import { SelectStore } from "./SelectStore";
-//import logo from '../icons/largelogo.png'
-import { Link } from "react-router-dom";
 import './img.css'
 import './tab.css'
-
+import './text.css'
 import { Header } from "./Header";
 
 type List = {
@@ -21,15 +19,15 @@ type StoreList = {
 
 export function Edit() {
   const [list, setList] = useState<List[]>([])
-  const [tag, setTag] = useState('');
+  const [tag, setTag] = useState('113');
   const [storeList, setStoreList] = useState<StoreList[]>([])
   const onChangeTag = (e:ChangeEvent<HTMLSelectElement>) => setTag(e.target.value);
-
 
   const fetchID = async()=> {
       const {data: emp_id, error} = await supabase
       .from('employees')
       .select('id, store_id')
+      .eq('store_id', parseInt(tag))
       .limit(10)
 
       setList(emp_id!)
@@ -38,19 +36,26 @@ export function Edit() {
   const fetchStoreName = async()=> {
     const {data: storeData, error} = await supabase.from("stores").select("*")
     setStoreList(storeData!)
-}
+  }
+
+  console.log("store: ", tag)
 
   useEffect(()=>{
     fetchID()
     fetchStoreName()
   },[])
 
+  useEffect(()=>{
+    fetchID()
+  },[tag])
+
   return (
-    <div className="App">
+    <div>
       <Header />
+      <div className="edit">
       <h2>技能評価</h2>
-      <div>
-          <div className='select_store'>
+        <span className="text">店舗選択</span>
+          <div className='select'>
               <select name="column" id='tag' onChange={onChangeTag}>
                   {storeList.map((item)=>
                       <option value={item.store_id}>
@@ -59,9 +64,10 @@ export function Edit() {
                   )} 
               </select>
           </div>
+
           <div className="accordion-menu">
             {list.map((value)=>
-              <ListOfEmp id={value.id} store_id={111} key={value.id}/>
+              <ListOfEmp id={value.id} store_id={parseInt(tag)} key={value.id}/>
             )}
           </div>
       </div>

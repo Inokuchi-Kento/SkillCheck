@@ -24,6 +24,8 @@ export const ListOfEmp = (props:Props) => {
     const [selected, setSelected] = useState("");
     const {id, store_id} = props;
 
+    console.log("id: ", id, "store_id: ", store_id)
+
     const dummy = id as unknown
     const label = dummy as string
 
@@ -33,11 +35,11 @@ export const ListOfEmp = (props:Props) => {
 
         if(error) throw error;
         setList(data!);
-        console.log(list)
+        // console.log(list)
     }
 
     const fetchSkillID = async() => {
-        const {data: idData, error} = await supabase.from('skills').select('skill_id').limit(5)
+        const {data: idData, error} = await supabase.from('skills').select('skill_id')
         setSkillID(idData!)
     }
 
@@ -46,15 +48,11 @@ export const ListOfEmp = (props:Props) => {
         fetchSkillID();
     },[])
 
-    const onChange = (e:ChangeEvent<HTMLInputElement>)=> {
-        
-    }
-
     if (!list.length) return <div>missing data...</div>;
 
     return(
         <div>
-            <input id={label} type="checkbox" className='acd-check' onChange={onChange}/>
+            <input id={label} type="checkbox" className='acd-check'/>
 
             <label className='acd-label' htmlFor={label}>
                 {list.map((item)=>item.name)}

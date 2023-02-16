@@ -78,7 +78,6 @@ export const ListOfSkill = (props: Props) => {
                 ...item, score: item.score - 1
             }))
         )
-        
         UpdateScore(intScore - 1)
     }
 
@@ -95,9 +94,9 @@ export const ListOfSkill = (props: Props) => {
             <span className="skill_name">{list.map((item)=>item.skill_name)}</span>
            
            <span className='score_button'>
-           <button onClick={decrement} className='add'>-</button>
-           <span className="skill_score">{" " + score.map((item)=>item.score) + " "}</span>
-           <button onClick={increment} className='add'>+</button>
+            <button onClick={decrement} className='add'>-</button>
+            <span className="skill_score">{" " + score.map((item)=>item.score) + " "}</span>
+            <button onClick={increment} className='add'>+</button>
            </span>
         </div>
     )
