@@ -29,6 +29,8 @@ export const ListOfEmp = (props:Props) => {
     const dummy = id as unknown
     const label = dummy as string
 
+    console.log("label: ", label)
+
     //DBからnameを取得する
     const fetchName = async() => {
         const { data, error } = await supabase.from('employees').select('name').eq('id', id)
@@ -39,7 +41,7 @@ export const ListOfEmp = (props:Props) => {
     }
 
     const fetchSkillID = async() => {
-        const {data: idData, error} = await supabase.from('skills').select('skill_id')
+        const {data: idData, error} = await supabase.from('skills').select('skill_id').limit(7)
         setSkillID(idData!)
     }
 
@@ -48,19 +50,24 @@ export const ListOfEmp = (props:Props) => {
         fetchSkillID();
     },[])
 
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSelected(e.target.value)
+    }
+
     if (!list.length) return <div>missing data...</div>;
+
+    
 
     return(
         <div>
-            <input id={label} type="checkbox" className='acd-check'/>
-
-            <label className='acd-label' htmlFor={label}>
+            <input id={label} type="checkbox" className='acd-check' value={label} onChange={handleCheckboxChange}/>
+            <label className='acd-label' htmlFor={label} key={label}>
                 {list.map((item)=>item.name)}
             </label>
 
             <div className='acd-content'>
                 {skillID.map((value)=>
-                    <ListOfSkill emp_id = {id}  skill_id={value.skill_id} key={value.skill_id}/>
+                    <ListOfSkill emp_id = {id} skill_id={value.skill_id} key={value.skill_id}/>
                 )}
             </div>
         </div>

@@ -1,7 +1,7 @@
 import './App.css'
 import {useEffect, useState} from 'react'
 import { SearchForm } from './components/searchForm'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {Menu} from './components/Menu'
 import {Login} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
@@ -11,6 +11,8 @@ import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
 import { FetchTest } from './components/fetchTest';
 import { Test } from './components/test';
+import { CheckboxGroup } from './components/check';
+import { List } from './components/List';
 
 
 function App(){
@@ -31,7 +33,8 @@ function App(){
       {!session ? 
         <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck" element={<Login/>}/>
+          {/* <Route path="/SkillCheck" element={<CheckboxGroup options={["Option 1", "Option 2", "Option 3"]}/>}/> */}
+          <Route path="/SkillCheck" element={<Login/>}/> 
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>
