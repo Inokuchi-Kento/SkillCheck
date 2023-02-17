@@ -4,11 +4,12 @@ import 'react-tabs/style/react-tabs.css';
 import logo from '../icons/largeLogo.png'
 import { Header } from "./Header";
 import "./Profile.css"
+import { Link } from 'react-router-dom'
 
 export const Profile = () => {
+    
     return (
         <Tabs>
-            
             <img src={logo} className='logo'/>
             <Header />
             <TabList>
