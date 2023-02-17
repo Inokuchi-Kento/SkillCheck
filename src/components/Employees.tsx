@@ -34,7 +34,10 @@ export function ShowList(props:Props) {
 
         let query = supabase.from('employees').select('*');
 
-        query = query.like(nameTag, "%" + nameText + "%").like(placeTag, "%" + placeText + "%").like(roleTag, "%" + roleText + "%").order(sort);
+        query = query.like(nameTag, "%" + nameText + "%")
+        .like(placeTag, "%" + placeText + "%")
+        .like(roleTag, "%" + roleText + "%")
+        .order(sort);
 
         const {data, error} = await query;
 

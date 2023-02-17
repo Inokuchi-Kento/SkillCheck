@@ -13,6 +13,7 @@ import { FetchTest } from './components/fetchTest';
 import { Test } from './components/test';
 import { CheckboxGroup } from './components/check';
 import { List } from './components/List';
+import { Fetch } from './components/fetch';
 
 
 function App(){
@@ -34,7 +35,7 @@ function App(){
         <BrowserRouter>
         <Routes>
           {/* <Route path="/SkillCheck" element={<CheckboxGroup options={["Option 1", "Option 2", "Option 3"]}/>}/> */}
-          <Route path="/SkillCheck" element={<Login/>}/> 
+          <Route path="/SkillCheck" element={<Edit/>}/> 
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>

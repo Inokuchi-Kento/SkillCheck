@@ -54,6 +54,10 @@ export function Edit() {
       <Header />
       <div className="edit">
       <h2>技能評価</h2>
+      <div className="store_search">
+
+      </div>
+
         <span className="text">店舗選択</span>
           <div className='select'>
               <select name="column" id='tag' onChange={onChangeTag}>
@@ -64,6 +68,7 @@ export function Edit() {
                   )} 
               </select>
           </div>
+
 
           <div className="accordion-menu">
             {list.map((value)=>
