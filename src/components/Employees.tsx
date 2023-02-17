@@ -63,7 +63,7 @@ export function ShowList(props:Props) {
     return (
       <div className="name_skills">
         <table>
-          <ShowColumn list={list} column={ID} columnName = "社員番号"></ShowColumn>
+          {/*<ShowColumn list={list} column={ID} columnName = "社員番号"></ShowColumn>*/}
           <ShowColumn list={list} column={NAME} columnName = "氏名"></ShowColumn>
           <ShowColumn list={list} column={GENDER} columnName = "性別"></ShowColumn>
          </table>

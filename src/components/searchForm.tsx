@@ -79,7 +79,7 @@ export const SearchForm = () => {
           <select name="column" id='tag' onChange={onChangeNameTag}>
             <option value="name">名前</option>
           </select>
-          <input type="text" id="fetch" value={nameText} placeholder="検索ワードを入力" onChange={onChangeNameText} onKeyPress={doType} />
+          <input type="text" className="inputForm" value={nameText} placeholder="検索ワードを入力" onChange={onChangeNameText} onKeyPress={doType} />
         </div>
         <div className="search_form">
           <select name="column" id="tag" onChange={onChangePlaceTag}>
@@ -89,13 +89,13 @@ export const SearchForm = () => {
             <option value="センター・エリア名">チーム</option>
             <option value="店名">店舗</option>
           </select>
-          <input type="text" id="fetch" value={placeText} placeholder="検索ワードを入力"  className="inputForm" onChange={onChangePlaceText} onKeyPress={doType} />
+          <input type="text" value={placeText} placeholder="検索ワードを入力"  className="inputForm" onChange={onChangePlaceText} onKeyPress={doType} />
         </div>
         <div className="search_form">
           <select role="column" id="tag" onChange={onChangeRoleTag}>
             <option value="役職">役職</option>
           </select>
-          <input type="text" id="fetch" value={roleText} placeholder="検索ワードを入力"  className="inputForm" onChange={onChangeRoleText} onKeyPress={doType} />
+          <input type="text" value={roleText} placeholder="検索ワードを入力"  className="inputForm" onChange={onChangeRoleText} onKeyPress={doType} />
         </div>
         <div className='sortbox'>
           並び替え

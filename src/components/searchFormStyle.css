@@ -21,8 +21,12 @@
     position: absolute;    /* 相対位置に指定 */
   }
   
-  .search_box input {
+  .inputForm {
     padding: 3px 0 3px 2em; /* アイコンを設置するため左の余白を多めに指定*/
+    border: none;
+    border-radius: 5px;
+    color: white;
+    outline: none;
   }
   
   .search_form{
