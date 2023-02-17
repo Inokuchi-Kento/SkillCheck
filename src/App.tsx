@@ -8,6 +8,7 @@ import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
 import { SignUp } from './components/SignUp'
 import {Login} from './components/Login'
+import { Profile } from './components/Profile';
 //import {Header} from './components/Header'
 
 function App(){
@@ -25,6 +26,7 @@ function App(){
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
           <Route path='/SkillCheck/edit' element={<Edit/>}/>
+          <Route path="/SkillCheck/profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
     </div>
