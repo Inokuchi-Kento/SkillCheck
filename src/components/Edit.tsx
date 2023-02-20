@@ -1,30 +1,76 @@
-import { useState } from "react";
-import {EditScore} from './EditScore'
-import {Send} from './Send'
+import { useState, useEffect, ChangeEvent } from "react";
+import {ListOfEmp} from './ListOfEmp'
 import { supabase } from "../supabaseClient";
-//import logo from '../icons/largelogo.png'
-import { Link } from "react-router-dom";
-
+import { SelectStore } from "./SelectStore";
 import './img.css'
+import './tab.css'
+import './text.css'
 import { Header } from "./Header";
 
-export function Edit() {
-  const [scoreList, setScoreList] = useState(0);
+type List = {
+  id: number
+  store_id: number
+}
 
-  const list: number[] = new Array();
+type StoreList = {
+  store_id: number
+  store_name :string
+}
+
+export function Edit() {
+  const [list, setList] = useState<List[]>([])
+  const [tag, setTag] = useState('113');
+  const [storeList, setStoreList] = useState<StoreList[]>([])
+  const onChangeTag = (e:ChangeEvent<HTMLSelectElement>) => setTag(e.target.value);
+
+  const fetchID = async()=> {
+      const {data: emp_id, error} = await supabase
+      .from('employees')
+      .select('id, store_id')
+      .eq('store_id', parseInt(tag))
+      .limit(10)
+
+      setList(emp_id!)
+  }
+
+  const fetchStoreName = async()=> {
+    const {data: storeData, error} = await supabase.from("stores").select("*")
+    setStoreList(storeData!)
+  }
+
+  console.log("store: ", tag)
+
+  useEffect(()=>{
+    fetchID()
+    fetchStoreName()
+  },[])
+
+  useEffect(()=>{
+    fetchID()
+  },[tag])
 
   return (
-    <div className="App">
-      {/* <img src={logo} className='logo'/> */}
+    <div>
       <Header />
-      <h2>スキル入力画面</h2>
-      <div>
-        <Link to={'/SkillCheck/excelForm'} className="topc">pc版入力画面へ</Link>
+      <div className="edit">
+      <h2>技能評価</h2>
+        <span className="text">店舗選択</span>
+          <div className='select'>
+              <select name="column" id='tag' onChange={onChangeTag}>
+                  {storeList.map((item)=>
+                      <option value={item.store_id}>
+                          {item.store_name}
+                      </option>
+                  )} 
+              </select>
+          </div>
+
+          <div className="accordion-menu">
+            {list.map((value)=>
+              <ListOfEmp id={value.id} store_id={parseInt(tag)} key={value.id}/>
+            )}
+          </div>
       </div>
-      <EditScore setScoreList={setScoreList} id={22}/>
-      <EditScore setScoreList={setScoreList} id={632}/>
-      <EditScore setScoreList={setScoreList} id={690}/>
-      {/* <Send score={scoreList} id={1}/> */}
     </div>
   );
 }

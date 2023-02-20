@@ -1,0 +1,52 @@
+  .search_box {
+    position : fixed;
+    top : 15%;
+    display: flex;
+    flex-flow: column;
+  }
+  
+  .search_box2 {
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    gap: 10px;
+  }
+  
+  .search_box::before {
+    content: "";           /* 疑似要素に必須 */
+    width: 16px;           /* アイコンの横幅 */
+    height: 16px;          /* アイコンの高さ */
+    background: url(./assets/search.png) no-repeat center center / auto 100%; /* 背景にアイコン画像を配置 */
+    display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
+    position: absolute;    /* 相対位置に指定 */
+  }
+  
+  .inputForm {
+    padding: 3px 0 3px 2em; /* アイコンを設置するため左の余白を多めに指定*/
+    border: none;
+    border-radius: 5px;
+    color: white;
+    outline: none;
+  }
+  
+  .search_form{
+    display: flex;
+    gap: 10px;
+  }
+  
+  #tag {
+    width: 100px;
+  }
+  
+  .condition_box {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #searchButton {
+    width: 200px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }

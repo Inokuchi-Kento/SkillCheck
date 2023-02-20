@@ -1,21 +1,29 @@
+import { StringifyOptions } from 'querystring';
 import { useEffect, useState ,FC, ChangeEvent } from 'react';
 import { supabase } from '../supabaseClient';
-
-type List = {
-  id: number
-  name: string
-}
+import "./tableStyle.css";
+import {ShowColumn, List, ID, NAME, GENDER} from "./EmployeeColumn";
 
 type Props = {
-  text: string;
-  tag: string;
+  nameText: string;
+  nameTag: string;
+  placeText: string;
+  placeTag: string;
+  roleText: string;
+  roleTag: string;  
   sort: string;
 }
   
 export function ShowList(props:Props) {
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);
-    const {text, tag, sort} = props;
+    const {nameText, 
+           nameTag,
+           placeText, 
+           placeTag, 
+           roleText, 
+           roleTag, 
+           sort} = props;
 
     console.log(props)
 
@@ -24,19 +32,9 @@ export function ShowList(props:Props) {
       try {
         setLoading(true);
 
-        let query = supabase.from('trial').select('*');
+        let query = supabase.from('employees').select('*');
 
-        // if(tag === 'number'){
-        //     query = query.eq('number', text);
-        // }else if(tag === 'gender'){
-        //     query = query.eq('gender',text)
-        // }else {
-        //     query = query.ilike(tag, '%'+text+'%')
-        // }
-    
-        if(sort){
-            query = query.order(sort)
-        }
+        query = query.like(nameTag, "%" + nameText + "%").like(placeTag, "%" + placeText + "%").like(roleTag, "%" + roleText + "%").order(sort);
 
         const {data, error} = await query;
 
@@ -54,7 +52,7 @@ export function ShowList(props:Props) {
 
     useEffect(() => {
       getServeSideData();
-    }, [text, tag, sort]);
+    }, [nameText, nameTag, placeText, placeTag, roleText, roleTag, sort]);
 
     if (loading) return <div>loading...</div>;
     // if (!list.length) return <div>missing data...</div>;
@@ -62,24 +60,10 @@ export function ShowList(props:Props) {
     return (
       <div className="name_skills">
         <table>
-          <thead>
-            <tr>
-              <td>社員番号</td>
-              <td>名前</td>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          {/*<ShowColumn list={list} column={ID} columnName = "社員番号"></ShowColumn>*/}
+          <ShowColumn list={list} column={NAME} columnName = "氏名"></ShowColumn>
+          <ShowColumn list={list} column={GENDER} columnName = "性別"></ShowColumn>
+         </table>
+      </div> 
     );
 }
-  
- 
-  

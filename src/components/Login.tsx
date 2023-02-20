@@ -1,11 +1,21 @@
-import { useState } from "react"; 
+import { useState, useEffect } from "react"; 
 import { supabase } from "../supabaseClient";
 import { Link, useNavigate } from "react-router-dom";
+import { Session } from '@supabase/gotrue-js';
 
 export function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+    const [session, setSession] = useState<Session | null>(null);
+    useEffect(()=>{
+        setSession(supabase.auth.session())
+
+        supabase.auth.onAuthStateChange((_event, session)=>{
+        setSession(session)
+        })
+    },[])
 
     const onSignIn = async() => {
         try{
@@ -34,6 +44,7 @@ export function Login(){
     };
 
     return(
+
         <div className="App">
             <h3>ログイン</h3>
             <form onSubmit={handleSubmit}>
@@ -63,7 +74,7 @@ export function Login(){
                 </div>
             </form>
             <div>
-                <Link to={'/SkillCheck/SignUp'}>新規登録</Link>
+                {/* <Link to={'/SkillCheck/SignUp'}>新規登録</Link> */}
             </div>
         </div>
     )
