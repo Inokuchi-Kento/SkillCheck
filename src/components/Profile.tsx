@@ -5,9 +5,25 @@ import logo from '../icons/largeLogo.png'
 import { Header } from "./Header";
 import "./Profile.css"
 import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { supabase } from '../supabaseClient';
+
+type List = {
+    name: string
+}
+
 
 export const Profile = () => {
-    
+    type List ={
+        name: string
+    }
+
+    const [list, setList] = useState<List[]>([]);
+
+    const fetchName = async() => {
+        const { data, error } = await supabase.from('employees').select('name').eq('id', 22)
+        setList(data!); //
+    }
     return (
         <Tabs>
             <img src={logo} className='logo'/>
