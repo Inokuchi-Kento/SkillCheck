@@ -2,7 +2,7 @@ import { StringifyOptions } from 'querystring';
 import { useEffect, useState ,FC, ChangeEvent } from 'react';
 import { supabase } from '../supabaseClient';
 import "./tableStyle.css";
-import {ShowColumn, List, ID, NAME, GENDER} from "./EmployeeColumn";
+import {ShowColumn, List, ID, NAME, GENDER, AGE, KANA} from "./EmployeeColumn";
 
 type Props = {
   nameText: string;
@@ -14,7 +14,7 @@ type Props = {
   sort: string;
 }
   
-export function ShowList(props:Props) {
+export const ShowList = (props:Props) => { //function() の代わりに ()という無名関数を最初に生成して、後でShowListという名前をつけている。この仕様が重要らしい。
     const [list, setList] = useState<List[]>([]);
     const [loading, setLoading] = useState(true);
     const {nameText, 
@@ -62,8 +62,10 @@ export function ShowList(props:Props) {
         <table>
           {/*<ShowColumn list={list} column={ID} columnName = "社員番号"></ShowColumn>*/}
           <ShowColumn list={list} column={NAME} columnName = "氏名"></ShowColumn>
+          <ShowColumn list={list} column={KANA} columnName = "フリガナ"></ShowColumn>
           <ShowColumn list={list} column={GENDER} columnName = "性別"></ShowColumn>
+          <ShowColumn list={list} column={AGE} columnName = "年齢"></ShowColumn>
          </table>
       </div> 
     );
-}
+};
