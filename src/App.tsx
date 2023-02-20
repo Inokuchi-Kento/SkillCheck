@@ -11,6 +11,7 @@ import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
 import { FetchTest } from './components/fetchTest';
 import { Test } from './components/test';
+import { Profile } from './components/Profile'
 
 
 function App(){
@@ -43,6 +44,7 @@ function App(){
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
           <Route path='/SkillCheck/edit' element={<Edit/>}/>
+          <Route path="/SkillCheck/profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
       }
