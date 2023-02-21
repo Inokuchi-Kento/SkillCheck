@@ -1,7 +1,7 @@
 import {useState, Dispatch, SetStateAction, useEffect, memo , ChangeEvent} from 'react'
 import { supabase } from '../supabaseClient'
-import './Acc.css'
 import {ListOfSkill} from './ListOfSkill'
+import './ScoreEdit.css'
 
 type Props = {
    id: number,
@@ -21,13 +21,12 @@ type SkillID = {
 export const ListOfEmp = (props:Props) => {
     const [list, setList] = useState<List[]>([]);
     const [skillID, setSkillID] = useState<SkillID[]>([])
-    const [selected, setSelected] = useState("");
     const {id, store_id} = props;
 
     console.log("id: ", id, "store_id: ", store_id)
 
     const dummy = id as unknown
-    const label = dummy as string
+    const id_label = dummy as string
 
     //DBからnameを取得する
     const fetchName = async() => {
@@ -35,7 +34,6 @@ export const ListOfEmp = (props:Props) => {
 
         if(error) throw error;
         setList(data!);
-        // console.log(list)
     }
 
     const fetchSkillID = async() => {
@@ -52,9 +50,9 @@ export const ListOfEmp = (props:Props) => {
 
     return(
         <div>
-            <input id={label} type="checkbox" className='acd-check'/>
+            <input id={id_label} type="checkbox" className='acd-check'/> 
 
-            <label className='acd-label' htmlFor={label}>
+            <label className='acd-label' htmlFor={id_label}>
                 {list.map((item)=>item.name)}
             </label>
 
