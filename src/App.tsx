@@ -11,6 +11,7 @@ import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
 import { FetchTest } from './components/fetchTest';
 import { Test } from './components/test';
+import { ScoreEdit } from './components/ScoreEdit';
 
 
 function App(){
@@ -31,7 +32,7 @@ function App(){
       {!session ? 
         <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck" element={<Login/>}/>
+          <Route path="/SkillCheck" element={<ScoreEdit/>}/>
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>

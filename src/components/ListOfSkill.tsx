@@ -1,7 +1,7 @@
 import {useState, Dispatch, SetStateAction, useEffect, FC} from 'react'
 import {supabase} from '../supabaseClient'
-import './Acc.css'
 import './skill.css'
+import './ScoreEdit.css'
 
 type Props = {
     emp_id: number;
@@ -22,6 +22,8 @@ export const ListOfSkill = (props: Props) => {
 
     const [list, setList] = useState<List[]>([])
     const [score, setScore] = useState<Score[]>([])
+
+    // console.log("props: ", skill_id)
 
     //レンダリング時にスキル名と現在のスコアを取得する
     useEffect(()=>{
