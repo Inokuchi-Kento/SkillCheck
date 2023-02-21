@@ -39,7 +39,7 @@ export const ListOfEmp = (props:Props) => {
     }
 
     const fetchSkillID = async() => {
-        const {data: idData, error} = await supabase.from('skills').select('skill_id')
+        const {data: idData, error} = await supabase.from('skills').select('skill_id').limit(5)
         setSkillID(idData!)
     }
 
