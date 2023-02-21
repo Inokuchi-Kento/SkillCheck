@@ -1,4 +1,5 @@
 import "./tableStyle.css";
+import {Link} from "react-router-dom";
 
 export type List = {
     id: number;
@@ -17,14 +18,29 @@ type Props = { //Propsを定義したらエラーが治った、何で？
 }
 
 export function ShowColumn(props: Props){
-  return (
-    <td>
-    <th>{props.columnName}</th>
-      {props.list.map((item) => (
-        <tbody key={item.id}>
-          <tr>{item[props.column]}</tr>
-        </tbody>
-      ))}
-  </td>
-  );
+  if(props.column === NAME){
+    return (
+      <td>
+      <th>{props.columnName}</th>
+        {props.list.map((item) => (
+          <tbody key={item.id}>
+            <tr>
+            <Link to={{ pathname: '/SkillCheck/profile', search: `?name="${item[props.column]}"` }}>{item[props.column]}</Link>
+            </tr>
+          </tbody>
+        ))}
+    </td> 
+    );
+  } else {
+    return (
+      <td>
+      <th>{props.columnName}</th>
+        {props.list.map((item) => (
+          <tbody key={item.id}>
+            <tr>{item[props.column]}</tr>
+          </tbody>
+        ))}
+    </td>
+    );
+  }
 };
