@@ -1,7 +1,10 @@
 import { useState, useEffect, ChangeEvent, ChangeEventHandler } from "react";
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { supabase } from "../supabaseClient";
-import {ListOfSkill} from './ListOfSkill'
+import { Header } from "./Header";
+import { ScoreControl } from "./ScoreControl";
 import './ScoreEdit.css'
+// import 'react-tabs/style/react-tabs.css';
 
 type StoreList = {
     store_id: number
@@ -39,7 +42,7 @@ export function ScoreEdit(){
     }
 
     const fetchSkillData = async() => {
-        const {data: skillData, error} = await supabase.from('skills').select('*').limit(5)
+        const {data: skillData, error} = await supabase.from('skills').select('*')
         setSkills(skillData!)
 
         console.log("skill_data: ", skillData)
@@ -57,6 +60,7 @@ export function ScoreEdit(){
 
     return(
         <div className="edit">
+            <Header/>
             <h2>技能評価</h2>
 
             <span className="test">店舗選択</span>
@@ -72,22 +76,31 @@ export function ScoreEdit(){
 
             <div>
                 {empList.map((empItem)=>
-                    <div>
+                    <div className="emplist">
                         <input id={String(empItem.id)} type="checkbox" className="acd-check" value={String(empItem.id)} checked={selected===String(empItem.id)} onChange={onChangeSelect}/>
                         <label  htmlFor={String(empItem.id)} className="acd-label">
-                            {empItem.name}
+                            <table>
+                                <tbody>
+                                    <td className="emp_id">{empItem.id}</td>
+                                </tbody>
+                                <tbody>
+                                    <td className="emp_name">{empItem.name}</td>
+                                </tbody>
+                            </table>
+                            
                         </label>
 
                         <div className="acd-content">
                             <div key={empItem.id}>
                                 {skills.map((skillItem) => (
-                                    <ListOfSkill
+                                    <ScoreControl
                                         key={`${empItem.id}_${skillItem.skill_id}`}
                                         emp_id={empItem.id}
+                                        class_id={101}
                                         skill_id={skillItem.skill_id}
                                     />
-                                    ))}
-                                </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 )}

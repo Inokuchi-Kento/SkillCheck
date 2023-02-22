@@ -22,7 +22,7 @@ li {
   font-size: 100%;
 }
 
-/*ここのwidth: 100%; を削除したら検索フォームの要素を中央に寄せることができた。なんで?*/
+
 div {
   display: block;
   max-width: 100%;
@@ -131,4 +131,4 @@ button {
 .navigation > ul > li {
   text-align: center;
 }
-/*これ移行のsearch_box系のスタイル指定を削除したら検索ボタンが移動した、なんで？*/
+
