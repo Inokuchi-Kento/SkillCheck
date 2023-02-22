@@ -7,10 +7,6 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 
-type List = {
-    name: string
-}
-
 
 export const Profile = () => {
     type List ={
@@ -18,9 +14,12 @@ export const Profile = () => {
     }
 
     const [list, setList] = useState<List[]>([]);
+    
+    const params = new URLSearchParams(location.search);
+    const name = params.get('name');
 
     const fetchName = async() => {
-        const { data, error } = await supabase.from('employees').select('name').eq('id', 22)
+        const { data, error } = await supabase.from('employees').select('name, role').eq('id', 22)
         setList(data!); //
     }
     return (
@@ -35,6 +34,7 @@ export const Profile = () => {
             </TabList>
             <TabPanel>
                 <h2>名前</h2>
+                <p>{name}</p>
                 <h2>部署/勤務地</h2>
                 <h2>グレード</h2>
             </TabPanel>

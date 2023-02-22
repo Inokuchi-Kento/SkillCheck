@@ -9,10 +9,8 @@ import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
 import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
-import { FetchTest } from './components/fetchTest';
-import { Test } from './components/test';
+import { ScoreEdit } from './components/ScoreEdit';
 import { Profile } from './components/Profile'
-
 
 function App(){
   console.log('Appレンダリング')
@@ -20,7 +18,6 @@ function App(){
   useEffect(()=>{
     setSession(supabase.auth.session())
     
-
     supabase.auth.onAuthStateChange((_event, session)=>{
       setSession(session)
     })
@@ -33,18 +30,18 @@ function App(){
         <BrowserRouter>
         <Routes>
           {/* <Route path="/SkillCheck" element={<CheckboxGroup options={["Option 1", "Option 2", "Option 3"]}/>}/> */}
-          <Route path="/SkillCheck" element={<Edit/>}/> 
+          <Route path="/SkillCheck" element={<Login/>}/> 
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>
       :
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck" element={<Edit/>}/>
+          <Route path="/SkillCheck" element={<ScoreEdit/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
-          <Route path='/SkillCheck/edit' element={<Edit/>}/>
+          <Route path='/SkillCheck/edit' element={<ScoreEdit/>}/>
           <Route path="/SkillCheck/profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>

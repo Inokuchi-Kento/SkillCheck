@@ -1,5 +1,13 @@
 .skill_score{
+    font-size: x-large;
     font-weight: 900;
+}
+
+.skill_column{
+    position: relative;
+    top: 50px;
+    left: 400px;
+    border: 1px solid;
 }
 
 .skill_name{
