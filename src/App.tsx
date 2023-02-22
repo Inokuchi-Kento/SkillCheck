@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {Menu} from './components/Menu'
 import {Login} from './components/Login'
 import { Session } from '@supabase/gotrue-js';
-import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
 import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
