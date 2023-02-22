@@ -12,15 +12,12 @@ import { SignUp } from './components/SignUp'
 import { ScoreEdit } from './components/ScoreEdit';
 import { Profile } from './components/Profile'
 
-
-
 function App(){
   console.log('Appレンダリング')
   const [session, setSession] = useState<Session | null>(null);
   useEffect(()=>{
     setSession(supabase.auth.session())
     
-
     supabase.auth.onAuthStateChange((_event, session)=>{
       setSession(session)
     })
@@ -32,14 +29,14 @@ function App(){
       {!session ? 
         <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck" element={<ScoreEdit/>}/>
+          <Route path="/SkillCheck" element={<Login/>}/>
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>
       :
       <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck" element={<Edit/>}/>
+          <Route path="/SkillCheck" element={<ScoreEdit/>}/>
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>

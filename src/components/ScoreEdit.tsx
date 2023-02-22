@@ -1,9 +1,10 @@
 import { useState, useEffect, ChangeEvent, ChangeEventHandler } from "react";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { supabase } from "../supabaseClient";
+import { Header } from "./Header";
 import { ScoreControl } from "./ScoreControl";
 import './ScoreEdit.css'
-import 'react-tabs/style/react-tabs.css';
+// import 'react-tabs/style/react-tabs.css';
 
 type StoreList = {
     store_id: number
@@ -59,6 +60,7 @@ export function ScoreEdit(){
 
     return(
         <div className="edit">
+            <Header/>
             <h2>技能評価</h2>
 
             <span className="test">店舗選択</span>
@@ -74,7 +76,7 @@ export function ScoreEdit(){
 
             <div>
                 {empList.map((empItem)=>
-                    <div>
+                    <div className="emplist">
                         <input id={String(empItem.id)} type="checkbox" className="acd-check" value={String(empItem.id)} checked={selected===String(empItem.id)} onChange={onChangeSelect}/>
                         <label  htmlFor={String(empItem.id)} className="acd-label">
                             <table>
