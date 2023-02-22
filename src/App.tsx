@@ -29,7 +29,7 @@ function App(){
       {!session ? 
         <BrowserRouter>
         <Routes>
-          <Route path="/SkillCheck" element={<Login/>}/>
+          <Route path="/SkillCheck" element={<ScoreEdit/>}/>
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>
@@ -40,7 +40,7 @@ function App(){
           <Route path="/SkillCheck/menu" element={<Menu/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
           <Route path="/SkillCheck/excelForm" element={<ExcelForm/>}/>
-          <Route path='/SkillCheck/edit' element={<Edit/>}/>
+          <Route path='/SkillCheck/edit' element={<ScoreEdit/>}/>
           <Route path="/SkillCheck/profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>

@@ -39,13 +39,13 @@ export function ScoreEdit(){
     const fetchEmpData = async() => {
         const {data: empData, error} = await supabase.from('employees').select('*').eq('store_id', parseInt(tag))
         setEmpList(empData!)
+
+        console.log("empdata: ",empList)
     }
 
     const fetchSkillData = async() => {
         const {data: skillData, error} = await supabase.from('skills').select('*')
         setSkills(skillData!)
-
-        console.log("skill_data: ", skillData)
     }
 
     useEffect(()=>{
@@ -60,7 +60,7 @@ export function ScoreEdit(){
 
     return(
         <div className="edit">
-            <Header/>
+            {/* <Header/> */}
             <h2>技能評価</h2>
 
             <span className="test">店舗選択</span>
@@ -87,7 +87,6 @@ export function ScoreEdit(){
                                     <td className="emp_name">{empItem.name}</td>
                                 </tbody>
                             </table>
-                            
                         </label>
 
                         <div className="acd-content">
