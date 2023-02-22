@@ -9,8 +9,6 @@ import {Edit} from './components/Edit'
 import { ExcelForm } from './components/ExcelForm';
 import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
-import { FetchTest } from './components/fetchTest';
-import { Test } from './components/test';
 import { ScoreEdit } from './components/ScoreEdit';
 
 
