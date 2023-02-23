@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
     "react-tab": "^1.0.0",
-    "react-table": "^7.8.0"
+    "react-table": "^7.8.0",
+    "react-tabs": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.19",

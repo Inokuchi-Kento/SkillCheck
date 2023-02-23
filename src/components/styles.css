@@ -26,7 +26,6 @@ li {
 /*ここのwidth: 100%; を削除したら検索フォームの要素を中央に寄せることができた。なんで?*/
 div {
   display: block;
-  max-width: 100%;
   margin: 0;
   padding: 0;
   border: 0;

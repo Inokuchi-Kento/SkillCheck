@@ -53,6 +53,13 @@
     margin-bottom: auto;
   }
 
-  #topBlock {
-    width: 100%;
+  #rootBlock {
+    display: block;
+    width: auto;
+    height: auto;
+  }
+
+  .topBlock {
+    width: auto;
+    height: auto;
   }

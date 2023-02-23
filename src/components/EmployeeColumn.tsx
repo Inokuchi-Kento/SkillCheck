@@ -9,6 +9,18 @@ export type List = {
     age: number;
 }
 
+interface COLUMN {
+  [parameter: string]: keyof List
+}
+
+export const COLUMN:COLUMN =  {
+  ID: "id",
+  NAME: "name",
+  KANA: "kana",
+  GENDER: "gender",
+  AGE: "age"
+}
+
 export const ID: keyof List = "id"; //string型じゃなくて keyof List型にするとIF分を使わずにitemのカラムの指定ができた、ブラケット記法をそのまま使用できないみたい。
 export const NAME: keyof List = "name";
 export const GENDER: keyof List = "gender";

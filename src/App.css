@@ -1,6 +1,8 @@
 #root { /*この部分にmargin: 0 auto; を設定すると真ん中から微妙に右に寄った配置になる。なんで？*/
   padding: 2rem;
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes logo-spin {
