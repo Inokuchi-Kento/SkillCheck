@@ -10,6 +10,7 @@ import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
 import { ScoreEdit } from './components/ScoreEdit';
 import { Profile } from './components/Profile'
+import { Test } from './components/test';
 
 function App(){
   console.log('Appレンダリング')
@@ -28,8 +29,7 @@ function App(){
       {!session ? 
         <BrowserRouter>
         <Routes>
-          {/* <Route path="/SkillCheck" element={<CheckboxGroup options={["Option 1", "Option 2", "Option 3"]}/>}/> */}
-          <Route path="/SkillCheck" element={<Login/>}/> 
+          <Route path="/SkillCheck" element={<Login/>}/>
           <Route path="/SkillCheck/SignUp" element={<SignUp/>}/>
         </Routes>
         </BrowserRouter>

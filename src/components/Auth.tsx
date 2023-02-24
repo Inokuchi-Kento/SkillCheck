@@ -1,7 +1,21 @@
-import { useState } from "react"; 
-import {} from '../supabaseClient'
+import { useState, useEffect, FormEvent } from "react"; 
+import { supabase } from "../supabaseClient";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Session } from '@supabase/gotrue-js';
 
-export function Auth(){
-    const [loading, setLoading] = useState(false);
-    const [user, setUser] = useState<null | {email:string}>(null)
+export function LoginPage(){
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [redirectHome, setRedirectHome] = useState(false);
+
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(session?.user){
+            setRedirectHome(true)
+        }
+    },[])
+
+    const HandleLogin = async(e: FormEvent)=> {
+        e.preventDefault
+    }
 }

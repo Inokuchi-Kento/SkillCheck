@@ -39,13 +39,13 @@ export function ScoreEdit(){
     const fetchEmpData = async() => {
         const {data: empData, error} = await supabase.from('employees').select('*').eq('store_id', parseInt(tag))
         setEmpList(empData!)
+
+        console.log("empdata: ",empList)
     }
 
     const fetchSkillData = async() => {
         const {data: skillData, error} = await supabase.from('skills').select('*')
         setSkills(skillData!)
-
-        console.log("skill_data: ", skillData)
     }
 
     useEffect(()=>{
@@ -59,12 +59,13 @@ export function ScoreEdit(){
     },[tag])
 
     return(
-        <div className="edit">
-            <Header/>
+        <div className="editer">
+            {/* <Header/> */}
             <h2>技能評価</h2>
 
+            {/* 店舗選択 */}
             <span className="test">店舗選択</span>
-            <div className='select'>
+            <div className='select' >
                 <select name="column" id='tag' onChange={onChangeTag}>
                     {stores.map((item)=>
                         <option value={item.store_id}>
@@ -76,18 +77,17 @@ export function ScoreEdit(){
 
             <div>
                 {empList.map((empItem)=>
-                    <div className="emplist">
+                    <div className="emp">
                         <input id={String(empItem.id)} type="checkbox" className="acd-check" value={String(empItem.id)} checked={selected===String(empItem.id)} onChange={onChangeSelect}/>
                         <label  htmlFor={String(empItem.id)} className="acd-label">
                             <table>
                                 <tbody>
-                                    <td className="emp_id">{empItem.id}</td>
+                                    <tr className="emp_id"> {empItem.id} </tr>
                                 </tbody>
                                 <tbody>
-                                    <td className="emp_name">{empItem.name}</td>
+                                    <tr className="emp_name">{empItem.name}</tr>
                                 </tbody>
                             </table>
-                            
                         </label>
 
                         <div className="acd-content">

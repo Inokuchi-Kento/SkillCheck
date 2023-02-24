@@ -40,7 +40,7 @@ export const ScoreControl = (props: Props) => {
 
         if(error) throw error;
         setList(data!)
-        console.log("skill_data: ", list)
+        // console.log("skill_data: ", list)
     }
 
     //Supabaseから現在のスコアデータを取得する
