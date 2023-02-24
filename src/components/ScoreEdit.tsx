@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent, ChangeEventHandler } from "react";
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { supabase } from "../supabaseClient";
-import { Header } from "./Header";
+import { useNavigate } from "react-router-dom";
 import { ScoreControl } from "./ScoreControl";
 import './ScoreEdit.css'
 // import 'react-tabs/style/react-tabs.css';
@@ -21,6 +21,14 @@ type SkillList = {
 }
 
 export function ScoreEdit(){
+    const navigate = useNavigate()
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            navigate("/SkillCheck/Login")
+        }
+    },[])
+
     const [tag, setTag] = useState('113');
     const [selected, setSelected] = useState('')
 

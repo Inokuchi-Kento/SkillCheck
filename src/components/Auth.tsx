@@ -16,6 +16,35 @@ export function LoginPage(){
     },[])
 
     const HandleLogin = async(e: FormEvent)=> {
-        e.preventDefault
+        e.preventDefault();
+        const {error} = await supabase.auth.signIn({
+            email,
+            password
+        })
+        if(error){
+            alert(error.message)
+        }else{
+            setRedirectHome(true)
+        }
     }
+
+    if(redirectHome){
+        return <Navigate to = "/SkillCheck" replace/>
+    }
+
+    return (
+        <form onSubmit={HandleLogin}>
+            <label htmlFor="">
+                <div>
+                    Email:
+                    <input type="email" name="email" value={email} placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+                </div>
+                <div>
+                    パスワード:
+                    <input type="password" name="password" value={password} placeholder="パスワード" onChange={(e)=>setPassword(e.target.value)}/>
+                </div>
+            </label>
+            <button type="submit">ログイン</button>
+        </form>
+    )
 }
