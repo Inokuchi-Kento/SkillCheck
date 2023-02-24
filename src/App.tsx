@@ -11,6 +11,7 @@ import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
 import { ScoreEdit } from './components/ScoreEdit';
 import { Profile } from './components/Profile'
+import { Test } from './components/test';
 
 function App(){
   console.log('Appレンダリング')

@@ -5,6 +5,12 @@
     z-index: 1;
 }
 
+.editer{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+
 .emp_id{
     font-size: small;
 }
@@ -19,21 +25,24 @@
     display: block;
     margin-bottom: 1px;
     padding: 15px;
-    width: 450px;
+    width: 350px;
+    position: relative;
+    z-index: 2;
+    
 }
 
 .acd-content{
     /* border: 1px solid rgb(144, 132, 190); */
-    height: 0;
-    width: 80;
+    height: 200;
+    width: 800px;
     position: absolute;
-    top:200px;
-    left: 200px;
+    top:50px;
+    left: 0px;
     opacity: 0;
     padding: 0 20px;
-    transition: .1s;
+    transition: .0s;
     visibility: hidden;
-    z-index: 2;
+    z-index: 3;
 }
 
 .acd-check:checked + .acd-label{
@@ -43,9 +52,11 @@
 .acd-check:checked + .acd-label + .acd-content{
     height: 0px;
     width: 1100;
+    position: absolute;
+    left: 500px;
     opacity: 1;
     color: rgb(255, 255, 255);
-    padding: 10px;
+    padding: 30px;
     visibility: visible;
 }
 
