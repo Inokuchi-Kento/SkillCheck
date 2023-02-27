@@ -10,7 +10,8 @@ import { supabase } from '../supabaseClient';
 
 export const Profile = () => {
     type List ={
-        name: string
+        name: string;
+        role: string;
     }
 
     const [list, setList] = useState<List[]>([]);
@@ -19,7 +20,7 @@ export const Profile = () => {
     const name = params.get('name');
 
     const fetchName = async() => {
-        const { data, error } = await supabase.from('employees').select('name, role').eq('id', 22)
+        const { data, error } = await supabase.from('employees').select('*').eq('name', name)
         setList(data!); //
     }
     return (
