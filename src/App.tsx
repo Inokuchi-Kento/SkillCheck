@@ -36,13 +36,12 @@ function App(){
   return(
     <div>
       <HamburgerMenu menuItems={menuItems}/>
-      
       <BrowserRouter>
         <Routes>
+          <Route path='/SkillCheck' element={<Menu/>}/>
           <Route path='/SkillCheck/Login' element={<LoginPage/>}/>
           <Route path='/SkillCheck/logout' element={<LogOut/>}/>
           <Route path='SkillCheck/signup' element={<SignUp/>}/>
-          <Route path='/SkillCheck' element={<Menu/>}/>
           <Route path='/SkillCheck/edit' element={<ScoreEdit/>}/>
           <Route path="/SkillCheck/profile" element={<Profile/>}/>
           <Route path='/SkillCheck/search' element={<SearchForm/>}/>
