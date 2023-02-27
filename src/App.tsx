@@ -36,6 +36,7 @@ function App(){
   return(
     <div>
       <HamburgerMenu menuItems={menuItems}/>
+      
       <BrowserRouter>
         <Routes>
           <Route path='/SkillCheck/Login' element={<LoginPage/>}/>
