@@ -1,33 +1,17 @@
 import { supabase } from "../supabaseClient";
 import { useEffect, useState, } from "react";
 
-type Emp = {
-    name: string;
-    districts: Districts;
-}
+type User = {
 
-type Districts = {
-    district_name: string
 }
 
 export function Test(){
-    const [emp, setEmp] = useState<Emp[]>([])
+    const [emp, setEmp] = useState<User[]>([])
 
     const fetchData = async()=> { 
-        let query = await supabase.from("employees").select("id, name, districts(district_id, district_name)").limit(5)
-        const {data, error} = await supabase.from("employees").select("id, name, districts(district_id, district_name)").limit(5)
-        setEmp(data!)
-
-        console.log("query: ", query)
+        const {data, error} = await supabase.from('employees').select("id, name, districts(district_id)").limit(5)
+        console.log(data);
     } 
-
-    useEffect(()=>{
-        fetchData
-    },[])
-
-    useEffect(()=>{
-        console.log("data: ", emp)
-    },[emp])
 
     return(
         <div>
