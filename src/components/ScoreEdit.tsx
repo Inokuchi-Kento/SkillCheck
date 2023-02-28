@@ -70,7 +70,7 @@ export function ScoreEdit(){
         <div className="editer">
             {/* <Header/> */}
             <h2>技能評価</h2>
-            <Link to = {"/SkilCheck/menu"}>メニュー</Link>
+            <Link to = {"/SkillCheck/search"}>検索画面へ</Link>
 
             {/* 店舗選択 */}
             <span className="test">店舗選択</span>
