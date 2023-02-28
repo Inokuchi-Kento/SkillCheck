@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent, ChangeEventHandler } from "react";
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { supabase } from "../supabaseClient";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ScoreControl } from "./ScoreControl";
 import './ScoreEdit.css'
 // import 'react-tabs/style/react-tabs.css';
@@ -70,6 +70,7 @@ export function ScoreEdit(){
         <div className="editer">
             {/* <Header/> */}
             <h2>技能評価</h2>
+            <Link to = {"/SkilCheck/menu"}>メニュー</Link>
 
             {/* 店舗選択 */}
             <span className="test">店舗選択</span>
