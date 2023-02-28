@@ -21,13 +21,13 @@ type SkillList = {
 }
 
 export function ScoreEdit(){
-    // const navigate = useNavigate()
-    // useEffect(()=>{
-    //     const session = supabase.auth.session();
-    //     if(!session){
-    //         navigate("/SkillCheck/Login")
-    //     }
-    // },[])
+    const navigate = useNavigate()
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            navigate("/SkillCheck/Login")
+        }
+    },[])
 
     const [tag, setTag] = useState('113');
     const [selected, setSelected] = useState('')
