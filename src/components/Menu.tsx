@@ -27,7 +27,7 @@ export function Menu() {
             <Link to={"/SkillCheck/search"}>
                 <img src={vegetable} className="department"/>
             </Link>
-            <Link to={"/SkillCheck/search"}>
+            <Link to={"/SkillCheck/edit"}>
                 <img src={fish} className="department"/>
             </Link>
             <Link to={"/SkillCheck/search"}>
