@@ -8,7 +8,7 @@ import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 
 
-export const Profile = () => {
+export function Profile(){
     const navigate = useNavigate()
     useEffect(()=>{
         const session = supabase.auth.session();
@@ -60,4 +60,3 @@ export const Profile = () => {
     )
 }
   
-export default Profile
