@@ -10,7 +10,7 @@ export function LogOut(){
             const {error: logoutError} = await supabase.auth.signOut();
             if(logoutError) throw logoutError
             
-            navigate("/SkillCheck/Login")
+            navigate("/SkillCheck/LoginPage")
         }catch{
             alert("Logout error")
         }

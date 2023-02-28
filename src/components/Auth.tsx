@@ -50,7 +50,7 @@ export function LoginPage(){
                 <button type="submit">ログイン</button>
             </form>
             <div className="sign-up">
-                <Link to = {"/SkillCheck/signup"}>ユーザー登録はこちら</Link>
+                <Link to = {"/SkillCheck/SignUp"}>ユーザー登録はこちら</Link>
             </div>
         </div>
         

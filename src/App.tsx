@@ -18,9 +18,9 @@ function App(){
 
   const menuItems = [
     { label: 'Home', link: '/SkillCheck/' },
-    { label: `技能評価`, link: '/SkillCheck/edit'},
-    { label : `従業員検索`, link: '/SkillCheck/search'},
-    { label : `ログアウト`, link: '/SkillCheck/logout'}
+    { label: `技能評価`, link: '/SkillCheck/ScoreEdit'},
+    { label : `従業員検索`, link: '/SkillCheck/SearchForm'},
+    { label : `ログアウト`, link: '/SkillCheck/LogOut'}
   ];
 
 
@@ -39,12 +39,12 @@ function App(){
       <BrowserRouter>
         <Routes>
           <Route path='/SkillCheck' element={<Menu/>}/>
-          <Route path='/SkillCheck/Login' element={<LoginPage/>}/>
-          <Route path='/SkillCheck/logout' element={<LogOut/>}/>
-          <Route path='SkillCheck/signup' element={<SignUp/>}/>
-          <Route path='/SkillCheck/edit' element={<ScoreEdit/>}/>
-          <Route path="/SkillCheck/profile" element={<Profile/>}/>
-          <Route path='/SkillCheck/search' element={<SearchForm/>}/>
+          <Route path='/SkillCheck/LoginPage' element={<LoginPage/>}/>
+          <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
+          <Route path='SkillCheck/SignUp' element={<SignUp/>}/>
+          <Route path='/SkillCheck/ScoreEdit' element={<ScoreEdit/>}/>
+          <Route path="/SkillCheck/Profile" element={<Profile/>}/>
+          <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
         </Routes>
       </BrowserRouter>
     </div>

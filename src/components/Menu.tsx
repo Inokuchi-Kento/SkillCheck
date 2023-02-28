@@ -16,7 +16,7 @@ export function Menu() {
     useEffect(()=>{
         const session = supabase.auth.session();
         if(!session){
-            navigate("/SkillCheck/Login")
+            navigate("/SkillCheck/LoginPage")
         }
     },[])
 
@@ -24,16 +24,16 @@ export function Menu() {
         <div>
             {/* <Header /> */}
             <h3>メニュー画面</h3>
-            <Link to={"/SkillCheck/search"}>
+            <Link to={"/SkillCheck/SearchForm"}>
                 <img src={vegetable} className="department"/>
             </Link>
-            <Link to={"/SkillCheck/edit"}>
+            <Link to={"/SkillCheck/SearchForm"}>
                 <img src={fish} className="department"/>
             </Link>
-            <Link to={"/SkillCheck/search"}>
+            <Link to={"/SkillCheck/SearchForm"}>
                 <img src={flesh} className="department"/>
             </Link>    
-            <Link to={"/SkillCheck/search"}>
+            <Link to={"/SkillCheck/SearchForm"}>
                 <img src={sideDish} className="department"/>
             </Link>
         </div>

@@ -9,13 +9,13 @@ import { useNavigate } from 'react-router-dom';
 
 
 export function Profile(){
-    const navigate = useNavigate()
-    useEffect(()=>{
-        const session = supabase.auth.session();
-        if(!session){
-            navigate("/SkillCheck/Login")
-        }
-    },[])
+    // const navigate = useNavigate()
+    // useEffect(()=>{
+    //     const session = supabase.auth.session();
+    //     if(!session){
+    //         navigate("/SkillCheck/Login")
+    //     }
+    // },[])
 
     type List ={
         name: string;

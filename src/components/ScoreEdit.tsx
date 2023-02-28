@@ -25,7 +25,7 @@ export function ScoreEdit(){
     useEffect(()=>{
         const session = supabase.auth.session();
         if(!session){
-            navigate("/SkillCheck/Login")
+            navigate("/SkillCheck/LoginPage")
         }
     },[])
 
@@ -70,7 +70,7 @@ export function ScoreEdit(){
         <div className="editer">
             {/* <Header/> */}
             <h2>技能評価</h2>
-            <Link to = {"/SkillCheck/search"}>検索画面へ</Link>
+            {/* <Link to = {"/SkillCheck/search"}>検索画面へ</Link> */}
 
             {/* 店舗選択 */}
             <span className="test">店舗選択</span>

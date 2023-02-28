@@ -15,7 +15,6 @@ export const Navigation: FC<Props> = ({ open, id }) => {
         <li> <Link to={'/SkillCheck/menu'}>メニュー</Link></li>
         <li><Link to={'/SkillCheck/edit'}>技能評価</Link></li>
         <li><LogOut/></li>
-      
       </ul>
     </nav>
   );
