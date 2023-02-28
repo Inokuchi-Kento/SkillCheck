@@ -9,10 +9,14 @@ export function LogOut(){
         try{
             const {error: logoutError} = await supabase.auth.signOut();
             if(logoutError) throw logoutError
-            
-            navigate("/SkillCheck/LoginPage")
         }catch{
-            alert("Logout error")
+            alert("Logout Error")
+        }
+
+        if(!supabase.auth.session()){
+            navigate("/SkillCheck/LoginPage")
+        }else{
+            alert("ログアウトできませんでした")
         }
     }
 
@@ -22,9 +26,7 @@ export function LogOut(){
 
     return(
         <div className="logout">
-            <div>
-                ログアウトします
-            </div>
+            ログアウトします...
         </div>
     )
 
