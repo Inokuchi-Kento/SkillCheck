@@ -25,7 +25,7 @@ export function ShowColumn(props: Props){
         {props.list.map((item) => (
           <tbody key={item.id}>
             <tr>
-            <Link to={{ pathname: '/SkillCheck/profile', search: `?name="${item[props.column]}"` }}>{item[props.column]}</Link>
+            <Link to={{ pathname: '/SkillCheck/Profile', search: `?name="${item[props.column]}"` }}>{item[props.column]}</Link>
             </tr>
           </tbody>
         ))}

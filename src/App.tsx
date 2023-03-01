@@ -43,7 +43,7 @@ function App(){
           <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
           <Route path='SkillCheck/SignUp' element={<SignUp/>}/>
           <Route path='/SkillCheck/ScoreEdit' element={<ScoreEdit/>}/>
-          <Route path="/SkillCheck/Profile" element={<Profile/>}/>
+          <Route path='/SkillCheck/Profile' element={<Profile/>}/>
           <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
         </Routes>
       </BrowserRouter>
