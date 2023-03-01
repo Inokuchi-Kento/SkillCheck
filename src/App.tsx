@@ -13,6 +13,8 @@ import { LoginPage } from './components/Auth';
 import HamburgerMenu from './components/HamburgerMenu';
 import { LogOut } from './components/LogOut';
 import {Chart} from './components/Chart';
+import { Edit } from './components/Edit';
+import { TestContents } from './components/TestContents';
 
 function App(){
   console.log('Appレンダリング')
@@ -39,11 +41,11 @@ function App(){
       <HamburgerMenu menuItems={menuItems}/>
       <BrowserRouter>
         <Routes>
-          <Route path='/SkillCheck' element={<Chart emp_id={10016862}/>}/>
+          <Route path='/SkillCheck' element={<TestContents/>}/>
           <Route path='/SkillCheck/LoginPage' element={<LoginPage/>}/>
           <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
           <Route path='SkillCheck/SignUp' element={<SignUp/>}/>
-          <Route path='/SkillCheck/ScoreEdit' element={<ScoreEdit/>}/>
+          <Route path='/SkillCheck/ScoreEdit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
           <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
         </Routes>

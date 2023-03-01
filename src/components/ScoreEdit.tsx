@@ -4,6 +4,8 @@ import { supabase } from "../supabaseClient";
 import { useNavigate, Link } from "react-router-dom";
 import { ScoreControl } from "./ScoreControl";
 import './ScoreEdit.css'
+import { Controller } from "./Controller";
+import { Tabs } from "./Tab";
 // import 'react-tabs/style/react-tabs.css';
 
 type StoreList = {
@@ -21,6 +23,11 @@ type SkillList = {
 }
 
 export function ScoreEdit(){
+    const tabs = [
+        {label: "基本", content: <div className="acd-content"><Controller emp_id={10016862} class_id = {101}/></div>,},
+        {label: "藤田式", content: <div className="acd-content"><Controller emp_id={10016862} class_id = {201}/></div>,},
+    ];
+
     const navigate = useNavigate()
     useEffect(()=>{
         const session = supabase.auth.session();
@@ -99,20 +106,34 @@ export function ScoreEdit(){
                             </table>
                         </label>
 
-                        <div className="acd-content">
+                        {/* <div className="tab-contents">
+                            <Tabs tabs = {tabs}/>
+                        </div> */}
+
+                        {/* <div className="acd-content">
+                            <Controller class_id={201} emp_id={empItem.id}/>
+                        </div> */}
+
+                        
+
+                        {/* <div className="acd-content">
                             <div key={empItem.id}>
                                 {skills.map((skillItem) => (
                                     <ScoreControl
                                         key={`${empItem.id}_${skillItem.skill_id}`}
                                         emp_id={empItem.id}
-                                        class_id={101}
                                         skill_id={skillItem.skill_id}
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 )}
+
+                <div className="tab-contents">
+                    <Tabs tabs = {tabs}/>
+                </div>
+
             </div>
         </div>
     )

@@ -29,7 +29,7 @@ export function Chart(props: Props){
 
     useEffect(() => {
         async function fetchData() {
-            const{data, error} = await supabase.from("emp_skill").select("*").eq("emp_id", emp_id);
+            const{data, error} = await supabase.from("emp_skill").select("*").eq("emp_id", 10185696);
             if (error) {
                 console.log(error);
                 return;
@@ -59,7 +59,7 @@ export function Chart(props: Props){
 
     return (
             <div>
-                <h2>{name.map((item)=>item.name)}</h2>
+                {/* <h2>{name.map((item)=>item.name)}</h2> */}
                 <RadarChart cx={250} cy={250} outerRadius={200} width={500} height={500} data={transData} >
                     <PolarGrid/>
                     <PolarAngleAxis dataKey="skill" />
