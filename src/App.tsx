@@ -11,6 +11,7 @@ import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
 import { ScoreEdit } from './components/ScoreEdit';
 import { Profile } from './components/Profile'
+import React from 'react';
 
 function App(){
   console.log('Appレンダリング')
@@ -24,7 +25,7 @@ function App(){
   },[])
 
   return(
-    <div>
+    <div id="rootBlock">
       {/* <Header/> */}
       {!session ? 
         <BrowserRouter>
