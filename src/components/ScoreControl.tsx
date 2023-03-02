@@ -7,7 +7,6 @@ import './ScoreEdit.css'
 type Props = {
     emp_id: number;
     skill_id: number;
-    class_id: number
 }
 
 type List = {
@@ -21,7 +20,7 @@ type Score = {
 
 export const ScoreControl = (props: Props) => {
     // 社員IDとスキルIDをpropsとして受け取る
-    const {emp_id, skill_id, class_id} = props;
+    const {emp_id, skill_id} = props;
 
     const [list, setList] = useState<List[]>([])
     const [score, setScore] = useState<Score[]>([])
@@ -36,7 +35,7 @@ export const ScoreControl = (props: Props) => {
 
     //スキル名を取得
     const fetchItem = async() => {
-        const {data, error} = await supabase.from('skills').select('*').eq('skill_id', skill_id)//.eq('class_id', class_id)
+        const {data, error} = await supabase.from('skills').select('*').eq('skill_id', skill_id)
 
         if(error) throw error;
         setList(data!)
