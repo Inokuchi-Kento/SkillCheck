@@ -12,13 +12,16 @@ import { Test } from './components/test';
 import { LoginPage } from './components/Auth';
 import HamburgerMenu from './components/HamburgerMenu';
 import { LogOut } from './components/LogOut';
+import {Chart} from './components/Chart';
+import { Edit } from './components/Edit';
+import { TestContents } from './components/TestContents';
 
 function App(){
   console.log('Appレンダリング')
 
   const menuItems = [
     { label: 'Home', link: '/SkillCheck/' },
-    { label: `技能評価`, link: '/SkillCheck/ScoreEdit'},
+    { label: `技能評価`, link: '/SkillCheck/Edit'},
     { label : `従業員検索`, link: '/SkillCheck/SearchForm'},
     { label : `ログアウト`, link: '/SkillCheck/LogOut'}
   ];
@@ -35,13 +38,15 @@ function App(){
 
   return(
     <div>
+      <HamburgerMenu menuItems={menuItems}/>
       <BrowserRouter>
         <Routes>
           <Route path='/SkillCheck' element={<Menu/>}/>
+          <Route path='/SkillCheck/Test' element={<TestContents/>}/>
           <Route path='/SkillCheck/LoginPage' element={<LoginPage/>}/>
           <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
           <Route path='SkillCheck/SignUp' element={<SignUp/>}/>
-          <Route path='/SkillCheck/ScoreEdit' element={<Edit/>}/>
+          <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
           <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
         </Routes>
