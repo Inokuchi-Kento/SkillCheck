@@ -96,9 +96,7 @@ export const ScoreControl = (props: Props) => {
             {list.map((item)=>
                 <div>
                     <table className='skill_column'>
-                        <tbody>
-                            <td>{item.skill_name}</td>
-                        </tbody>
+                        <td>{item.skill_name}</td>
                     </table>
             
                     <span className="skill_score">{"    " + score.map((item)=>item.score) + "    "}</span>
