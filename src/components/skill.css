@@ -1,5 +1,15 @@
 .skill_score{
+    position: relative;
+    left: 0px;
+    font-size: x-large;
     font-weight: 900;
+}
+
+.skill_column{
+    position: relative;
+    top: 60px;
+    left: 0px;
+    border: 1px solid;
 }
 
 .skill_name{
@@ -65,4 +75,36 @@
 
 .select select:focus {
     outline: 1px solid #545454;
+}
+
+.score_button{
+    position: relative;
+    left: 200px;
+}
+
+.dec{
+    position: relative;
+    left: 20px;
+    align-items: center;
+    border: 3px solid #333;
+    margin: 0 auto;
+    padding: 1em 2em;
+    width: 100px;
+    color: black;
+    font-size: 20px; 
+    font-weight: 900;
+    background-color: #ffffff;
+    transition: 0.1s;
+}
+
+.add{
+    background-color: pink;
+    align-items: center;
+    border: 1px solid #333;
+    margin: 0 auto;
+    padding: 1em 2em;
+    width: 100px;
+    color: rgb(38, 38, 38);
+    font-size: 20px; 
+    transition: 0.1s;
 }

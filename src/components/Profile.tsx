@@ -1,26 +1,34 @@
-import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import logo from '../icons/largeLogo.png'
 import { Header } from "./Header";
 import { Link } from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
-
-type List = {
-    name: string
-}
+import { useNavigate } from 'react-router-dom';
 
 
-export const Profile = () => {
+export function Profile(){
+    // const navigate = useNavigate()
+    // useEffect(()=>{
+    //     const session = supabase.auth.session();
+    //     if(!session){
+    //         navigate("/SkillCheck/Login")
+    //     }
+    // },[])
+
     type List ={
-        name: string
+        name: string;
+        role: string;
     }
 
     const [list, setList] = useState<List[]>([]);
+    
+    const params = new URLSearchParams(location.search);
+    const name = params.get('name');
 
     const fetchName = async() => {
-        const { data, error } = await supabase.from('employees').select('name').eq('id', 22)
+        const { data, error } = await supabase.from('employees').select('*').eq('name', name)
         setList(data!); //
     }
     return (
@@ -35,6 +43,7 @@ export const Profile = () => {
             </TabList>
             <TabPanel>
                 <h2>名前</h2>
+                <p>{name}</p>
                 <h2>部署/勤務地</h2>
                 <h2>グレード</h2>
             </TabPanel>
@@ -51,4 +60,3 @@ export const Profile = () => {
     )
 }
   
-export default Profile

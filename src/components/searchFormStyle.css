@@ -1,10 +1,10 @@
   .search_box {
     position : fixed;
-    margin-left: auto;
-    margin-right: auto;
-    top : 15%;
+    top: 15%;
+    left: 40%;
     display: flex;
     flex-flow: column;
+    justify-content: center;
   }
   
   .search_box2 {
@@ -53,13 +53,10 @@
     margin-bottom: auto;
   }
 
-  #rootBlock {
-    display: block;
-    width: auto;
-    height: auto;
-  }
-
-  .topBlock {
-    width: auto;
-    height: auto;
+  #topBlock {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
   }

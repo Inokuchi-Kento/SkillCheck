@@ -12,10 +12,9 @@ export const Navigation: FC<Props> = ({ open, id }) => {
   return (
     <nav id={id} aria-hidden={!open} className="navigation">
       <ul>
-      <Link to={'/SkillCheck/menu'}>メニュー</Link>
-        <li>管理者</li>
-      <LogOut/>
-      <Link to={'/SkillCheck'}>ログアウト</Link>
+        <li> <Link to={'/SkillCheck/menu'}>メニュー</Link></li>
+        <li><Link to={'/SkillCheck/edit'}>技能評価</Link></li>
+        <li><LogOut/></li>
       </ul>
     </nav>
   );

@@ -1,0 +1,55 @@
+.burger-button{
+    position: absolute;
+    top: 10px;
+    right: 2px;
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+    padding: 10;
+    width: 100px;
+    margin: 0;
+}
+
+.burger-button:focus{
+    outline: none;
+}
+
+.items{
+    border: 1px black solid;
+    background-color: rgb(149, 165, 166);
+    position: absolute;
+    top: 50px;
+    right: 40px;
+    z-index: 9999;
+}
+
+.list-item{
+    position: relative;
+    left:0px;
+    padding: 25px;
+    font-size: x-large;
+}
+
+.link{
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    width: 100%;
+    border-bottom: 8px solid;
+}
+ 
+ul {
+    list-style-type: none;
+    list-style-image: url();
+}
+
+
+  
+button span {
+    display: block;
+    width: 60px;
+    height: 6px;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+  
