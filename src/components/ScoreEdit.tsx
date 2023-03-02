@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect, ChangeEvent, ChangeEventHandler } from "react";
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { supabase } from "../supabaseClient";
-import { Header } from "./Header";
+import { useNavigate, Link } from "react-router-dom";
 import { ScoreControl } from "./ScoreControl";
 import './ScoreEdit.css'
 // import 'react-tabs/style/react-tabs.css';
@@ -22,6 +22,14 @@ type SkillList = {
 }
 
 export function ScoreEdit(){
+    const navigate = useNavigate()
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            navigate("/SkillCheck/LoginPage")
+        }
+    },[])
+
     const [tag, setTag] = useState('113');
     const [selected, setSelected] = useState('')
 
@@ -40,13 +48,13 @@ export function ScoreEdit(){
     const fetchEmpData = async() => {
         const {data: empData, error} = await supabase.from('employees').select('*').eq('store_id', parseInt(tag))
         setEmpList(empData!)
+
+        console.log("empdata: ",empList)
     }
 
     const fetchSkillData = async() => {
         const {data: skillData, error} = await supabase.from('skills').select('*')
         setSkills(skillData!)
-
-        console.log("skill_data: ", skillData)
     }
 
     useEffect(()=>{
@@ -60,12 +68,14 @@ export function ScoreEdit(){
     },[tag])
 
     return(
-        <div className="edit">
-            <Header/>
+        <div className="editer">
+            {/* <Header/> */}
             <h2>技能評価</h2>
+            {/* <Link to = {"/SkillCheck/search"}>検索画面へ</Link> */}
 
+            {/* 店舗選択 */}
             <span className="test">店舗選択</span>
-            <div className='select'>
+            <div className='select' >
                 <select name="column" id='tag' onChange={onChangeTag}>
                     {stores.map((item)=>
                         <option value={item.store_id}>
@@ -77,18 +87,21 @@ export function ScoreEdit(){
 
             <div>
                 {empList.map((empItem)=>
-                    <div className="emplist">
+                    <div className="emp">
                         <input id={String(empItem.id)} type="checkbox" className="acd-check" value={String(empItem.id)} checked={selected===String(empItem.id)} onChange={onChangeSelect}/>
                         <label  htmlFor={String(empItem.id)} className="acd-label">
                             <table>
                                 <tbody>
-                                    <td className="emp_id">{empItem.id}</td>
+                                    <tr>
+                                        <td className="emp_id"> {empItem.id} </td>
+                                    </tr>
                                 </tbody>
                                 <tbody>
-                                    <td className="emp_name">{empItem.name}</td>
+                                    <tr>
+                                        <td className="emp_name">{empItem.name}</td>
+                                    </tr>
                                 </tbody>
                             </table>
-                            
                         </label>
 
                         <div className="acd-content">

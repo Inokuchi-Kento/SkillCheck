@@ -9,6 +9,7 @@ type Props = {
 }
 
 type List = {
+    skill_id: number
     skill_name: string
 }
 
@@ -33,10 +34,8 @@ export const ListOfSkill = (props: Props) => {
 
     //スキル名を取得
     const fetchItem = async() => {
-        const {data, error} = await supabase
-        .from('skills')
-        .select('*')
-        .eq('skill_id', skill_id)
+        const {data, error} = await supabase.from('skills').select('*').eq('skill_id', skill_id)
+        // const {data, error} = await supabase.from('skills').select('*').limit(2)
 
         if(error) throw error;
         setList(data!)
@@ -44,11 +43,7 @@ export const ListOfSkill = (props: Props) => {
 
     //Supabaseから現在のスコアデータを取得する
     const fetchScore = async()=>{
-        const {data, error} = await supabase
-        .from('emp_skill')
-        .select('score')
-        .eq('skill_id', skill_id)
-        .eq('emp_id', emp_id)
+        const {data, error} = await supabase.from('emp_skill').select('score').eq('skill_id', skill_id).eq('emp_id', emp_id)
 
         if(error) console.log(error)
         setScore(data!)
@@ -84,22 +79,18 @@ export const ListOfSkill = (props: Props) => {
     }
 
     const UpdateScore = async(newScore: number)=>{
-        const {error: updateError} = await supabase
-        .from('emp_skill')
-        .update({"score": newScore})
-        .eq("emp_id", emp_id)
-        .eq("skill_id", skill_id)
+        const {error: updateError} = await supabase.from('emp_skill').update({"score": newScore}).eq("emp_id", emp_id).eq("skill_id", skill_id)
     }
 
     return(
         <div className='skill'>
-            <span className="skill_name">{list.map((item)=>item.skill_name)}</span>
-           
-           <span className='score_button'>
-            <button onClick={decrement} className='add'>-</button>
-            <span className="skill_score">{" " + score.map((item)=>item.score) + " "}</span>
-            <button onClick={increment} className='add'>+</button>
-           </span>
+            <span className="skill_name">{list.map((item)=>item.skill_name)}</span> 
+
+            <span className='score_button'>
+                <button onClick={decrement} className='add'>-</button>
+                <span className="skill_score">{" " + score.map((item)=>item.score) + " "}</span>
+                <button onClick={increment} className='add'>+</button>
+            </span>
         </div>
     )
 }

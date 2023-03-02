@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent } from "react";
-import {ListOfEmp} from './ListOfEmp'
+// import {ListOfEmp} from './ListOfEmp'
 import { supabase } from "../supabaseClient";
 import { SelectStore } from "./SelectStore";
 import './img.css'
@@ -66,9 +66,9 @@ export function Edit() {
           </div>
 
           <div className="accordion-menu">
-            {list.map((value)=>
+            {/* {list.map((value)=>
               <ListOfEmp id={value.id} store_id={parseInt(tag)} key={value.id}/>
-            )}
+            )} */}
           </div>
       </div>
     </div>

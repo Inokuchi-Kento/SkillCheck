@@ -86,6 +86,7 @@ export const ShowList = (props:Props) => { //function() の代わりに ()とい
       try {
         setLoading(true);
 
+
         let query = supabase.from('employees').select("*")
                                               .like(nameTag, "%" + nameText + "%")
                                               .like(roleTag, "%" + roleText + "%")
@@ -95,6 +96,7 @@ export const ShowList = (props:Props) => { //function() の代わりに ()とい
                                                       //"areas(area_id, area_name)," +
                                                       "stores(store_id, store_name)")
                                               //.like(placeTag, "%" + placeText + "%")
+
 
         const {data, error} = await query;
 

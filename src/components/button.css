@@ -13,44 +13,6 @@
     height : 336px;
 }
 
-.score_button{
-    position: relative;
-}
-
-.dec{
-    /* display: flex; */
-    /* justify-content: space-between; */
-    position: relative;
-    left: 100px;
-    align-items: center;
-    border: 3px solid #333;
-    margin: 0 auto;
-    padding: 1em 2em;
-    width: 100px;
-    color: rgb(38, 38, 38);
-    font-size: 20px; 
-    font-weight: 400;
-    background-color: #ffffff;
-    transition: 0.1s;
-}
-
-.add{
-    /* display: flex; */
-    /* justify-content: space-between; */
-    position: relative;
-    left: 100px;
-    background-color: pink;
-    align-items: center;
-    border: 1px solid #333;
-    margin: 0 auto;
-    padding: 1em 2em;
-    width: 100px;
-    color: rgb(38, 38, 38);
-    font-size: 20px; 
-    /* font-weight: 500; */
-    /* background-color: #ffffff; */
-    transition: 0.1s;
-}
 
 
 .score-name{

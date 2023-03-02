@@ -1,16 +1,25 @@
-import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import logo from '../icons/largeLogo.png'
 import { Header } from "./Header";
 import { Link } from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
+import { useNavigate } from 'react-router-dom';
 
 
-export const Profile = () => {
+export function Profile(){
+    // const navigate = useNavigate()
+    // useEffect(()=>{
+    //     const session = supabase.auth.session();
+    //     if(!session){
+    //         navigate("/SkillCheck/Login")
+    //     }
+    // },[])
+
     type List ={
-        name: string
+        name: string;
+        role: string;
     }
 
     const [list, setList] = useState<List[]>([]);
@@ -19,7 +28,7 @@ export const Profile = () => {
     const name = params.get('name');
 
     const fetchName = async() => {
-        const { data, error } = await supabase.from('employees').select('name, role').eq('id', 22)
+        const { data, error } = await supabase.from('employees').select('*').eq('name', name)
         setList(data!); //
     }
     return (
@@ -51,4 +60,3 @@ export const Profile = () => {
     )
 }
   
-export default Profile

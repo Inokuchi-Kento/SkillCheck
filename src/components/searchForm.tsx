@@ -3,13 +3,21 @@ import { useContext } from 'react';
 import { ChangeEvent, KeyboardEvent, ReactElement } from 'react'
 import {ShowList} from './Employees'
 import { supabase } from '../supabaseClient';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "./Header";
 //import logo from '../icons/largeLogo.png';
 import "./searchFormStyle.css";
 import React from 'react';
 
 export const SearchForm = () => {
+  const navigate = useNavigate()
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            navigate("/SkillCheck/Login")
+        }
+  },[])
+
 
   const [nameWord, setNameWord] = useState('');
   const [nameCond, setNameCond] = useState('');
@@ -70,8 +78,10 @@ export const SearchForm = () => {
   }
 
   return(
+
     <div id="topBlock">
       <Header />
+
       <div className = "search_box">
       <h2>青果 従業員名簿</h2>
       <div className="search_box2">
@@ -103,7 +113,9 @@ export const SearchForm = () => {
           <select name="item" id="sort" onChange={onChangeSort}>
             <option value="kana">名前</option>
             <option value="age">年齢</option>
+
             {/* <option value="date">グループ入社日</option>
+
             <option value="藤田式.初級">藤田式.初級</option>
             <option value="基礎知識">基礎知識</option>
             <option value="基礎技術">基礎技術</option>

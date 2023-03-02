@@ -40,7 +40,7 @@ export const ScoreControl = (props: Props) => {
 
         if(error) throw error;
         setList(data!)
-        console.log("skill_data: ", list)
+        // console.log("skill_data: ", list)
     }
 
     //Supabaseから現在のスコアデータを取得する
@@ -97,9 +97,7 @@ export const ScoreControl = (props: Props) => {
             {list.map((item)=>
                 <div>
                     <table className='skill_column'>
-                        <tbody>
-                            <td>{item.skill_name}</td>
-                        </tbody>
+                        <td>{item.skill_name}</td>
                     </table>
             
                     <span className="skill_score">{"    " + score.map((item)=>item.score) + "    "}</span>
