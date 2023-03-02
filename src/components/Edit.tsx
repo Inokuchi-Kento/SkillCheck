@@ -63,6 +63,8 @@ export function Edit() {
     }
   })
 
+  const filteredData = transData.filter((item)=>item.store_id === parseInt(tag))
+
   return(
     <div className="editer">
       <h2>技能評価</h2>
@@ -77,7 +79,7 @@ export function Edit() {
       </div>
 
       <div>
-      {transData.map((empItem)=>
+      {filteredData.map((empItem)=>
         <div className="emp">
           <input id={String(empItem.id)} type="checkbox" className="acd-check" value={String(empItem.id)} checked={selected===String(empItem.id)} onChange={onChangeSelect}/>
           <label  htmlFor={String(empItem.id)} className="acd-label">
@@ -92,6 +94,7 @@ export function Edit() {
           </label>
           <div className="acd-content">
               <Tabs tabs={[
+                  // {label: "test", content: <div>Test</div>},
                   {label: "基本", content: <div> <Controller emp_id={empItem.id} class_id = {101}/></div>},
                   {label: "展開", content: <div> <Controller emp_id={empItem.id} class_id = {102}/></div>},
                   {label: "商品管理", content: <div> <Controller emp_id={empItem.id} class_id = {103}/></div>},
@@ -99,18 +102,9 @@ export function Edit() {
                   {label: "藤田式", content: <div> <Controller emp_id={empItem.id} class_id = {201}/></div>},
               ]}/>
           </div>
-          {/* <div className="acd-content"> <Controller emp_id={empItem.id} class_id = {101}/></div> */}
         </div>
         
-      )}
-
-      {/* <div className="tab-contents">
-          <Tabs tabs={[
-              {label: "基本", content: <div> <Controller emp_id={22} class_id = {101}/></div>},
-              {label: "藤田式", content: <div> <Controller emp_id={22} class_id = {201}/></div>},
-          ]}/>
-      </div> */}
-      
+      )}      
       </div>
 
     </div>

@@ -1,5 +1,6 @@
 import {useState, Dispatch, SetStateAction, useEffect, FC} from 'react'
 import {supabase} from '../supabaseClient'
+import './skill.css'
 
 type Score = {
     score: number;
@@ -21,6 +22,7 @@ type Props = {
 
 //<Controller emp_id = {} class_id = {}/>
 export const Controller = (props: Props)=> {
+    // console.log("controller_render")
     const {emp_id, class_id} = props;
     const [scoreData, setScoreData] = useState<Score[]>([])
     const [isLoading, setIsLoading] = useState(true);
@@ -30,11 +32,10 @@ export const Controller = (props: Props)=> {
         .from("emp_skill")
         .select("*, employees(name), skills(skill_name, class_id)")
         .eq("emp_id", emp_id)
-        // .eq('skills.class_id', class_id);
 
         setScoreData(data!);
 
-        console.log("data: ", scoreData)
+        // console.log("data: ", scoreData)
         setIsLoading(false);
     }
 
@@ -81,6 +82,7 @@ export const Controller = (props: Props)=> {
         })
     }
 
+    // 指定されたclass_idと合致するデータのみを抽出
     const classData = transData.filter((item)=>item.class_id === class_id)
 
     return(
