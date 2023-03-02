@@ -39,6 +39,7 @@ export function Edit() {
     const {data, error} = await supabase.from('employees').select('*, stores(store_name)').eq('store_id', tag);
     setEmp(data!)
   }
+  
 
   const fetchStoreData = async()=> {
     const {data: storeData, error} = await supabase.from("stores").select("*")
