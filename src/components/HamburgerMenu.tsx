@@ -29,6 +29,7 @@ function HamburgerMenu({ menuItems }: HamburgerMenuProps) {
               <a className="link" href={item.link}>{item.label}</a>
             </li>
           ))}
+
         </ul>
       )}
     </div>

@@ -91,10 +91,14 @@ export function ScoreEdit(){
                         <label  htmlFor={String(empItem.id)} className="acd-label">
                             <table>
                                 <tbody>
-                                    <tr className="emp_id"> {empItem.id} </tr>
+                                    <tr>
+                                        <td className="emp_id"> {empItem.id} </td>
+                                    </tr>
                                 </tbody>
                                 <tbody>
-                                    <tr className="emp_name">{empItem.name}</tr>
+                                    <tr>
+                                        <td className="emp_name">{empItem.name}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </label>
