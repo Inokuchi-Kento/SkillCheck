@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect, ChangeEvent, ChangeEventHandler } from "react";
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { supabase } from "../supabaseClient";
