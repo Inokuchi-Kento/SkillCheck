@@ -24,9 +24,10 @@ export function Profile(){
     const [list, setList] = useState<List[]>([]);
     
     const params = new URLSearchParams(location.search);
-    const name = params.get('name');
+    const name = params.get('name')!.replaceAll('"', "");
 
     const fetchName = async() => {
+
         const { data, error } = await supabase.from('employees').select('*').eq('name', name)
         setList(data!); 
         console.log(list);
@@ -35,6 +36,7 @@ export function Profile(){
     useEffect(() => {
         fetchName();
       }, []);
+
     return (
         <Tabs>
             <img src={logo} className='logo'/>
@@ -48,8 +50,8 @@ export function Profile(){
             <TabPanel>
                 <h2>名前</h2>
                 <p>{name}</p>
-                <h2>部署/勤務地</h2>
-                <h2>グレード</h2>
+                <h2>所属/勤務地/担当商品/職位</h2>
+                <p>{list.map((emp)=>emp.role)}</p>
             </TabPanel>
             <TabPanel>
                 <h2>スキル</h2>
