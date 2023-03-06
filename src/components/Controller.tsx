@@ -1,6 +1,7 @@
 import {useState, Dispatch, SetStateAction, useEffect, FC} from 'react'
 import {supabase} from '../supabaseClient'
 import './skill.css'
+import './Controller.css'
 
 type Score = {
     score: number;
@@ -90,12 +91,12 @@ export const Controller = (props: Props)=> {
             <div className='skill'>
                 {classData.map((item)=>
                     <div>
-                        <table className='skill_column'>
+                        <table className='skill_table'>
                             <tbody>
-                                <td>{item.skill_name}</td>
-                                <td>{item.score}</td>
-                                <td><button onClick={()=>decScore(item.skill_id)}>-</button></td>
-                                <td><button onClick={()=>addScore(item.skill_id)}>+</button></td>
+                                <td className='skill_name'>{item.skill_name}</td>
+                                <td className='skill_score'>{item.score}</td>
+                                <td ><button className='dec_button' onClick={()=>decScore(item.skill_id)}>-</button></td>
+                                <td ><button className='add_button' onClick={()=>addScore(item.skill_id)}>+</button></td>
                             </tbody>
                         </table>
                     </div>   

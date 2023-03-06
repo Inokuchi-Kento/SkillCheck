@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, memo } from "react";
 // import {ListOfEmp} from './ListOfEmp'
 import { supabase } from "../supabaseClient";
 import { SelectStore } from "./SelectStore";
@@ -35,12 +35,12 @@ export function Edit() {
   const onChangeTag = (e:ChangeEvent<HTMLSelectElement>) => setTag(e.target.value);
   const onChangeSelect = (e:ChangeEvent<HTMLInputElement>) => setSelected(e.target.value);
 
-  const fetchData = async() => {
+  const fetchData = async () => {
     const {data, error} = await supabase.from('employees').select('*, stores(store_name)').eq('store_id', tag);
+    console.log("data_length: ", data?.length)
     setEmp(data!)
   }
   
-
   const fetchStoreData = async()=> {
     const {data: storeData, error} = await supabase.from("stores").select("*")
     setStores(storeData!)
@@ -95,7 +95,6 @@ export function Edit() {
           </label>
           <div className="acd-content">
               <Tabs tabs={[
-                  // {label: "test", content: <div>Test</div>},
                   {label: "基本", content: <div> <Controller emp_id={empItem.id} class_id = {101}/></div>},
                   {label: "展開", content: <div> <Controller emp_id={empItem.id} class_id = {102}/></div>},
                   {label: "商品管理", content: <div> <Controller emp_id={empItem.id} class_id = {103}/></div>},
