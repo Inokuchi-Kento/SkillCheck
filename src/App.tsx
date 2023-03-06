@@ -1,6 +1,6 @@
 import './App.css'
 import {useEffect, useState} from 'react'
-import { SearchForm } from './components/searchForm'
+import { SearchForm } from './components/SearchForm'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {Menu} from './components/Menu'
 import { Session } from '@supabase/gotrue-js';
@@ -46,7 +46,7 @@ function App(){
           <Route path='/SkillCheck/Test' element={<TestContents/>}/>
           <Route path='/SkillCheck/LoginPage' element={<LoginPage/>}/>
           <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
-          <Route path='SkillCheck/SignUp' element={<SignUp/>}/>
+          <Route path='/SkillCheck/SignUp' element={<SignUp/>}/>
           <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
           <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>

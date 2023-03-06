@@ -7,6 +7,10 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 
+type List ={
+    name: string;
+    role: string;
+}
 
 export function Profile(){
     // const navigate = useNavigate()
@@ -17,11 +21,6 @@ export function Profile(){
     //     }
     // },[])
 
-    type List ={
-        name: string;
-        role: string;
-    }
-
     const [list, setList] = useState<List[]>([]);
     
     const params = new URLSearchParams(location.search);
@@ -29,12 +28,17 @@ export function Profile(){
 
     const fetchName = async() => {
         const { data, error } = await supabase.from('employees').select('*').eq('name', name)
-        setList(data!); //
+        setList(data!); 
+        console.log(list);
     }
+
+    useEffect(() => {
+        fetchName();
+      }, []);
     return (
         <Tabs>
             <img src={logo} className='logo'/>
-            <Header />
+            {/* <Header /> */}
             <TabList>
                 <Tab>名前</Tab>
                 <Tab>スキル</Tab>

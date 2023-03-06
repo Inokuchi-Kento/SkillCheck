@@ -53,6 +53,7 @@ export interface FlattenedList{
   team_name: string;*/
   store_name: string;
   role: RegExpMatchArray;
+  [key: string]: string | number | RegExpMatchArray
 }
 
 interface COLUMN {
