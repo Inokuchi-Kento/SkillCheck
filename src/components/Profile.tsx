@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import logo from '../icons/largeLogo.png'
@@ -7,22 +7,27 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 
-
+type List ={
+    name: string;
+    role: string;
+}
 export const Profile = () => {
-    type List ={
-        name: string;
-        role: string;
-    }
+    
 
     const [list, setList] = useState<List[]>([]);
     
     const params = new URLSearchParams(location.search);
-    const name = params.get('name');
+    const name = params.get('name')!.replaceAll('"', "");
 
     const fetchName = async() => {
-        const { data, error } = await supabase.from('employees').select('*').eq('name', name)
+        const { data, error } = await supabase
+        .from('employees')
+        .select('*')
+        .eq('name', name)
         setList(data!); //
     }
+    useEffect(()=>{fetchName()},[])
+    console.log(list)
     return (
         <Tabs>
             <img src={logo} className='logo'/>
@@ -36,8 +41,8 @@ export const Profile = () => {
             <TabPanel>
                 <h2>名前</h2>
                 <p>{name}</p>
-                <h2>部署/勤務地</h2>
-                <h2>グレード</h2>
+                <h2>所属/勤務地/担当商品/職位</h2>
+                <p>{list.map((emp)=>emp.role)}</p>
             </TabPanel>
             <TabPanel>
                 <h2>スキル</h2>
