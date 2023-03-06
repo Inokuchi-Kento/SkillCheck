@@ -3,21 +3,22 @@ import { useContext } from 'react';
 import { ChangeEvent, KeyboardEvent, ReactElement } from 'react'
 import {ShowList} from './Employees'
 import { supabase } from '../supabaseClient';
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Header } from "./Header";
 //import logo from '../icons/largeLogo.png';
 import "./searchFormStyle.css";
 import React from 'react';
 
 export const SearchForm = () => {
-  const navigate = useNavigate()
+/*  const navigate = useNavigate();
     useEffect(()=>{
         const session = supabase.auth.session();
         if(!session){
-            navigate("/SkillCheck/Login")
+            console.log("navigate");
+            console.log(session)
+            navigate("/SkillCheck/Login");
         }
-  },[])
-
+  },[])*/
 
   const [nameWord, setNameWord] = useState('');
   const [nameCond, setNameCond] = useState('');
@@ -45,13 +46,13 @@ export const SearchForm = () => {
 
   const onClickFetch = () => {
     if(nameText == ''){
-      setNameText(".")
+      setNameText("")
     }
     if(placeText == ''){
-      setPlaceText(".")
+      setPlaceText("")
     }
     if(roleText == ''){
-      setRoleText(".")
+      setRoleText("")
     }
         const newNameText = nameText;
         const newnameTag = nameTag;
@@ -80,7 +81,7 @@ export const SearchForm = () => {
   return(
 
     <div id="topBlock">
-      <Header />
+      {/* <Header /> */}
 
       <div className = "search_box">
       <h2>青果 従業員名簿</h2>
@@ -89,6 +90,7 @@ export const SearchForm = () => {
         <div className="search_form">
           <select name="column" id='tag' onChange={onChangeNameTag}>
             <option value="name">名前</option>
+            <option value="kana">フリガナ</option>
           </select>
           <input type="text" className="inputForm" value={nameText} placeholder="検索ワードを入力" onChange={onChangeNameText} onKeyPress={doType} />
         </div>

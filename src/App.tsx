@@ -1,6 +1,6 @@
 import './App.css'
 import {useEffect, useState} from 'react'
-import { SearchForm } from './components/searchForm'
+import { SearchForm } from './components/SearchForm'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {Menu} from './components/Menu'
 import { Session } from '@supabase/gotrue-js';
@@ -15,6 +15,7 @@ import { LogOut } from './components/LogOut';
 import {Chart} from './components/Chart';
 import { Edit } from './components/Edit';
 import { TestContents } from './components/TestContents';
+import { TestTab } from './components/TestTab';
 
 function App(){
   console.log('Appレンダリング')
@@ -41,11 +42,11 @@ function App(){
       <HamburgerMenu menuItems={menuItems}/>
       <BrowserRouter>
         <Routes>
-          <Route path='/SkillCheck' element={<Menu/>}/>
+          <Route path='/SkillCheck' element={<TestTab/>}/>
           <Route path='/SkillCheck/Test' element={<TestContents/>}/>
           <Route path='/SkillCheck/LoginPage' element={<LoginPage/>}/>
           <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
-          <Route path='SkillCheck/SignUp' element={<SignUp/>}/>
+          <Route path='/SkillCheck/SignUp' element={<SignUp/>}/>
           <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
           <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
