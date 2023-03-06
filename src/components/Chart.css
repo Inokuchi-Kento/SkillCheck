@@ -1,5 +1,8 @@
 .chart-select{
     position: absolute;
     top: 400px;
-    left: 900px
+    left: 1000px;
+
+    
+    width: 400px;
 }

@@ -80,7 +80,7 @@ export const SearchForm = () => {
   return(
 
     <div id="topBlock">
-      <Header />
+      {/* <Header /> */}
 
       <div className = "search_box">
       <h2>青果 従業員名簿</h2>
