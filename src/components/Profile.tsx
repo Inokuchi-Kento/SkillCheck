@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import logo from '../icons/largeLogo.png'
 import { Header } from "./Header";
 import { Link } from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
+import { useNavigate } from 'react-router-dom';
 
 type List ={
     name: string;
     role: string;
 }
-export const Profile = () => {
-    
+
+export function Profile(){
+    // const navigate = useNavigate()
+    // useEffect(()=>{
+    //     const session = supabase.auth.session();
+    //     if(!session){
+    //         navigate("/SkillCheck/Login")
+    //     }
+    // },[])
 
     const [list, setList] = useState<List[]>([]);
     
@@ -20,18 +27,20 @@ export const Profile = () => {
     const name = params.get('name')!.replaceAll('"', "");
 
     const fetchName = async() => {
-        const { data, error } = await supabase
-        .from('employees')
-        .select('*')
-        .eq('name', name)
-        setList(data!); //
+
+        const { data, error } = await supabase.from('employees').select('*').eq('name', name)
+        setList(data!); 
+        console.log(list);
     }
-    useEffect(()=>{fetchName()},[])
-    console.log(list)
+
+    useEffect(() => {
+        fetchName();
+      }, []);
+
     return (
         <Tabs>
             <img src={logo} className='logo'/>
-            <Header />
+            {/* <Header /> */}
             <TabList>
                 <Tab>名前</Tab>
                 <Tab>スキル</Tab>
@@ -57,4 +66,3 @@ export const Profile = () => {
     )
 }
   
-export default Profile

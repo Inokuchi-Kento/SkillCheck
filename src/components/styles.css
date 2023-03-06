@@ -1,4 +1,4 @@
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -8,6 +8,7 @@ body {
   background-color: #003366;
   height: 100vh;
 }
+
 
 body,
 header,
@@ -22,10 +23,9 @@ li {
   font-size: 100%;
 }
 
-/*ここのwidth: 100%; を削除したら検索フォームの要素を中央に寄せることができた。なんで?*/
+
 div {
   display: block;
-  max-width: 100%;
   margin: 0;
   padding: 0;
   border: 0;
@@ -131,4 +131,4 @@ button {
 .navigation > ul > li {
   text-align: center;
 }
-/*これ移行のsearch_box系のスタイル指定を削除したら検索ボタンが移動した、なんで？*/
+ */

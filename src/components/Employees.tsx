@@ -2,7 +2,11 @@ import { StringifyOptions } from 'querystring';
 import { useEffect, useState ,FC, ChangeEvent } from 'react';
 import { supabase } from '../supabaseClient';
 import "./tableStyle.css";
-import {ShowColumn, List, ID, NAME, GENDER} from "./EmployeeColumn";
+import {ShowColumn, List, FlattenedList, COLUMN} from "./EmployeeColumn";
+import React from 'react';
+import { PostgrestFilterBuilder } from '@supabase/postgrest-js';
+import { setMaxListeners } from 'events';
+import { toFullWidthKatakana } from './kanaConverter';
 
 type Props = {
   nameText: string;
@@ -13,9 +17,38 @@ type Props = {
   roleTag: string;  
   sort: string;
 }
+
+const nullChecker = (a: any) => ( a===null && "-" || a );
+
+const flattenList = (list: List[]) => {
+ const extractRole: RegExp = /　.+$/
+ const transData: FlattenedList[] = list.map((item) => (
+  {
+    id: item.id,
+    name: item.name,
+    gender: item.gender,
+    age: item.age,
+    kana: toFullWidthKatakana(item.kana),
+    district_name: item.districts.district_name,
+    /*department_name: item.departments.department_name,
+    area_name: item.areas.area_name,
+    team_name: item.teams.team_name,*/
+    store_name: item.stores.store_name,
+    role: item.role.match(extractRole)!
+                       .toString()
+                       .replace("　", "")
+                       .replace("　兼　", "\n") //役職の2番目が表示されなくなる
+                       .match(extractRole)!
+                       .toString()
+                       .replace("　", "")
+                       .match(extractRole)!
+  }))
+  return transData;
+}
   
-export function ShowList(props:Props) {
+export const ShowList = (props:Props) => { //function() の代わりに ()という無名関数を最初に生成して、後でShowListという名前をつけている。この仕様が重要らしい。
     const [list, setList] = useState<List[]>([]);
+    const [flattenedList, setFlattenedList] = useState<FlattenedList[]>([]);
     const [loading, setLoading] = useState(true);
     const {nameText, 
            nameTag,
@@ -24,6 +57,24 @@ export function ShowList(props:Props) {
            roleText, 
            roleTag, 
            sort} = props;
+          
+    const updateList = (data: any[]) => { //リファクタリング必要、と言うか純粋にカッコ悪い！
+      const list: List[] = data;
+      setList(list);
+      console.log(list)
+      return list;
+    }
+
+    const updataFlattenedList = (list: List[]) => {
+      const flattenedList: FlattenedList[] = flattenList(list); 
+      const fList: FlattenedList[] = flattenedList.filter((item) => (
+          nullChecker(item[nameTag]).toString().includes(nameText) 
+          && nullChecker(item[placeTag]).toString().includes(placeText) 
+          && nullChecker(item[roleTag]).toString().includes(roleText)
+        ));
+      setFlattenedList(fList)
+      console.log(fList)
+    }
 
     console.log(props)
 
@@ -32,23 +83,29 @@ export function ShowList(props:Props) {
       try {
         setLoading(true);
 
-        let query = supabase.from('employees').select('*');
-
-        query = query.like(nameTag, "%" + nameText + "%").like(placeTag, "%" + placeText + "%").like(roleTag, "%" + roleText + "%").order(sort);
+        let query = supabase.from('employees')
+                            .select("*")
+                            .select("id, name, age, gender, kana, role," 
+                            +"districts(district_id, district_name)," 
+                            //+"departments(department_id, department_name)," 
+                            //+"areas(area_id, area_name)," 
+                            //+"teams(team_id, team_name),"
+                            +"stores(store_id, store_name)")          
 
         const {data, error} = await query;
 
         if (error) {
-            throw error;
+          throw error;
         }if (data) {
-            setList(data);
+          updataFlattenedList(updateList(data));
         }
-      }catch (error: any) {
+      } catch (error: any) {
             alert(error.message);
       } finally {
             setLoading(false);
       }
     };
+
 
     useEffect(() => {
       getServeSideData();
@@ -61,9 +118,17 @@ export function ShowList(props:Props) {
       <div className="name_skills">
         <table>
           {/*<ShowColumn list={list} column={ID} columnName = "社員番号"></ShowColumn>*/}
-          <ShowColumn list={list} column={NAME} columnName = "氏名"></ShowColumn>
-          <ShowColumn list={list} column={GENDER} columnName = "性別"></ShowColumn>
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.NAME} columnName = "氏名"></ShowColumn>
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.KANA} columnName = "フリガナ"></ShowColumn>
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.GENDER} columnName = "性別"></ShowColumn>
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.AGE} columnName = "年齢"></ShowColumn>
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.BLOCK} columnName = "ブロック"></ShowColumn>
+          {/*<ShowColumn flattenedList={flattenedList} column={COLUMN.ZONE} columnName = "ゾーン"></ShowColumn>
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.AREA} columnName = "エリア"></ShowColumn>
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.TEAM} columnName = "チーム"></ShowColumn>*/}
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.STORE} columnName = "店舗"></ShowColumn>
+          <ShowColumn flattenedList={flattenedList} column={COLUMN.ROLE} columnName = "役職"></ShowColumn>
          </table>
       </div> 
     );
-}
+};

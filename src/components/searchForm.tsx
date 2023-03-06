@@ -3,12 +3,22 @@ import { useContext } from 'react';
 import { ChangeEvent, KeyboardEvent, ReactElement } from 'react'
 import {ShowList} from './Employees'
 import { supabase } from '../supabaseClient';
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Header } from "./Header";
-import logo from '../icons/largeLogo.png';
+//import logo from '../icons/largeLogo.png';
 import "./searchFormStyle.css";
+import React from 'react';
 
 export const SearchForm = () => {
+/*  const navigate = useNavigate();
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            console.log("navigate");
+            console.log(session)
+            navigate("/SkillCheck/Login");
+        }
+  },[])*/
 
   const [nameWord, setNameWord] = useState('');
   const [nameCond, setNameCond] = useState('');
@@ -20,7 +30,7 @@ export const SearchForm = () => {
   const [placeWord, setPlaceWord] = useState('')
   const [placeCond, setPlaceCond] = useState('');
   const [placeText, setPlaceText] = useState('')
-  const [placeTag, setPlaceTag] = useState('ブロック');
+  const [placeTag, setPlaceTag] = useState('district_name');
   const onChangePlaceText = (e:ChangeEvent<HTMLInputElement>) => setPlaceText(e.target.value);
   const onChangePlaceTag = (e:ChangeEvent<HTMLSelectElement>) => setPlaceTag(e.target.value);
 
@@ -36,13 +46,13 @@ export const SearchForm = () => {
 
   const onClickFetch = () => {
     if(nameText == ''){
-      setNameText(".")
+      setNameText("")
     }
     if(placeText == ''){
-      setPlaceText(".")
+      setPlaceText("")
     }
     if(roleText == ''){
-      setRoleText(".")
+      setRoleText("")
     }
         const newNameText = nameText;
         const newnameTag = nameTag;
@@ -69,8 +79,10 @@ export const SearchForm = () => {
   }
 
   return(
-    <div>
-      <Header />
+
+    <div id="topBlock">
+      {/* <Header /> */}
+
       <div className = "search_box">
       <h2>青果 従業員名簿</h2>
       <div className="search_box2">
@@ -78,16 +90,17 @@ export const SearchForm = () => {
         <div className="search_form">
           <select name="column" id='tag' onChange={onChangeNameTag}>
             <option value="name">名前</option>
+            <option value="kana">フリガナ</option>
           </select>
           <input type="text" className="inputForm" value={nameText} placeholder="検索ワードを入力" onChange={onChangeNameText} onKeyPress={doType} />
         </div>
         <div className="search_form">
           <select name="column" id="tag" onChange={onChangePlaceTag}>
-            <option value="管轄名">ブロック</option>
-            <option value="部署名">ゾーン</option>
-            <option value="課.DIV名">エリア・ライン</option>
-            <option value="センター・エリア名">チーム</option>
-            <option value="店名">店舗</option>
+            <option value="district_name">ブロック</option>
+            {/*<option value="department_name">ゾーン</option>
+            <option value="area_id">エリア・ライン</option>
+            <option value="team_id">チーム</option>*/}
+            <option value="store_name">店舗</option>
           </select>
           <input type="text" value={placeText} placeholder="検索ワードを入力"  className="inputForm" onChange={onChangePlaceText} onKeyPress={doType} />
         </div>
@@ -102,7 +115,9 @@ export const SearchForm = () => {
           <select name="item" id="sort" onChange={onChangeSort}>
             <option value="kana">名前</option>
             <option value="age">年齢</option>
-            <option value="date">グループ入社日</option>
+
+            {/* <option value="date">グループ入社日</option>
+
             <option value="藤田式.初級">藤田式.初級</option>
             <option value="基礎知識">基礎知識</option>
             <option value="基礎技術">基礎技術</option>
@@ -141,7 +156,7 @@ export const SearchForm = () => {
             <option value="コア技術">コア技術</option>
             <option value="基礎合計">基礎合計</option>
             <option value="専門合計">専門合計</option>
-            <option value="総合計">総合計</option>
+            <option value="総合計">総合計</option>*/}
           </select>
         </div>
         </div>
