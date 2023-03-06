@@ -8,6 +8,7 @@ export function LogOut(){
     const onSignOut = async()=> {
         try{
             const {error: logoutError} = await supabase.auth.signOut();
+            console.log("ログアウト");
             if(logoutError) throw logoutError
         }catch{
             alert("Logout Error")
