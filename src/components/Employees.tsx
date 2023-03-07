@@ -18,7 +18,8 @@ type Props = {
   sort: string;
 }
 
-const nullChecker = (a: any) => ( a===null && "-" || a );
+const nullChecker = (a: any):boolean =>  ( a===null || a===undefined )
+const nullReplace = (a: any):string => ( nullChecker(a) && "---" || a.toString() ); //a===undefined を加えると、roleで検索する時に「is not a function」のエラーが発生する。
 
 const flattenList = (list: List[]) => {
  const extractRole: RegExp = /　.+$/
@@ -61,19 +62,17 @@ export const ShowList = (props:Props) => { //function() の代わりに ()とい
     const updateList = (data: any[]) => { //リファクタリング必要、と言うか純粋にカッコ悪い！
       const list: List[] = data;
       setList(list);
-      console.log(list)
       return list;
     }
 
     const updataFlattenedList = (list: List[]) => {
       const flattenedList: FlattenedList[] = flattenList(list); 
       const fList: FlattenedList[] = flattenedList.filter((item) => (
-          nullChecker(item[nameTag]).toString().includes(nameText) 
-          && nullChecker(item[placeTag]).toString().includes(placeText) 
-          && nullChecker(item[roleTag]).toString().includes(roleText)
+          nullReplace(item[nameTag]).includes(nameText) 
+          && nullReplace(item[placeTag]).includes(placeText) 
+          && nullReplace(item[roleTag]).includes(roleText)
         ));
-      setFlattenedList(fList)
-      console.log(fList)
+      setFlattenedList(fList);
     }
 
     console.log(props)
