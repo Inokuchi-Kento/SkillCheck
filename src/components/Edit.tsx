@@ -22,11 +22,7 @@ type StoreList = {
 }
 
 export function Edit() {
-  const tabs = [
-    {label: "基本", content: <div ><Controller emp_id={10016862} class_id = {101}/></div>,},
-    {label: "藤田式", content: <div ><Controller emp_id={10016862} class_id = {201}/></div>,},
-  ];
-
+  console.log("Editレンダリング")
   const [emp, setEmp] = useState<EmpData[]>([]);
   const [stores, setStores] = useState<StoreList[]>([])
   const [tag, setTag] = useState('113');
@@ -34,6 +30,12 @@ export function Edit() {
 
   const onChangeTag = (e:ChangeEvent<HTMLSelectElement>) => setTag(e.target.value);
   const onChangeSelect = (e:ChangeEvent<HTMLInputElement>) => setSelected(e.target.value);
+
+  const fetchUserData = () => {
+    const user = supabase.auth.user();
+
+    console.log("user_data: ", user)
+  }
 
   const fetchData = async () => {
     const {data, error} = await supabase.from('employees').select('*, stores(store_name)').eq('store_id', tag);
@@ -49,6 +51,7 @@ export function Edit() {
   useEffect(()=>{
     fetchData();
     fetchStoreData();
+    fetchUserData();
   },[])
 
   useEffect(()=>{
@@ -65,6 +68,7 @@ export function Edit() {
   })
 
   const filteredData = transData.filter((item)=>item.store_id === parseInt(tag))
+  console.log("filterData: ", filteredData)
 
   return(
     <div className="editer">
