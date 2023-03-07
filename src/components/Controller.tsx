@@ -13,6 +13,7 @@ type Score = {
     },
     employees:{
         name: string;
+        store_id: number;
     }
 }
 
@@ -20,6 +21,8 @@ type Props = {
     emp_id: number,
     class_id: number
 }
+
+
 
 //<Controller emp_id = {} class_id = {}/>
 export const Controller = (props: Props)=> {
@@ -31,7 +34,7 @@ export const Controller = (props: Props)=> {
     const fetchScoreData = async() => {
         const {data, error} = await supabase
         .from("emp_skill")
-        .select("*, employees(name), skills(skill_name, class_id)")
+        .select("*, employees(name, store_id), skills(skill_name, class_id)")
         .eq("emp_id", emp_id)
 
         setScoreData(data!);

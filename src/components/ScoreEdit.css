@@ -28,7 +28,7 @@
     width: 280px;
     position: relative;
     z-index: 2;
-    
+    /* transform: skew(-20deg);  */
 }
 
 .acd-content{
@@ -46,7 +46,7 @@
 }
 
 .acd-check:checked + .acd-label{
-    background-color: rgba(173, 255, 173, 0.905);
+    background-color: rgba(153, 202, 255, 0.905);
     color: rgb(215, 82, 97);
     width: 350px;
 }
