@@ -1,6 +1,6 @@
 import './App.css'
 import {useEffect, useState} from 'react'
-// import { SearchForm } from './components/SearchForm'
+import { SearchForm } from './components/searchForm'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {Menu} from './components/Menu'
 import { Session } from '@supabase/gotrue-js';
