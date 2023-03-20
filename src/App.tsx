@@ -42,14 +42,14 @@ function App(){
       <HamburgerMenu menuItems={menuItems}/>
       <BrowserRouter>
         <Routes>
-          <Route path='/SkillCheck' element={<TestTab/>}/>
+          <Route path='/SkillCheck/' element={<TestTab/>}/>
           <Route path='/SkillCheck/Test' element={<TestContents/>}/>
           <Route path='/SkillCheck/LoginPage' element={<LoginPage/>}/>
           <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
           <Route path='/SkillCheck/SignUp' element={<SignUp/>}/>
           <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
-          <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
+          {/* <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/> */}
         </Routes>
       </BrowserRouter>
     </div>

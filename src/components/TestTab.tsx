@@ -1,5 +1,4 @@
 import { Tabs } from "./Tab";
-
 import { Menu } from "./Menu";
 import { Chart } from "./Chart";
 import { Edit } from "./Edit";
@@ -7,7 +6,6 @@ import { Edit } from "./Edit";
 export function TestTab(){
     // 1. 配列オブジェクトを作ってラベルと表示したいコンテンツを書きます
     const tabs = [
-        {label: "猪口", content: <div>猪口</div>},
         {label: "メニュー", content: <Menu/>},
         {label: "レーダーチャート", content: <Chart emp_id={10128353}/>},
         {label: "技能評価", content: <Edit/>},

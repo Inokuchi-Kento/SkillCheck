@@ -3,6 +3,12 @@
     top: 400px;
     left: 1000px;
 
-    
     width: 400px;
+}
+
+.chart{
+    width: 800px;
+    background-color: white;
+    position: relative;
+    /* left: 800px */
 }
