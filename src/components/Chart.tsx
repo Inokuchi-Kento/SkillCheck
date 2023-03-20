@@ -32,7 +32,8 @@ export function Chart(props: Props){
     const skillClass = [
         {label: "基本", class_id: 101},
         {label: "展開", class_id: 102},
-        {label: "商品管理", class_id: 103},
+        {label: "商品管理1", class_id: 103},
+        {label: "商品管理2", class_id: 104},
         {label: "損益", class_id: 104},
         {label: "藤田式", class_id: 201},
     ]
@@ -80,13 +81,13 @@ export function Chart(props: Props){
     return (
             <div>
                 {/* <h2>{transData.map((item)=>item.emp_name)}</h2> */}
-                <RadarChart cx={250} cy={250} outerRadius={200} width={500} height={500} data={chartData} >
+                <RadarChart cx={250} cy={250} outerRadius={200} width={800} height={500} data={chartData} className="chart">
                     <PolarGrid/>
-                    <PolarAngleAxis dataKey="skill_id" />
+                    <PolarAngleAxis dataKey="skill_name" />
     
                     <PolarRadiusAxis angle={90} domain={[0, 3]}/>
     
-                    <Radar name='Aさん' dataKey="score" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                    <Radar name='Aさん' dataKey="score" stroke="red" fill="aqua" fillOpacity={0.6} />
                 </RadarChart>
 
                 <div className='chart-select' >

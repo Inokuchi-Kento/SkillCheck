@@ -1,30 +1,15 @@
 import { useState, useEffect, ChangeEvent, memo } from "react";
-// import {ListOfEmp} from './ListOfEmp'
 import { supabase } from "../supabaseClient";
-import { SelectStore } from "./SelectStore";
 import './ScoreEdit.css'
-import { Header } from "./Header";
 import { Controller } from "./Controller";
 import {Tabs} from "./Tab"
-
-type EmpData = {
-  id: number;
-  name: string;
-  store_id: number;
-  stores:{
-    store_name: string;
-  }
-}
-
-type StoreList = {
-  store_id: number
-  store_name :string
-}
+import EmpData from "../models/EmpData";
+import StoreData from "../models/StoreData";
 
 export function Edit() {
   console.log("Editレンダリング")
   const [emp, setEmp] = useState<EmpData[]>([]);
-  const [stores, setStores] = useState<StoreList[]>([])
+  const [stores, setStores] = useState<StoreData[]>([])
   const [tag, setTag] = useState('113');
   const [selected, setSelected] = useState('')
 
@@ -101,13 +86,13 @@ export function Edit() {
               <Tabs tabs={[
                   {label: "基本", content: <div> <Controller emp_id={empItem.id} class_id = {101}/></div>},
                   {label: "展開", content: <div> <Controller emp_id={empItem.id} class_id = {102}/></div>},
-                  {label: "商品管理", content: <div> <Controller emp_id={empItem.id} class_id = {103}/></div>},
+                  {label: "商品管理1", content: <div> <Controller emp_id={empItem.id} class_id = {103}/></div>},
+                  {label: "商品管理2", content: <div> <Controller emp_id={empItem.id} class_id = {105}/></div>},
                   {label: "損益管理", content: <div> <Controller emp_id={empItem.id} class_id = {104}/></div>},
                   {label: "藤田式", content: <div> <Controller emp_id={empItem.id} class_id = {201}/></div>},
               ]}/>
           </div>
         </div>
-        
       )}      
       </div>
 

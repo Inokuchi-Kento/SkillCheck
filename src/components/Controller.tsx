@@ -22,8 +22,6 @@ type Props = {
     class_id: number
 }
 
-
-
 //<Controller emp_id = {} class_id = {}/>
 export const Controller = (props: Props)=> {
     // console.log("controller_render")
@@ -42,7 +40,6 @@ export const Controller = (props: Props)=> {
         // console.log("data: ", scoreData)
         setIsLoading(false);
     }
-
     useEffect(()=>{
         fetchScoreData();
     },[])
