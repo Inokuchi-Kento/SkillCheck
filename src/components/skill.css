@@ -25,9 +25,8 @@
 .select {
     display: inline-block;
     position: relative;
-    border: 1px solid #545454;
     vertical-align: middle;
-    width: 236px;
+    width: 234px;
 }
 
 .select::before,
@@ -66,9 +65,11 @@
     min-width: 230px;
     height: 2.8em;
     padding: .4em 3.6em .4em .8em;
-    border: 2px solid #545454;
+    border: 3px solid #606060;
+    background-color: #fff;
     border-radius: 3px;
-    color: #ffffff;
+    color: #2a2a2a;
+    font-weight: 900;
     font-size: 1em;
     cursor: pointer;
 }

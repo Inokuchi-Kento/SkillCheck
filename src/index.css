@@ -5,8 +5,9 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #8c959e;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #ffffff;
+  /* background:linear-gradient(90deg,#b1b1ff 25%,#f2d8ff 0%,#b1b1ff 25%,#ffffff 0%); */
   /* background-color: rgb(50, 50, 50); */
 
 
@@ -32,7 +33,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  color:white
+  color:rgb(0, 0, 0)
 }
 
 h1 {

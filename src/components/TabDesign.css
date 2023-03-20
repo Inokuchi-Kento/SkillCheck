@@ -4,7 +4,7 @@
     font-weight: 900;
     justify-content: space-between;
     border-bottom: 2px solid #ddd;
-    width: 600px;
+    width: 880px;
 }
   
 .tab {
@@ -15,7 +15,7 @@
   
 .tab.active {
     border-bottom-color: #007bff;
-    border-bottom-width: 7px;
+    border-bottom-width: 10px;
 }
   
 .tab:hover {

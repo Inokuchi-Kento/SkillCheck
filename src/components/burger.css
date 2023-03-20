@@ -42,14 +42,12 @@ ul {
     list-style-image: url();
 }
 
-
-  
 button span {
     display: block;
     width: 60px;
     height: 6px;
     margin: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(48, 48, 48);
     transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
 }
   

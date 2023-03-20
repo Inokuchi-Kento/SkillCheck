@@ -6,7 +6,7 @@ td{
    table-layout: fixed;
    border: 1px solid;
    height: 80px;
-   width: 600px;
+   width: 900px;
 }
 
 .skill_name{
@@ -15,8 +15,7 @@ td{
 }
 
 .skill_score{
-    background-color: gray;
-    background: rgba(0,0,0,0.5);
+    background-color: rgb(222, 222, 222);
 }
 
 .add_button{
@@ -24,13 +23,13 @@ td{
     color: black;
     font-size: xx-large;
     height: 80px;
-    width: 143px;
+    width: 219px;
 }
 
 .dec_button{
     background-color: rgb(183, 110, 110);
     font-size: xx-large;
     height: 80px;
-    width: 143px;
+    width: 219px;
 }
 

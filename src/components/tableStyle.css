@@ -16,6 +16,7 @@
     border-left: 1px solid white;
     background: #003366;
     padding: 10px;
+    color: white;
 }
 .name_skills th{
     white-space: nowrap;

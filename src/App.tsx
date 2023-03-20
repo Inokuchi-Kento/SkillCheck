@@ -49,7 +49,7 @@ function App(){
           <Route path='/SkillCheck/SignUp' element={<SignUp/>}/>
           <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
-          {/* <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/> */}
+          <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
         </Routes>
       </BrowserRouter>
     </div>
