@@ -16,7 +16,7 @@
 
 .items{
     border: 1px black solid;
-    background-color: rgb(149, 165, 166);
+    background-color: rgb(122, 122, 122);
     position: absolute;
     top: 50px;
     right: 40px;
@@ -31,10 +31,14 @@
 }
 
 .link{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     display: inline-block;
     width: 100%;
-    border-bottom: 8px solid;
+    border-bottom: 8px solid ;
+}
+
+.link:hover{
+    color: rgb(182, 255, 255);
 }
  
 ul {
@@ -42,14 +46,12 @@ ul {
     list-style-image: url();
 }
 
-
-  
 button span {
     display: block;
     width: 60px;
     height: 6px;
     margin: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(48, 48, 48);
     transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
 }
   

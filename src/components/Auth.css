@@ -1,0 +1,25 @@
+.login-form{
+    position: relative;
+    left: 500px;
+    height: 100px;
+    width: 400px;
+    font-size: small;
+}
+
+.user{
+    width: 100%; /*親要素いっぱい広げる*/
+    padding: 10px 15px; /*ボックスを大きくする*/
+    font-size: 16px;
+    border-radius: 3px; /*ボックス角の丸み*/
+    border: 2px solid #ddd; /*枠線*/
+    box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+
+.sign-up{
+    position: relative;
+    top: 200px;
+    width: 500px;
+    border-bottom: 3px solid black;
+    color: rgb(145, 145, 255);
+    font-weight: 700;
+}

@@ -2,6 +2,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { supabase } from "../supabaseClient";
 import { SignUp } from "./SignUp";
 import { Link, useNavigate, Navigate } from "react-router-dom";
+import './Auth.css'
 import { Session } from '@supabase/gotrue-js';
 
 
@@ -36,21 +37,21 @@ export function LoginPage(){
 
     return (
         <div>
-            <form onSubmit={HandleLogin}>
-                <label htmlFor="">
+            <form onSubmit={HandleLogin} className='login-form'>
+                <label >
                     <div>
                         Email:
-                        <input type="email" name="email" value={email} placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+                        <input type="email" name="email" value={email} placeholder="Email" onChange={(e)=>setEmail(e.target.value)} className="user"/>
                     </div>
                     <div>
                         パスワード:
-                        <input type="password" name="password" value={password} placeholder="パスワード" onChange={(e)=>setPassword(e.target.value)}/>
+                        <input type="password" name="password" value={password} placeholder="パスワード" onChange={(e)=>setPassword(e.target.value)} className="user"/>
                     </div>
                 </label>
                 <button type="submit">ログイン</button>
             </form>
-            <div className="sign-up">
-                <Link to = {"/SkillCheck/SignUp"}>ユーザー登録はこちら</Link>
+            <div >
+                <Link to = {"/SkillCheck/SignUp"} className="sign-up">ユーザー登録はこちら</Link>
             </div>
         </div>
         

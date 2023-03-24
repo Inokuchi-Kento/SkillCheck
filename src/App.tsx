@@ -16,6 +16,7 @@ import {Chart} from './components/Chart';
 import { Edit } from './components/Edit';
 import { TestContents } from './components/TestContents';
 import { TestTab } from './components/TestTab';
+import { User } from './components/User';
 
 function App(){
   console.log('Appレンダリング')
@@ -49,7 +50,7 @@ function App(){
           <Route path='/SkillCheck/SignUp' element={<SignUp/>}/>
           <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
-          {/* <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/> */}
+          <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
         </Routes>
       </BrowserRouter>
     </div>
