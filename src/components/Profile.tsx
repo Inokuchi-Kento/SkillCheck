@@ -1,6 +1,6 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import logo from '../icons/largeLogo.png'
+// import logo from '../icons/largeLogo.png'
 import { Header } from "./Header";
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
@@ -54,7 +54,7 @@ export function Profile(){
 
     return (
         <Tabs>
-            <img src={logo} className='logo'/>
+            {/* <img src={logo} className='logo'/> */}
             {/* <Header /> */}
             <TabList>
                 <Tab>名前</Tab>
@@ -75,6 +75,7 @@ export function Profile(){
             </TabPanel>
             <TabPanel>
                 <h2>スキル詳細</h2>
+                <Chart emp_id={10128353}/>
             </TabPanel>
             <TabPanel>
                 <h2>その他</h2>
