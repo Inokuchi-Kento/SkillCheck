@@ -19,6 +19,16 @@
     font-size: small;
 }
 
+.acd-default{
+    border: 1px solid black;
+    position: absolute;
+    top: 300px;
+    left: 500px;
+    width: 800px;
+    visibility: visible;
+}
+
+
 .acd-label{
     border-bottom: 6px solid rgb(81, 81, 81);
     border-right: 1px solid rgb(231, 212, 212);
@@ -55,6 +65,10 @@
     background:linear-gradient(290deg,#fff1f7 0%,#f2d8ff 0%,#5c64ff 10%,#ffffff 10%);
     color: rgb(215, 82, 97);
     width: 350px;
+}
+
+.acd-check:checked + .acd-default{
+    visibility: hidden;
 }
 
 .acd-check:checked + .acd-label + .acd-content{

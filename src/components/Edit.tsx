@@ -6,25 +6,52 @@ import {Tabs} from "./Tab"
 import EmpData from "../models/EmpData";
 import StoreData from "../models/StoreData";
 
+interface User {
+  id: number;
+  email: string;
+  store_id: number;
+}
+
 export function Edit() {
   console.log("Editレンダリング")
+  const [isLoading, setIsLoading] = useState(true);
   const [emp, setEmp] = useState<EmpData[]>([]);
   const [stores, setStores] = useState<StoreData[]>([])
   const [tag, setTag] = useState('113');
   const [selected, setSelected] = useState('')
+  const [user, setUser] = useState<User[]>([])
 
   const onChangeTag = (e:ChangeEvent<HTMLSelectElement>) => setTag(e.target.value);
   const onChangeSelect = (e:ChangeEvent<HTMLInputElement>) => setSelected(e.target.value);
 
-  const fetchUserData = () => {
-    const user = supabase.auth.user();
+  // const fetchUserData = async() => {
+  //   const session = supabase.auth.user();
+  //   console.log('user_type: ', session!);
 
-    console.log("user_data: ", user)
-  }
+  //   if (session) {
+  //     console.log(":", session.id)
+  //     const { data: dbUser, error } = await supabase
+  //       .from('users')
+  //       .select('*') // 他の必要なプロパティを追加
+  //       .eq('id', session.id)
+  //     if (error) {
+  //       console.error(error);
+  //       return;
+  //     }
+  //     setUser(dbUser!);
+  //     setIsLoading(false);
+  //   }
+  // }
+
+  // const userStoreID = parseInt(String(user.map((item) => item.store_id)))
+  // console.log("store_id: ", userStoreID)
+
+  // if(isLoading){
+  //   return <div>Loading...</div>
+  // }
 
   const fetchData = async () => {
     const {data, error} = await supabase.from('employees').select('*, stores(store_name)').eq('store_id', tag);
-    console.log("data_length: ", data?.length)
     setEmp(data!)
   }
   
@@ -36,7 +63,7 @@ export function Edit() {
   useEffect(()=>{
     fetchData();
     fetchStoreData();
-    fetchUserData();
+    // fetchUserData();
   },[])
 
   useEffect(()=>{
@@ -56,6 +83,11 @@ export function Edit() {
   console.log("filterData: ", filteredData)
 
   return(
+    <div>
+    {/* <h1 className="acd-default">
+            従業員を選択してください
+    </h1> */}
+
     <div className="editer">
       <h2>技能評価</h2>
       <div className='select' >
@@ -95,7 +127,7 @@ export function Edit() {
         </div>
       )}      
       </div>
-
+    </div>
     </div>
   )
 }

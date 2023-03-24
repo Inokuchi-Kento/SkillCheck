@@ -16,6 +16,7 @@ import {Chart} from './components/Chart';
 import { Edit } from './components/Edit';
 import { TestContents } from './components/TestContents';
 import { TestTab } from './components/TestTab';
+import { User } from './components/User';
 
 function App(){
   console.log('Appレンダリング')

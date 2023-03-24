@@ -6,8 +6,8 @@
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #ffffff;
-  /* background:linear-gradient(90deg,#b1b1ff 25%,#f2d8ff 0%,#b1b1ff 25%,#ffffff 0%); */
+  /* background-color: #ffffff; */
+  background:linear-gradient(230deg,#b1b1ff 0%,#b1b1ff 0%,#b1b1ff 8%,#ffffff 0%);
   /* background-color: rgb(50, 50, 50); */
 
 
