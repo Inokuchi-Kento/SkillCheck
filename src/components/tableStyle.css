@@ -25,6 +25,13 @@
     position: sticky;
     top: 0;
     left: 0;
+    padding: 5px;
+}
+.name_skills td:first-child{
+    position: sticky;
+    top: 40%;
+    left: 0%;
+    z-index: 1000;
 }
 .name_skills tr:first-child th{
     border-top: 1px solid white;

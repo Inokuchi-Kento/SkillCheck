@@ -35,6 +35,8 @@ export const Controller = (props: Props)=> {
         .eq("emp_id", emp_id)
 
         setScoreData(data!);
+        console.log(scoreData);
+
 
         // console.log("data: ", scoreData)
         setIsLoading(false);
