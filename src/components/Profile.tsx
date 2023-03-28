@@ -77,24 +77,17 @@ export function Profile(){
             {/* <img src={logo} className='logo'/> */}
             {/* <Header /> */}
             <TabList>
-                <Tab>名前</Tab>
-                <Tab>スキル</Tab>
                 <Tab>スキル詳細</Tab>
-                <Tab>その他</Tab>
+                <Tab>社員詳細</Tab>
             </TabList>
-            <TabPanel>
-                <h2>名前</h2>
-                <p>{list.map((emp) => emp.name)}</p>
-                <h2>所属/勤務地/担当商品/職位</h2>
-                <p>{list.map((emp)=>emp.role)}</p>
-            </TabPanel>
+            
             <TabPanel>
                 {/* <h2>スキル</h2> */}
                 {/* <p>{score.map((item)=>item.score)}</p> */}
                 <table className='score_table'>
                     <thead>
-                        <th>スキル名</th>
-                        <th>スコア</th>
+                        <th>技能項目</th>
+                        <th>評点</th>
                     </thead>
                     {transData.map((data)=>
                     <tbody>
@@ -106,11 +99,10 @@ export function Profile(){
                 <Chart emp_id={parseInt(id)}/>
             </TabPanel>
             <TabPanel>
-                <h2>スキル詳細</h2>
-                <Chart emp_id={10128353}/>
-            </TabPanel>
-            <TabPanel>
-                <h2>その他</h2>
+                <h2>名前</h2>
+                <p>{list.map((emp) => emp.name)}</p>
+                <h2>所属/勤務地/担当商品/職位</h2>
+                <p>{list.map((emp)=>emp.role)}</p>
             </TabPanel>
         </Tabs>
     )

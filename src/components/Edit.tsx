@@ -5,6 +5,7 @@ import { Controller } from "./Controller";
 import {Tabs} from "./Tab"
 import EmpData from "../models/EmpData";
 import StoreData from "../models/StoreData";
+import {Link} from "react-router-dom";
 
 interface User {
   id: number;
@@ -123,10 +124,12 @@ export function Edit() {
                   {label: "損益管理", content: <div> <Controller emp_id={empItem.id} class_id = {104}/></div>},
                   {label: "藤田式", content: <div> <Controller emp_id={empItem.id} class_id = {201}/></div>},
               ]}/>
+              <Link to={{ pathname: '/SkillCheck/Profile', search: `?id=${empItem.id}`}} className="to_profile">プロフィールページへ▶︎</Link>
           </div>
         </div>
       )}      
       </div>
+      
     </div>
     </div>
   )
