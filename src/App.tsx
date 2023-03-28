@@ -43,7 +43,7 @@ function App(){
       <HamburgerMenu menuItems={menuItems}/>
       <BrowserRouter>
         <Routes>
-          <Route path='/SkillCheck/' element={<User/>}/>
+          <Route path='/SkillCheck/' element={<TestTab/>}/>
           <Route path='/SkillCheck/Test' element={<TestContents/>}/>
           <Route path='/SkillCheck/LoginPage' element={<LoginPage/>}/>
           <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
