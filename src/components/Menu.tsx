@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import {SearchForm} from './SearchForm'
+// import {SearchForm} from './SearchForm'
 import vegetable from '../icons/vegetable.png'
 import fish from "../icons/fish.png"
 import flesh from "../icons/flesh.png"

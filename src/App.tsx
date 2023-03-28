@@ -17,6 +17,7 @@ import { Edit } from './components/Edit';
 import { TestContents } from './components/TestContents';
 import { TestTab } from './components/TestTab';
 import { User } from './components/User';
+import { SearchEmp } from './components/SearchEmp';
 
 function App(){
   console.log('Appレンダリング')
@@ -24,7 +25,7 @@ function App(){
   const menuItems = [
     { label: 'Home', link: '/SkillCheck/' },
     { label: `技能評価`, link: '/SkillCheck/Edit'},
-    { label : `従業員検索`, link: '/SkillCheck/SearchForm'},
+    { label : `従業員リスト`, link: '/SkillCheck/SearchForm'},
     { label : `ログアウト`, link: '/SkillCheck/LogOut'}
   ];
 
@@ -43,7 +44,7 @@ function App(){
       <HamburgerMenu menuItems={menuItems}/>
       <BrowserRouter>
         <Routes>
-          <Route path='/SkillCheck/' element={<TestTab/>}/>
+          <Route path='/SkillCheck/' element={<Menu/>}/>
           <Route path='/SkillCheck/Test' element={<TestContents/>}/>
           <Route path='/SkillCheck/LoginPage' element={<LoginPage/>}/>
           <Route path='/SkillCheck/LogOut' element={<LogOut/>}/>
@@ -51,6 +52,7 @@ function App(){
           <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
           <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
+          <Route path='/SkillCheck/Search' element={<SearchEmp/>}/>
         </Routes>
       </BrowserRouter>
     </div>

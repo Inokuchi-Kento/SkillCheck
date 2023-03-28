@@ -37,14 +37,14 @@ export function Profile(){
     const [score, setScore] = useState<Score[]>([]);
     
     const params = new URLSearchParams(location.search);
-    const name = params.get('name')!.replaceAll('"', "");
+    // const name = params.get('name')!.replaceAll('"', "");
     const id = params.get('id')!.replaceAll('"', "");
 
     console.log("id: ",typeof(id))
 
     const fetchName = async() => {
 
-        const { data, error } = await supabase.from('employees').select('*').eq('name', name)
+        const { data, error } = await supabase.from('employees').select('*').eq('id', id)
         setList(data!); 
         console.log(list);
     }
@@ -84,7 +84,7 @@ export function Profile(){
             </TabList>
             <TabPanel>
                 <h2>名前</h2>
-                <p>{name}</p>
+                <p>{list.map((emp) => emp.name)}</p>
                 <h2>所属/勤務地/担当商品/職位</h2>
                 <p>{list.map((emp)=>emp.role)}</p>
             </TabPanel>

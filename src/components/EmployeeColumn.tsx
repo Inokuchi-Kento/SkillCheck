@@ -170,7 +170,7 @@ export const COLUMN: COLUMN = {
   HUJITA_ADVANCE: "hujitaAdvance"
 }
 
-type Props = { //Propsを定義したらエラーが治った、何で？
+type Props = { 
     trancedData: TrancedData[];
     column: keyof TrancedData;
     columnName: string;
@@ -193,7 +193,7 @@ export const ShowColumn = (props: Props) => {
         {props.trancedData.sort(sortList).map((item) => (
           <tbody key={item.id}>
             <tr>
-            <Link to={{ pathname: '/SkillCheck/Profile', search: `?name="${item[props.column]}"&id=${item.id}` }}>{item[props.column]}</Link>
+            <Link to={{ pathname: '/SkillCheck/Profile', search: `?id=${item.id}`}}>{item[props.column]}</Link>
             </tr>
           </tbody>
         ))}

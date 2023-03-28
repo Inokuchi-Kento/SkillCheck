@@ -62,7 +62,7 @@
 
 .acd-check:checked + .acd-label{
     /* background-color: rgba(153, 202, 255, 0.905); */
-    background:linear-gradient(290deg,#fff1f7 0%,#f2d8ff 0%,#5c64ff 10%,#ffffff 10%);
+    background:linear-gradient(290deg,#fff1f7 0%,#5c64ff 0%,#5c64ff 10%,#ffffff 0%);
     color: rgb(215, 82, 97);
     width: 350px;
 }
