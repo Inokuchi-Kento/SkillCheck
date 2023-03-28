@@ -9,9 +9,9 @@ export interface List {
     gender: string;
     age: number;
     districts: Districts;
-    departments: Departments;
+    /*departments: Departments;
     areas: Areas;
-    teams: Teams;
+    teams: Teams;*/
     stores: Stores;
     role: string;
 }
@@ -21,7 +21,7 @@ interface Districts {
   district_name: string;
 }
 
-interface Departments {
+/*interface Departments {
   department_id: number;
   department_name: string;
 }
@@ -34,11 +34,45 @@ interface Areas {
 interface Teams {
   team_id: number;
   team_name: string;
-}
+}*/
 
 interface Stores {
   store_id: number;
   store_name: string;
+}
+
+export interface ScoreData {
+  score: number;
+  emp_id: number;
+  skill_id: number;
+  skills:{
+      skill_name: string;
+      class_id: number;
+  },
+  employees:{
+      name: string;
+  }
+}
+
+export interface Scores {
+  basicSkill: number;
+  advanceSkill: number;
+  expartSkill: number;
+  coreSkill: number;
+  impGoods: number;
+  layout: number;
+  evening: number;
+  stock: number;
+  freshness: number;
+  loss: number;
+  single: number;
+  multiple: number;
+  profit: number;
+  hr: number;
+  hujitaBasic: number;
+  hujitaMiddle: number;
+  hujitaAdvance: number;
+  [key: string]: string | number 
 }
 
 export interface FlattenedList{
@@ -52,8 +86,53 @@ export interface FlattenedList{
   area_name: string;
   team_name: string;*/
   store_name: string;
-  role: RegExpMatchArray;
-  [key: string]: string | number | RegExpMatchArray
+  role: string;
+  [key: string]: string | number
+}
+
+export interface TrancedData{
+  id: number;
+  name: string;
+  kana: string;
+  gender: string;
+  age: number;
+  district_name: string;
+  /*department_name: string;
+  area_name: string;
+  team_name: string;*/
+  store_name: string;
+  role: string;
+  basicSkill: number;
+  advanceSkill: number;
+  expartSkill: number;
+  coreSkill: number;
+  impGoods: number;
+  layout: number;
+  evening: number;
+  stock: number;
+  freshness: number;
+  loss: number;
+  single: number;
+  multiple: number;
+  profit: number;
+  hr: number;
+  hujitaBasic: number;
+  hujitaMiddle: number;
+  hujitaAdvance: number;
+  [key: string]: string | number
+}
+
+export interface Score {
+  score: number;
+  emp_id: number;
+  skill_id: number;
+  skills:{
+      skill_name: string;
+      class_id: number;
+  },
+  employees:{
+      name: string;
+  }
 }
 
 interface COLUMN {
@@ -71,21 +150,47 @@ export const COLUMN: COLUMN = {
   AREA: "area_name",
   TEAM: "team_name",*/
   STORE: "store_name",
-  ROLE: "role"
+  ROLE: "role",
+  BASIC_SKILL: "basicSkill",
+  ADVANCE_SKILL: "advanceSkill",
+  EXPART_SKILL: "expartSkill",
+  CORE_SKILL: "coreSkill",
+  IMP_GOODS: "impGoods",
+  LAYOUT: "layout",
+  EVENING: "evening",
+  STOCK: "stock",
+  FRESHNESS: "freshness",
+  LOSS: "loss",
+  SINGLE: "single",
+  MULTIPLE: "multiple",
+  PROFIT: "profit",
+  HR: "hr",
+  HUJITA_BASIC: "hujitaBasic",
+  HUJITA_MIDDLE: "hujitaMiddle",
+  HUJITA_ADVANCE: "hujitaAdvance"
 }
 
 type Props = { //Propsを定義したらエラーが治った、何で？
-    flattenedList: FlattenedList[];
-    column: keyof FlattenedList;
+    trancedData: TrancedData[];
+    column: keyof TrancedData;
     columnName: string;
+    sort: string;
+    asc: string;
 }
 
 export const ShowColumn = (props: Props) => {
+
+  const sortList = (a: FlattenedList, b: FlattenedList) => {
+    if (a[props.sort].toString() < b[props.sort].toString()) return props.asc === 'asc' ? -1 : 1;
+    if (a[props.sort].toString() > b[props.sort].toString()) return props.asc === 'asc' ? 1 : -1;
+    return 0;
+  };
+
   if(props.column === COLUMN.NAME){
     return (
-      <td>
-      <th>{props.columnName}</th>
-        {props.flattenedList.map((item) => (
+      <td className="sticky_cloumn">
+      <th className="sticky_row">{props.columnName}</th>
+        {props.trancedData.sort(sortList).map((item) => (
           <tbody key={item.id}>
             <tr>
             <Link to={{ pathname: '/SkillCheck/Profile', search: `?name="${item[props.column]}"` }}>{item[props.column]}</Link>
@@ -97,8 +202,8 @@ export const ShowColumn = (props: Props) => {
   } else {
     return (
       <td>
-      <th>{props.columnName}</th>
-        {props.flattenedList.map((item) => (
+      <th className="sticky_row">{props.columnName}</th>
+        {props.trancedData.sort(sortList).map((item) => (
           <tbody key={item.id}>
             <tr>{item[props.column]}</tr>
           </tbody>
