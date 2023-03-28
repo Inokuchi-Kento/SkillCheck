@@ -79,8 +79,6 @@ export function Profile(){
             <TabList>
                 <Tab>名前</Tab>
                 <Tab>スキル</Tab>
-                <Tab>スキル詳細</Tab>
-                <Tab>その他</Tab>
             </TabList>
             <TabPanel>
                 <h2>名前</h2>
@@ -104,13 +102,6 @@ export function Profile(){
                     )}
                 </table>
                 <Chart emp_id={parseInt(id)}/>
-            </TabPanel>
-            <TabPanel>
-                <h2>スキル詳細</h2>
-                <Chart emp_id={10128353}/>
-            </TabPanel>
-            <TabPanel>
-                <h2>その他</h2>
             </TabPanel>
         </Tabs>
     )
