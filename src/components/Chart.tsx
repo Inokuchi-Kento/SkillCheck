@@ -88,7 +88,7 @@ export function Chart(props: Props){
                     さんのデータ
                 </h2>
                 
-                <RadarChart cx={300} cy={300} outerRadius={220} width={800} height={800} data={chartData} className="chart">
+                <RadarChart cx={300} cy={300} outerRadius={220} width={700} height={800} data={chartData} className="chart">
                     <PolarGrid/>
                     <PolarAngleAxis dataKey="skill_name" />
     

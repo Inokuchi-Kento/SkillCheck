@@ -193,7 +193,7 @@ export const ShowColumn = (props: Props) => {
         {props.trancedData.sort(sortList).map((item) => (
           <tbody key={item.id}>
             <tr>
-            <Link to={{ pathname: '/SkillCheck/Profile', search: `?name="${item[props.column]}"` }}>{item[props.column]}</Link>
+            <Link to={{ pathname: '/SkillCheck/Profile', search: `?name="${item[props.column]}"&id=${item.id}` }}>{item[props.column]}</Link>
             </tr>
           </tbody>
         ))}

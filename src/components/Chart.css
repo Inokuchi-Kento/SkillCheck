@@ -38,7 +38,7 @@
     background-color: white;
     position: absolute;
     top: 50px;
-    left: 600px 
+    left: 340px 
 }
 
 .name{
@@ -49,5 +49,11 @@
 
 .emp_data{
     position: absolute;
-    left: 150px;
+    top: 80px;
+    left: 120px;
+}
+
+.score_table{
+    position: absolute;
+    left: 1100px;
 }
