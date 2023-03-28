@@ -11,7 +11,7 @@ type ScoreList = {
     emp_id: number;
     skill_id: number;
     score: number
-    enployees: {
+    employees: {
         name: string;
     };
     skills:{
@@ -49,12 +49,14 @@ export function Chart(props: Props){
     useEffect(() => {
         async function fetchData() {
             const{data: scoredata, error} = await supabase.from("emp_skill").select("*, employees(name), skills(skill_name, class_id)").eq("emp_id", emp_id);
+            const{data: namedata, error: nameError} = await supabase.from("employees").select("name").eq("id", emp_id);
             if (error) {
                 console.log(error);
                 return;
             }
 
             setScoreList(scoredata!);
+            setName(namedata!);
             setIsLoading(false);
         }
         fetchData();
@@ -66,22 +68,27 @@ export function Chart(props: Props){
 
     const transData = scoreList.map((score) => {
         return {
-          skill_id: score.skill_id,
-          score: score.score,
-          emp_id: score.emp_id,
-          skill_name: score.skills.skill_name,
-          class_id: score.skills.class_id,
+            skill_id: score.skill_id,
+            score: score.score,
+            emp_id: score.emp_id,
+            emp_name: score.employees.name,
+            skill_name: score.skills.skill_name,
+            class_id: score.skills.class_id,
         };
     });
 
-    const chartData = transData.filter((item)=>item.class_id === parseInt(tag))
+    console.log("data: ", transData)
 
-    console.log("data: ", chartData)
+    const chartData = transData.filter((item)=>item.class_id === parseInt(tag))
 
     return (
             <div>
-                {/* <h2>{transData.map((item)=>item.emp_name)}</h2> */}
-                <RadarChart cx={250} cy={250} outerRadius={200} width={800} height={500} data={chartData} className="chart">
+                <h2 className='emp_data'>
+                    <span className='name'>{name.map((item)=>item.name)}  </span>
+                    さんのデータ
+                </h2>
+                
+                <RadarChart cx={300} cy={300} outerRadius={220} width={700} height={800} data={chartData} className="chart">
                     <PolarGrid/>
                     <PolarAngleAxis dataKey="skill_name" />
     
@@ -90,7 +97,7 @@ export function Chart(props: Props){
                     <Radar name='Aさん' dataKey="score" stroke="red" fill="aqua" fillOpacity={0.6} />
                 </RadarChart>
 
-                <div className='chart-select' >
+                <div className='selectbox-005' >
                     <select name="column" id='tag' onChange={onChangeTag}>
                     {skillClass.map((item)=>
                         <option value={item.class_id}>
