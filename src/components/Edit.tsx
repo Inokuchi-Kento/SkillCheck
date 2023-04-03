@@ -1,4 +1,5 @@
 import { useState, useEffect, ChangeEvent, memo } from "react";
+import { useNavigate } from 'react-router-dom';
 import { supabase } from "../supabaseClient";
 import './ScoreEdit.css'
 import { Controller } from "./Controller";
@@ -15,6 +16,14 @@ interface User {
 
 export function Edit() {
   console.log("Editレンダリング")
+  const navigate = useNavigate()
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            navigate("/SkillCheck/LoginPage")
+        }
+    },[])
+    
   const [isLoading, setIsLoading] = useState(true);
   const [emp, setEmp] = useState<EmpData[]>([]);
   const [stores, setStores] = useState<StoreData[]>([])

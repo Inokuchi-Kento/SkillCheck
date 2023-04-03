@@ -12,13 +12,13 @@ import "./button.css"
 import { supabase } from "../supabaseClient";
 
 export function Menu() {
-    // const navigate = useNavigate()
-    // useEffect(()=>{
-    //     const session = supabase.auth.session();
-    //     if(!session){
-    //         navigate("/SkillCheck/LoginPage")
-    //     }
-    // },[])
+    const navigate = useNavigate()
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            navigate("/SkillCheck/LoginPage")
+        }
+    },[])
 
     return (
         <div>

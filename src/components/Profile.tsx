@@ -1,13 +1,9 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-// import logo from '../icons/largeLogo.png'
-import { Header } from "./Header";
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { Chart } from './Chart';
-import { type } from 'os';
 
 type List ={
     name: string;
@@ -25,25 +21,23 @@ type Skills = {
 }
 
 export function Profile(){
-    // const navigate = useNavigate()
-    // useEffect(()=>{
-    //     const session = supabase.auth.session();
-    //     if(!session){
-    //         navigate("/SkillCheck/Login")
-    //     }
-    // },[])
+    const navigate = useNavigate()
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            navigate("/SkillCheck/LoginPage")
+        }
+    },[])
     
     const [list, setList] = useState<List[]>([]);
     const [score, setScore] = useState<Score[]>([]);
     
     const params = new URLSearchParams(location.search);
-    // const name = params.get('name')!.replaceAll('"', "");
     const id = params.get('id')!.replaceAll('"', "");
 
     console.log("id: ",typeof(id))
 
     const fetchName = async() => {
-
         const { data, error } = await supabase.from('employees').select('*').eq('id', id)
         setList(data!); 
         console.log(list);
@@ -51,7 +45,6 @@ export function Profile(){
 
     const fetchScore = async()=>{
         const {data, error} = await supabase.from("emp_skill").select("*, skills(skill_name)").eq("emp_id", id)
-
         if(error) console.log(error)
         
         setScore(data!)
@@ -77,13 +70,11 @@ export function Profile(){
             {/* <img src={logo} className='logo'/> */}
             {/* <Header /> */}
             <TabList>
-                <Tab>スキル詳細</Tab>
+                <Tab>スキルデータ詳細</Tab>
                 <Tab>社員詳細</Tab>
             </TabList>
             
             <TabPanel>
-                {/* <h2>スキル</h2> */}
-                {/* <p>{score.map((item)=>item.score)}</p> */}
                 <table className='score_table'>
                     <thead>
                         <th>技能項目</th>

@@ -16,7 +16,7 @@
 
 .items{
     border: 1px black solid;
-    background-color: rgb(122, 122, 122);
+    background-color: rgb(255, 255, 255);
     position: absolute;
     top: 50px;
     right: 40px;
@@ -31,7 +31,7 @@
 }
 
 .link{
-    color: rgb(255, 255, 255);
+    color: rgb(105, 105, 255);
     display: inline-block;
     width: 100%;
     border-bottom: 8px solid ;
