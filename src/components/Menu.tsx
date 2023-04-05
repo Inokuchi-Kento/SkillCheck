@@ -24,6 +24,7 @@ export function Menu() {
         <div>
             {/* <Header /> */}
             <h3>メニュー画面</h3>
+            <a href="Edit">edit</a>
             <Link to={"/SkillCheck/SearchForm"}>
                 <img src={vegetable} className="department"/>
             </Link>
