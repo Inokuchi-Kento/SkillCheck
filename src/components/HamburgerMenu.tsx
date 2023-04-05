@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./burger.css"
+
 
 interface MenuItem {
   label: string;
@@ -29,7 +31,6 @@ function HamburgerMenu({ menuItems }: HamburgerMenuProps) {
               <a className="link" href={item.link}>{item.label}</a>
             </li>
           ))}
-
         </ul>
       )}
     </div>
