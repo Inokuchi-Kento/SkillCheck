@@ -88,13 +88,13 @@ export function Chart(props: Props){
                     さんのデータ
                 </h2>
                 
-                <RadarChart cx={300} cy={300} outerRadius={220} width={700} height={800} data={chartData} className="chart">
+                <RadarChart cx={320} cy={300} outerRadius={220} width={720} height={800} data={chartData} className="chart">
                     <PolarGrid/>
                     <PolarAngleAxis dataKey="skill_name" />
     
-                    <PolarRadiusAxis angle={90} domain={[0, 3]}/>
+                    <PolarRadiusAxis angle={90} domain={[0, 3]} tickCount={4}/>
     
-                    <Radar name='Aさん' dataKey="score" stroke="red" fill="aqua" fillOpacity={0.6} />
+                    <Radar name='Aさん' dataKey="score" stroke="red" fill="aqua" fillOpacity={0.4} />
                 </RadarChart>
 
                 <div className='selectbox-005' >
