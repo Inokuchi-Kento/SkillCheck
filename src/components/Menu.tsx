@@ -10,13 +10,6 @@ import { supabase } from "../supabaseClient";
 import HamburgerMenu from "./HamburgerMenu";
 import menuItems from "./MenuItems";
 
-// const menuItems = [
-//     { label: 'Home', link: '/SkillCheck/' },
-//     { label: `技能評価`, link: 'Edit'},
-//     { label : `従業員リスト`, link: '/SkillCheck/SearchForm'},
-//     { label : `ログアウト`, link: 'LogOut'}
-// ];
-
 export function Menu() {
     const navigate = useNavigate()
     useEffect(()=>{
@@ -28,7 +21,6 @@ export function Menu() {
 
     return (
         <div>
-            {/* <Header /> */}
             <HamburgerMenu menuItems={menuItems}/>
             <h3>メニュー画面</h3>
             <Link to={"/SkillCheck/SearchForm"}>

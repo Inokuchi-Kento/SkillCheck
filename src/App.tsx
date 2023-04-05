@@ -20,6 +20,7 @@ import { User } from './components/User';
 import { SearchEmp } from './components/SearchEmp';
 import { ToggleButton } from './components/ToggleButton';
 import { Header } from './components/Header';
+import { NotFound } from './components/NotFound';
 
 function App(){
   console.log('Appレンダリング')
@@ -55,6 +56,7 @@ function App(){
           <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
           <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
+          <Route  path='*' element={<NotFound />}/>
         </Routes>
       </BrowserRouter>
     </div>
