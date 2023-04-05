@@ -55,7 +55,6 @@ function App(){
           <Route path='/SkillCheck/Edit' element={<Edit/>}/>
           <Route path="/SkillCheck/Profile" element={<Profile/>}/>
           <Route path='/SkillCheck/SearchForm' element={<SearchForm/>}/>
-          <Route path='/SkillCheck/Search' element={<SearchEmp/>}/>
         </Routes>
       </BrowserRouter>
     </div>

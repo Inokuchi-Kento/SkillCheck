@@ -1,12 +1,17 @@
 import { useState, useEffect, ChangeEvent, memo } from "react";
+import { useNavigate } from 'react-router-dom';
 import { supabase } from "../supabaseClient";
 import './ScoreEdit.css'
 import { Controller } from "./Controller";
 import {Tabs} from "./Tab"
 import EmpData from "../models/EmpData";
 import StoreData from "../models/StoreData";
+
 import menuItems from "./MenuItems";
 import HamburgerMenu from "./HamburgerMenu";
+
+
+import {Link} from "react-router-dom";
 
 
 interface User {
@@ -17,6 +22,14 @@ interface User {
 
 export function Edit() {
   console.log("Editレンダリング")
+  const navigate = useNavigate()
+    useEffect(()=>{
+        const session = supabase.auth.session();
+        if(!session){
+            navigate("/SkillCheck/LoginPage")
+        }
+    },[])
+    
   const [isLoading, setIsLoading] = useState(true);
   const [emp, setEmp] = useState<EmpData[]>([]);
   const [stores, setStores] = useState<StoreData[]>([])
@@ -127,10 +140,12 @@ export function Edit() {
                   {label: "損益管理", content: <div> <Controller emp_id={empItem.id} class_id = {104}/></div>},
                   {label: "藤田式", content: <div> <Controller emp_id={empItem.id} class_id = {201}/></div>},
               ]}/>
+              <Link to={{ pathname: '/SkillCheck/Profile', search: `?id=${empItem.id}`}} className="to_profile">プロフィールページへ▶︎</Link>
           </div>
         </div>
       )}      
       </div>
+      
     </div>
     </div>
   )

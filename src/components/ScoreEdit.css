@@ -108,3 +108,10 @@
     position: absolute;
     left:0px;
 }
+
+.to_profile{
+    color: #5c64ff;
+    border-bottom: 2px solid blue;
+    position: absolute;
+    top: 550px;
+}
