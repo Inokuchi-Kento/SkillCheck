@@ -1,5 +1,14 @@
+/* .login{
+    background-color: rgb(206, 206, 255);
+    position: relative;
+    left: 200px;
+    height: 600px;
+    width: 1200px;
+}  */
+
 .login-form{
     position: relative;
+    /* top: 200px; */
     left: 500px;
     height: 100px;
     width: 400px;

@@ -1,10 +1,9 @@
 import { useState, useEffect, FormEvent } from "react"; 
 import { supabase } from "../supabaseClient";
-import { SignUp } from "./SignUp";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import './Auth.css'
-import { Session } from '@supabase/gotrue-js';
-
+import "./logo.css"
+import logo from "../icons/smallLogo.png"
 
 export function LoginPage(){
     const [email, setEmail] = useState("");
@@ -36,24 +35,24 @@ export function LoginPage(){
     }
 
     return (
-        <div>
+        <div className="login">
+            <img src={logo} className="logo"/>
             <form onSubmit={HandleLogin} className='login-form'>
                 <label >
                     <div>
-                        Email:
+                        <h3>Email</h3>
                         <input type="email" name="email" value={email} placeholder="Email" onChange={(e)=>setEmail(e.target.value)} className="user"/>
                     </div>
                     <div>
-                        パスワード:
+                        <h3>パスワード</h3>
                         <input type="password" name="password" value={password} placeholder="パスワード" onChange={(e)=>setPassword(e.target.value)} className="user"/>
                     </div>
                 </label>
                 <button type="submit">ログイン</button>
             </form>
             <div >
-                <Link to = {"/SkillCheck/SignUp"} className="sign-up">ユーザー登録はこちら</Link>
+                {/* <Link to = {"/SkillCheck/SignUp"} className="sign-up">ユーザー登録はこちら</Link> */}
             </div>
         </div>
-        
     )
 }

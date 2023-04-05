@@ -6,19 +6,20 @@ import { supabase } from '../supabaseClient';
 import { Link} from "react-router-dom";
 import { Header } from "./Header";
 //import logo from '../icons/largeLogo.png';
+import { useNavigate } from 'react-router-dom';
 import "./searchFormStyle.css";
 import React from 'react';
 
 export const SearchForm = () => {
-/*  const navigate = useNavigate();
+const navigate = useNavigate();
     useEffect(()=>{
         const session = supabase.auth.session();
         if(!session){
             console.log("navigate");
             console.log(session)
-            navigate("/SkillCheck/Login");
+            navigate("/SkillCheck/LoginPage");
         }
-  },[])*/
+  },[])
   const [nameWord, setNameWord] = useState('');
   const [nameCond, setNameCond] = useState('');
   const [nameText, setNameText] = useState('')
