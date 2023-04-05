@@ -27,7 +27,7 @@ export function Menu() {
             <Link to={"/SkillCheck/SearchForm"}>
                 <img src={vegetable} className="department"/>
             </Link>
-            <Link to={"/SkillCheck/SearchForm"}>
+            {/* <Link to={"/SkillCheck/SearchForm"}>
                 <img src={fish} className="department"/>
             </Link>
             <Link to={"/SkillCheck/SearchForm"}>
@@ -35,6 +35,9 @@ export function Menu() {
             </Link>    
             <Link to={"/SkillCheck/SearchForm"}>
                 <img src={sideDish} className="department"/>
+            </Link> */}
+            <Link to = {"/SkillCheck/Edit"} color="blue">
+                Edit
             </Link>
         </div>
     )
