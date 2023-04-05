@@ -72,6 +72,7 @@ export function Profile(){
             <TabList>
                 <Tab>スキルデータ詳細</Tab>
                 <Tab>社員詳細</Tab>
+
             </TabList>
             
             <TabPanel>
@@ -95,6 +96,7 @@ export function Profile(){
                 <h2>所属/勤務地/担当商品/職位</h2>
                 <p>{list.map((emp)=>emp.role)}</p>
             </TabPanel>
+
         </Tabs>
     )
 }
