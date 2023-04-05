@@ -1,5 +1,6 @@
 {
   "name": "skillcheck",
+  "homepage": "https://inokuchi-kento.github.io/SkillCheck",
   "private": true,
   "version": "0.0.0",
   "type": "module",
