@@ -5,6 +5,9 @@ import { Controller } from "./Controller";
 import {Tabs} from "./Tab"
 import EmpData from "../models/EmpData";
 import StoreData from "../models/StoreData";
+import menuItems from "./MenuItems";
+import HamburgerMenu from "./HamburgerMenu";
+
 
 interface User {
   id: number;
@@ -84,6 +87,7 @@ export function Edit() {
 
   return(
     <div>
+      <HamburgerMenu menuItems={menuItems}/>
     {/* <h1 className="acd-default">
             従業員を選択してください
     </h1> */}

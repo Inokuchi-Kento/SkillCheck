@@ -5,11 +5,16 @@ import vegetable from '../icons/vegetable.png'
 import fish from "../icons/fish.png"
 import flesh from "../icons/flesh.png"
 import sideDish from "../icons/sideDish.png"
-import { render } from "react-dom"
-
-import { Header } from "./Header";
 import "./button.css"
-import { supabase } from "../supabaseClient";
+import HamburgerMenu from "./HamburgerMenu";
+import menuItems from "./MenuItems";
+
+// const menuItems = [
+//     { label: 'Home', link: '/SkillCheck/' },
+//     { label: `技能評価`, link: 'Edit'},
+//     { label : `従業員リスト`, link: '/SkillCheck/SearchForm'},
+//     { label : `ログアウト`, link: 'LogOut'}
+// ];
 
 export function Menu() {
     // const navigate = useNavigate()
@@ -23,8 +28,8 @@ export function Menu() {
     return (
         <div>
             {/* <Header /> */}
+            <HamburgerMenu menuItems={menuItems}/>
             <h3>メニュー画面</h3>
-            <a href="Edit">edit</a>
             <Link to={"/SkillCheck/SearchForm"}>
                 <img src={vegetable} className="department"/>
             </Link>

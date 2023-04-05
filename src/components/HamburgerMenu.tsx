@@ -28,7 +28,8 @@ function HamburgerMenu({ menuItems }: HamburgerMenuProps) {
         <ul className='items'>
           {menuItems.map((item) => (
             <li className='list-item' key={item.label}>
-              <a className="link" href={item.link}>{item.label}</a>
+              <Link to = {item.link} className="link">{item.label}</Link>
+              {/* <a className="link" href={item.link}>{item.label}</a> */}
             </li>
           ))}
         </ul>
