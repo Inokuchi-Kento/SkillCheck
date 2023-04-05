@@ -18,6 +18,8 @@ import { TestContents } from './components/TestContents';
 import { TestTab } from './components/TestTab';
 import { User } from './components/User';
 import { SearchEmp } from './components/SearchEmp';
+import { ToggleButton } from './components/ToggleButton';
+import { Header } from './components/Header';
 
 function App(){
   console.log('Appレンダリング')
@@ -41,7 +43,8 @@ function App(){
 
   return(
     <div>
-      <HamburgerMenu menuItems={menuItems}/>
+      {/* <HamburgerMenu menuItems={menuItems}/> */}
+      {/* <Header/> */}
       <BrowserRouter>
         <Routes>
           <Route path='/SkillCheck/' element={<Menu/>}/>

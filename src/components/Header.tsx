@@ -19,7 +19,7 @@ export function Header(){
         onClick={toggleFunction}
       />
       <Navigation id="navigation" open={open} />
-      <img src={logo} className="logo"></img>
+      {/* <img src={logo} className="logo"></img> */}
     </header>
   );
 };

@@ -9,6 +9,9 @@ import { Header } from "./Header";
 import { useNavigate } from 'react-router-dom';
 import "./searchFormStyle.css";
 import React from 'react';
+import menuItems from "./MenuItems";
+import HamburgerMenu from './HamburgerMenu';
+
 
 export const SearchForm = () => {
 const navigate = useNavigate();
@@ -86,6 +89,7 @@ const navigate = useNavigate();
 
     <div id="topBlock">
       {/* <Header /> */}
+      <HamburgerMenu menuItems={menuItems}/>
 
       <div className = "search_box">
       <h2>青果 従業員名簿</h2>

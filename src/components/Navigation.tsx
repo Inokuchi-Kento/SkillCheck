@@ -12,8 +12,8 @@ export const Navigation: FC<Props> = ({ open, id }) => {
   return (
     <nav id={id} aria-hidden={!open} className="navigation">
       <ul>
-        <li> <Link to={'/SkillCheck/menu'}>メニュー</Link></li>
-        <li><Link to={'/SkillCheck/edit'}>技能評価</Link></li>
+        <li> <Link to={'/SkillCheck'}>メニュー</Link></li>
+        <li><Link to={'/SkillCheck/Edit'}>技能評価</Link></li>
         {/* <li><LogOut/></li> */}
       </ul>
     </nav>
