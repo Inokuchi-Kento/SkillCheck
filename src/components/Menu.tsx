@@ -6,6 +6,7 @@ import fish from "../icons/fish.png"
 import flesh from "../icons/flesh.png"
 import sideDish from "../icons/sideDish.png"
 import "./button.css"
+import { supabase } from "../supabaseClient";
 import HamburgerMenu from "./HamburgerMenu";
 import menuItems from "./MenuItems";
 
