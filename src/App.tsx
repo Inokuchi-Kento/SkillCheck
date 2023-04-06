@@ -6,20 +6,11 @@ import {Menu} from './components/Menu'
 import { Session } from '@supabase/gotrue-js';
 import {supabase} from './supabaseClient'
 import { SignUp } from './components/SignUp'
-import { ScoreEdit } from './components/ScoreEdit';
 import { Profile } from './components/Profile'
-import { Test } from './components/test';
 import { LoginPage } from './components/Auth';
-import HamburgerMenu from './components/HamburgerMenu';
 import { LogOut } from './components/LogOut';
-import {Chart} from './components/Chart';
 import { Edit } from './components/Edit';
 import { TestContents } from './components/TestContents';
-import { TestTab } from './components/TestTab';
-import { User } from './components/User';
-import { SearchEmp } from './components/SearchEmp';
-import { ToggleButton } from './components/ToggleButton';
-import { Header } from './components/Header';
 import { NotFound } from './components/NotFound';
 
 function App(){
@@ -45,7 +36,6 @@ function App(){
   return(
     <div>
       {/* <HamburgerMenu menuItems={menuItems}/> */}
-      {/* <Header/> */}
       <BrowserRouter>
         <Routes>
           <Route path='/SkillCheck/' element={<Menu/>}/>

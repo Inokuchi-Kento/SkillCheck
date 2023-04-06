@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { Chart } from './Chart';
+import HamburgerMenu from './HamburgerMenu';
+import menuItems from './MenuItems';
 
 type List ={
     name: string;
@@ -66,6 +68,8 @@ export function Profile(){
     }, []);
 
     return (
+        <div>
+            <HamburgerMenu menuItems={menuItems}/>
         <Tabs>
             {/* <img src={logo} className='logo'/> */}
             {/* <Header /> */}
@@ -96,7 +100,7 @@ export function Profile(){
                 <h2>所属/勤務地/担当商品/職位</h2>
                 <p>{list.map((emp)=>emp.role)}</p>
             </TabPanel>
-
         </Tabs>
+        </div>
     )
 }
